@@ -1,0 +1,6 @@
+opencv-python-headless>=4.8,<5
+numpy>=1.24,<3
+Pillow>=10,<13
+requests>=2.31,<3
+# Optional, ONLY for the pose-landmark spike:
+# mediapipe>=0.10.14
