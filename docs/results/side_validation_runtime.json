@@ -1,0 +1,28 @@
+{
+  "method_version": "squat-geometric-v2",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "cpu": "INTEL(R) XEON(R) PLATINUM 8573C",
+  "logical_cpus": 5,
+  "validation_resolutions": [
+    [
+      540,
+      960
+    ],
+    [
+      810,
+      1440
+    ]
+  ],
+  "source_sha256": {
+    "src/posture_check/features.py": "f6f6b841ae177b205c584e828f9ecfef754a08f46fd8ecea2dc7a3e31686f4d7",
+    "src/posture_check/clip.py": "9f4eeab1048188686e03414480fa471ea260d18365baa75d2699b84674a39da8",
+    "src/posture_check/baseline.py": "dc85f8ed5786199264535a8c701e6d5bde54e8ea0ea9cb2b99017eae7221f0ac",
+    "src/posture_check/pose.py": "3536baf9a6edc4ac21387fae48a13be67050f680d47bf01ff85d2d90541d9d07",
+    "src/posture_check/__main__.py": "d361e72b8ffa75261ce45c0da52caef86650fbb34f3d4f9a29a243662d8641aa",
+    "scripts/evaluate_validation.py": "b7c7c7a6fddf5e13912745f4ebeb75d0343528a4fdf8d0e98a54a231b6552183",
+    "data/prepared/mendeley/val_videos.csv": "b95303ed1f71bfcf63bc60d21d4425cb7d0b8f52844c290f003324b7d6305c9f"
+  },
+  "command": "PYTHONPATH=src .venv/bin/python scripts/evaluate_validation.py --media-root data/raw/mendeley --output docs/results/mendeley_squat_side_validation.json",
+  "notes": "Cloud CPU, eight complete side-view validation clips. Test files not decoded. No post-validation threshold changes."
+}

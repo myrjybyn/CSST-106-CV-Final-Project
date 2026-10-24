@@ -1,0 +1,185 @@
+{
+  "measured_at_utc": "2026-10-24T15:38:20.980901+00:00",
+  "manifest": "data/prepared/mendeley/val_videos.csv",
+  "exercise": "squat",
+  "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "videos": 24,
+  "frames": 11090,
+  "processing_fps": 31.883835913666225,
+  "decode_and_processing_fps": 31.141132567748713,
+  "assessable_fraction": 0.8626690712353472,
+  "pose_detection_fraction": 0.9159603246167719,
+  "timing_scope": "CPU image-mode baseline, includes first-frame warm-up; no encoding",
+  "classification_accuracy": null,
+  "limitations": "Coverage is not landmark accuracy. No clip-to-frame correctness mapping. No test-set use.",
+  "per_video": [
+    {
+      "video": "Dataset Subject-wise/subject_004/squat/bad/diagonal/subject_004_squat_bad_diagonal.mp4",
+      "frames": 491,
+      "detected_frames": 448,
+      "assessable_frames": 446,
+      "processing_seconds": 14.576868819999902
+    },
+    {
+      "video": "Dataset Subject-wise/subject_004/squat/bad/front/subject_004_squat_bad_front.mp4",
+      "frames": 466,
+      "detected_frames": 448,
+      "assessable_frames": 430,
+      "processing_seconds": 14.740280275999652
+    },
+    {
+      "video": "Dataset Subject-wise/subject_004/squat/bad/side/subject_004_squat_bad_side.mp4",
+      "frames": 481,
+      "detected_frames": 458,
+      "assessable_frames": 441,
+      "processing_seconds": 15.603806690000226
+    },
+    {
+      "video": "Dataset Subject-wise/subject_004/squat/good/diagonal/subject_004_squat_good_diagonal.mp4",
+      "frames": 502,
+      "detected_frames": 422,
+      "assessable_frames": 414,
+      "processing_seconds": 15.633551921000219
+    },
+    {
+      "video": "Dataset Subject-wise/subject_004/squat/good/front/subject_004_squat_good_front.mp4",
+      "frames": 467,
+      "detected_frames": 460,
+      "assessable_frames": 404,
+      "processing_seconds": 15.311938827000006
+    },
+    {
+      "video": "Dataset Subject-wise/subject_004/squat/good/side/subject_004_squat_good_side.mp4",
+      "frames": 476,
+      "detected_frames": 448,
+      "assessable_frames": 436,
+      "processing_seconds": 15.2680259539992
+    },
+    {
+      "video": "Dataset Subject-wise/subject_006/squat/bad/diagonal/subject_006_squat_bad_diagonal.mp4",
+      "frames": 468,
+      "detected_frames": 436,
+      "assessable_frames": 436,
+      "processing_seconds": 14.381202750999762
+    },
+    {
+      "video": "Dataset Subject-wise/subject_006/squat/bad/front/subject_006_squat_bad_front.mp4",
+      "frames": 467,
+      "detected_frames": 437,
+      "assessable_frames": 366,
+      "processing_seconds": 15.445781463000003
+    },
+    {
+      "video": "Dataset Subject-wise/subject_006/squat/bad/side/subject_006_squat_bad_side.mp4",
+      "frames": 462,
+      "detected_frames": 398,
+      "assessable_frames": 373,
+      "processing_seconds": 14.88868175999994
+    },
+    {
+      "video": "Dataset Subject-wise/subject_006/squat/good/diagonal/subject_006_squat_good_diagonal.mp4",
+      "frames": 467,
+      "detected_frames": 416,
+      "assessable_frames": 414,
+      "processing_seconds": 14.482865807999644
+    },
+    {
+      "video": "Dataset Subject-wise/subject_006/squat/good/front/subject_006_squat_good_front.mp4",
+      "frames": 458,
+      "detected_frames": 410,
+      "assessable_frames": 332,
+      "processing_seconds": 14.777711798000496
+    },
+    {
+      "video": "Dataset Subject-wise/subject_006/squat/good/side/subject_006_squat_good_side.mp4",
+      "frames": 463,
+      "detected_frames": 380,
+      "assessable_frames": 359,
+      "processing_seconds": 14.122596052000176
+    },
+    {
+      "video": "Dataset Subject-wise/subject_011/squat/bad/diagonal/subject_011_squat_bad_diagonal.mp4",
+      "frames": 447,
+      "detected_frames": 425,
+      "assessable_frames": 406,
+      "processing_seconds": 14.126417696000317
+    },
+    {
+      "video": "Dataset Subject-wise/subject_011/squat/bad/front/subject_011_squat_bad_front.mp4",
+      "frames": 430,
+      "detected_frames": 426,
+      "assessable_frames": 426,
+      "processing_seconds": 13.790069992000326
+    },
+    {
+      "video": "Dataset Subject-wise/subject_011/squat/bad/side/subject_011_squat_bad_side.mp4",
+      "frames": 435,
+      "detected_frames": 391,
+      "assessable_frames": 387,
+      "processing_seconds": 13.243684857999256
+    },
+    {
+      "video": "Dataset Subject-wise/subject_011/squat/good/diagonal/subject_011_squat_good_diagonal.mp4",
+      "frames": 479,
+      "detected_frames": 468,
+      "assessable_frames": 464,
+      "processing_seconds": 15.303122444999246
+    },
+    {
+      "video": "Dataset Subject-wise/subject_011/squat/good/front/subject_011_squat_good_front.mp4",
+      "frames": 465,
+      "detected_frames": 464,
+      "assessable_frames": 464,
+      "processing_seconds": 15.082633688000385
+    },
+    {
+      "video": "Dataset Subject-wise/subject_011/squat/good/side/subject_011_squat_good_side.mp4",
+      "frames": 482,
+      "detected_frames": 359,
+      "assessable_frames": 348,
+      "processing_seconds": 14.815852555999243
+    },
+    {
+      "video": "Dataset Subject-wise/subject_024/squat/bad/diagonal/subject_024_squat_bad_diagonal.mp4",
+      "frames": 444,
+      "detected_frames": 406,
+      "assessable_frames": 325,
+      "processing_seconds": 13.667578835999507
+    },
+    {
+      "video": "Dataset Subject-wise/subject_024/squat/bad/front/subject_024_squat_bad_front.mp4",
+      "frames": 471,
+      "detected_frames": 434,
+      "assessable_frames": 366,
+      "processing_seconds": 14.438091925999515
+    },
+    {
+      "video": "Dataset Subject-wise/subject_024/squat/bad/side/subject_024_squat_bad_side.mp4",
+      "frames": 440,
+      "detected_frames": 431,
+      "assessable_frames": 414,
+      "processing_seconds": 13.747606971000096
+    },
+    {
+      "video": "Dataset Subject-wise/subject_024/squat/good/diagonal/subject_024_squat_good_diagonal.mp4",
+      "frames": 419,
+      "detected_frames": 410,
+      "assessable_frames": 408,
+      "processing_seconds": 12.912774018000846
+    },
+    {
+      "video": "Dataset Subject-wise/subject_024/squat/good/front/subject_024_squat_good_front.mp4",
+      "frames": 414,
+      "detected_frames": 367,
+      "assessable_frames": 318,
+      "processing_seconds": 12.891819600000645
+    },
+    {
+      "video": "Dataset Subject-wise/subject_024/squat/good/side/subject_024_squat_good_side.mp4",
+      "frames": 496,
+      "detected_frames": 416,
+      "assessable_frames": 390,
+      "processing_seconds": 14.572185004000517
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "input": "data/raw/mendeley/Dataset Subject-wise/subject_005/squat/good/side/subject_005_squat_good_side.mp4",
+  "method_version": "squat-geometric-v2",
+  "output": "outputs/milestone2_demo.mp4",
+  "decoded_output_frames": 463,
+  "clip_assessment": {
+    "prediction": "incorrect",
+    "valid_frames": 348,
+    "valid_fraction": 0.7516198704103672,
+    "reasons": [
+      "large_projected_trunk_lean"
+    ],
+    "measurements": {
+      "knee_p10": 91.72899663738261,
+      "knee_p90": 171.57005875310944,
+      "active_trunk_lean_p90": 157.8735832455075
+    }
+  },
+  "processing_fps": 25.454947948602495,
+  "note": "Development training clip used for demonstration, not validation metric."
+}

@@ -1,0 +1,108 @@
+{
+  "source_input": "data/raw/mendeley/Dataset Subject-wise/subject_005/squat/good/side/subject_005_squat_good_side.mp4",
+  "annotated_video": "outputs/milestone2_demo.mp4",
+  "method_version": "squat-geometric-v2",
+  "selection": "Fixed frame indices 0,75,150,225,300,400; six excerpts of one actual prototype run, not six independent experiments.",
+  "source_doi": "10.17632/kgbb3yn47p.3",
+  "license": "CC BY 4.0",
+  "modifications": "Source video processed with pose/rule overlays; stills extracted as JPEG. Source face blurring retained.",
+  "whole_clip_assessment": {
+    "prediction": "incorrect",
+    "valid_frames": 348,
+    "valid_fraction": 0.7516198704103672,
+    "reasons": [
+      "large_projected_trunk_lean"
+    ],
+    "measurements": {
+      "knee_p10": 91.72899663738261,
+      "knee_p90": 171.57005875310944,
+      "active_trunk_lean_p90": 157.8735832455075
+    }
+  },
+  "samples": [
+    {
+      "file": "01_frame_000.jpg",
+      "frame_index": 0,
+      "status": "rule_flag",
+      "phase": "transition",
+      "features": {
+        "side": "left",
+        "knee_angle": 123.07058787191202,
+        "hip_angle": 179.51058607026104,
+        "trunk_lean": 170.5541744933143,
+        "min_confidence": 0.9303709864616394
+      },
+      "sha256": "332f8532f22d94af0ac99a32954568ab1f01abaa7d5a9c42977d460e0e5ba308"
+    },
+    {
+      "file": "02_frame_075.jpg",
+      "frame_index": 75,
+      "status": "rule_pass",
+      "phase": "bottom",
+      "features": {
+        "side": "left",
+        "knee_angle": 91.39858586713589,
+        "hip_angle": 73.1482743775492,
+        "trunk_lean": 36.4560149805478,
+        "min_confidence": 0.8261550068855286
+      },
+      "sha256": "22e4643b5a7cabbee3880c93c1d86eafaaee132443b028732fca0d02e5e402c4"
+    },
+    {
+      "file": "03_frame_150.jpg",
+      "frame_index": 150,
+      "status": "rule_pass",
+      "phase": "transition",
+      "features": {
+        "side": "left",
+        "knee_angle": 112.24451709359681,
+        "hip_angle": 84.25293672523065,
+        "trunk_lean": 38.83963721819722,
+        "min_confidence": 0.9435688257217407
+      },
+      "sha256": "1f9f0a556107fa61d190e30148bca9a79f7e1c339da659129a75a4f0d69cdda6"
+    },
+    {
+      "file": "04_frame_225.jpg",
+      "frame_index": 225,
+      "status": "rule_pass",
+      "phase": "transition",
+      "features": {
+        "side": "left",
+        "knee_angle": 109.0761822272771,
+        "hip_angle": 83.53388282922495,
+        "trunk_lean": 39.78576358590676,
+        "min_confidence": 0.9651029109954834
+      },
+      "sha256": "3d0b654a9b54e3cdf2335f20dbf3c50a9394263a465a08549b9ee8629476eb5b"
+    },
+    {
+      "file": "05_frame_300.jpg",
+      "frame_index": 300,
+      "status": "rule_pass",
+      "phase": "transition",
+      "features": {
+        "side": "left",
+        "knee_angle": 126.50467960474924,
+        "hip_angle": 95.88005718342315,
+        "trunk_lean": 37.21353720400519,
+        "min_confidence": 0.9682914614677429
+      },
+      "sha256": "9fd58e1dc49f4e40380563f9e5b6b487a1949d0366c9f783c33596219f621695"
+    },
+    {
+      "file": "06_frame_400.jpg",
+      "frame_index": 400,
+      "status": "rule_pass",
+      "phase": "transition",
+      "features": {
+        "side": "left",
+        "knee_angle": 125.89616033479906,
+        "hip_angle": 96.41316453465099,
+        "trunk_lean": 36.01120202941202,
+        "min_confidence": 0.9646250605583191
+      },
+      "sha256": "3e2fdca691a01a3ee364240655d4b476264e0dcff0c2814174f23edf64d0b5a2"
+    }
+  ]
+}

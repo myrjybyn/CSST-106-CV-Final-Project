@@ -1,0 +1,215 @@
+{
+  "measured_at_utc": "2026-10-24T15:54:09.736757+00:00",
+  "method_version": "squat-geometric-v2",
+  "clip_rules": {
+    "min_valid_frames": 30,
+    "min_valid_fraction": 0.5,
+    "min_knee_range_degrees": 20,
+    "max_bottom_knee_degrees": 100,
+    "min_top_knee_degrees": 145,
+    "max_active_trunk_lean_degrees": 60,
+    "min_body_chain_image_height_fraction": 0.35
+  },
+  "view": "side",
+  "classification": {
+    "clips": 8,
+    "assessed_clips": 7,
+    "abstained_clips": 1,
+    "accuracy_all_clips": 0.5,
+    "accuracy_assessed_clips": 0.5714285714285714,
+    "macro_f1_with_abstentions_as_misses": 0.5357142857142857,
+    "per_class_f1": {
+      "correct": 0.5,
+      "incorrect": 0.5714285714285714
+    },
+    "confusion_matrix": {
+      "correct": {
+        "correct": 2,
+        "incorrect": 1,
+        "unassessable": 1
+      },
+      "incorrect": {
+        "correct": 2,
+        "incorrect": 2,
+        "unassessable": 0
+      }
+    }
+  },
+  "manifest": "data/prepared/mendeley/val_videos.csv",
+  "exercise": "squat",
+  "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "videos": 8,
+  "frames": 3735,
+  "processing_fps": 26.109699575833822,
+  "decode_and_processing_fps": 25.151460206329606,
+  "assessable_fraction": 0.7566265060240964,
+  "pose_detection_fraction": 0.8784471218206158,
+  "timing_scope": "CPU image-mode baseline, includes first-frame warm-up; no encoding",
+  "limitations": "Provisional clip rules; side view only; source clip labels; abstentions count as misses in overall accuracy; coverage is not landmark accuracy; no test-set use.",
+  "per_video": [
+    {
+      "video": "Dataset Subject-wise/subject_004/squat/bad/side/subject_004_squat_bad_side.mp4",
+      "frames": 481,
+      "ground_truth": "incorrect",
+      "participant_id": "mendeley_4",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 417,
+        "valid_fraction": 0.8669438669438669,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 99.93867683473752,
+          "knee_p90": 178.00929188147862,
+          "active_trunk_lean_p90": 44.73836594489205
+        }
+      },
+      "detected_frames": 458,
+      "assessable_frames": 417,
+      "processing_seconds": 20.166704121000095
+    },
+    {
+      "video": "Dataset Subject-wise/subject_004/squat/good/side/subject_004_squat_good_side.mp4",
+      "frames": 476,
+      "ground_truth": "correct",
+      "participant_id": "mendeley_4",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 409,
+        "valid_fraction": 0.8592436974789915,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 86.2537253859932,
+          "knee_p90": 175.314622731487,
+          "active_trunk_lean_p90": 40.89353564991572
+        }
+      },
+      "detected_frames": 448,
+      "assessable_frames": 409,
+      "processing_seconds": 18.27586649300025
+    },
+    {
+      "video": "Dataset Subject-wise/subject_006/squat/bad/side/subject_006_squat_bad_side.mp4",
+      "frames": 462,
+      "ground_truth": "incorrect",
+      "participant_id": "mendeley_6",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 372,
+        "valid_fraction": 0.8051948051948052,
+        "reasons": [
+          "large_projected_trunk_lean"
+        ],
+        "measurements": {
+          "knee_p10": 70.08291560849422,
+          "knee_p90": 174.79863793039732,
+          "active_trunk_lean_p90": 125.36675754986284
+        }
+      },
+      "detected_frames": 398,
+      "assessable_frames": 372,
+      "processing_seconds": 18.19938794799947
+    },
+    {
+      "video": "Dataset Subject-wise/subject_006/squat/good/side/subject_006_squat_good_side.mp4",
+      "frames": 463,
+      "ground_truth": "correct",
+      "participant_id": "mendeley_6",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 348,
+        "valid_fraction": 0.7516198704103672,
+        "reasons": [
+          "large_projected_trunk_lean"
+        ],
+        "measurements": {
+          "knee_p10": 91.72899663738261,
+          "knee_p90": 171.57005875310944,
+          "active_trunk_lean_p90": 157.8735832455075
+        }
+      },
+      "detected_frames": 380,
+      "assessable_frames": 348,
+      "processing_seconds": 17.57070520900038
+    },
+    {
+      "video": "Dataset Subject-wise/subject_011/squat/bad/side/subject_011_squat_bad_side.mp4",
+      "frames": 435,
+      "ground_truth": "incorrect",
+      "participant_id": "mendeley_11",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 291,
+        "valid_fraction": 0.6689655172413793,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 89.12546097956968,
+          "knee_p90": 151.60051933693288,
+          "active_trunk_lean_p90": 18.34878804404596
+        }
+      },
+      "detected_frames": 391,
+      "assessable_frames": 291,
+      "processing_seconds": 15.915349216000152
+    },
+    {
+      "video": "Dataset Subject-wise/subject_011/squat/good/side/subject_011_squat_good_side.mp4",
+      "frames": 482,
+      "ground_truth": "correct",
+      "participant_id": "mendeley_11",
+      "clip_assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 214,
+        "valid_fraction": 0.44398340248962653,
+        "reasons": [
+          "insufficient_pose_coverage"
+        ],
+        "measurements": null
+      },
+      "detected_frames": 359,
+      "assessable_frames": 214,
+      "processing_seconds": 17.966716747000305
+    },
+    {
+      "video": "Dataset Subject-wise/subject_024/squat/bad/side/subject_024_squat_bad_side.mp4",
+      "frames": 440,
+      "ground_truth": "incorrect",
+      "participant_id": "mendeley_24",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 405,
+        "valid_fraction": 0.9204545454545454,
+        "reasons": [
+          "large_projected_trunk_lean"
+        ],
+        "measurements": {
+          "knee_p10": 64.67323480958434,
+          "knee_p90": 176.70041186461958,
+          "active_trunk_lean_p90": 65.23986597334807
+        }
+      },
+      "detected_frames": 431,
+      "assessable_frames": 405,
+      "processing_seconds": 16.397808404000102
+    },
+    {
+      "video": "Dataset Subject-wise/subject_024/squat/good/side/subject_024_squat_good_side.mp4",
+      "frames": 496,
+      "ground_truth": "correct",
+      "participant_id": "mendeley_24",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 370,
+        "valid_fraction": 0.7459677419354839,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 80.72591305186569,
+          "knee_p90": 172.22483551112566,
+          "active_trunk_lean_p90": 50.42239325930439
+        }
+      },
+      "detected_frames": 416,
+      "assessable_frames": 370,
+      "processing_seconds": 18.557748179999578
+    }
+  ]
+}

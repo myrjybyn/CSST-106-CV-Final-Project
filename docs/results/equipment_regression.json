@@ -1,0 +1,12 @@
+{
+  "input": "data/raw/mendeley/Dataset Subject-wise/subject_001/squat/good/side/subject_001_squat_good_side.mp4",
+  "frame_index": 150,
+  "result": {
+    "status": "unassessable",
+    "phase": "unknown",
+    "feedback": "Show shoulder, hip, knee and ankle in a side view.",
+    "features": null,
+    "pose_detected": true,
+    "processing_seconds": 0.04823099399999364
+  }
+}
