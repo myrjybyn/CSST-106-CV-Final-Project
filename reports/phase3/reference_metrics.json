@@ -1,0 +1,58 @@
+{
+  "baseline": {
+    "clips": 4,
+    "reference_class_support": {
+      "correct": 4,
+      "incorrect": 0
+    },
+    "accuracy_all_clips": 0.75,
+    "accuracy_assessed_clips": 1.0,
+    "assessed_clips": 3,
+    "abstentions": 1,
+    "confusion_matrix": {
+      "correct": {
+        "correct": 3,
+        "incorrect": 0,
+        "unassessable": 1
+      },
+      "incorrect": {
+        "correct": 0,
+        "incorrect": 0,
+        "unassessable": 0
+      }
+    },
+    "count_mae": null,
+    "exact_count_matches": null,
+    "count_scored_clips": 0,
+    "binary_macro_f1": null,
+    "limitation": "Correct-only sample; incorrect-form detection, false accepts and balanced performance cannot be estimated. References are user-supplied after predictions."
+  },
+  "main": {
+    "clips": 4,
+    "reference_class_support": {
+      "correct": 4,
+      "incorrect": 0
+    },
+    "accuracy_all_clips": 0.75,
+    "accuracy_assessed_clips": 1.0,
+    "assessed_clips": 3,
+    "abstentions": 1,
+    "confusion_matrix": {
+      "correct": {
+        "correct": 3,
+        "incorrect": 0,
+        "unassessable": 1
+      },
+      "incorrect": {
+        "correct": 0,
+        "incorrect": 0,
+        "unassessable": 0
+      }
+    },
+    "count_mae": 3.5,
+    "exact_count_matches": 1,
+    "count_scored_clips": 4,
+    "binary_macro_f1": null,
+    "limitation": "Correct-only sample; incorrect-form detection, false accepts and balanced performance cannot be estimated. References are user-supplied after predictions."
+  }
+}

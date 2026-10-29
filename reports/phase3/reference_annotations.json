@@ -1,0 +1,24 @@
+{
+  "recorded_at_utc": "2026-10-29T14:03:27.098613+00:00",
+  "source": "User-supplied manual labels and counts in chat",
+  "timing": "Supplied after predictions were reported; not independently expert-verified.",
+  "policy": "Score saved predictions without rerunning or tuning the methods.",
+  "clips": {
+    "pushup": {
+      "form_label": "correct",
+      "completed_reps": 4
+    },
+    "squat": {
+      "form_label": "correct",
+      "completed_reps": 4
+    },
+    "lunge": {
+      "form_label": "correct",
+      "completed_reps": 3
+    },
+    "jumping_jack": {
+      "form_label": "correct",
+      "completed_reps": 10
+    }
+  }
+}

@@ -1,0 +1,9 @@
+exercise,method,frames,feature_coverage,processing_fps_cloud,full_run_fps_cloud,state_changes,actionable_flips,phase_changes,predicted_reps,clip_prediction,reference_form,reference_reps
+pushup,baseline,363,0.5730027548209367,33.24633634453519,25.128147189020435,2,0,12,,correct,correct,4
+pushup,main,363,0.5730027548209367,34.9897378452707,26.21589909456173,3,0,10,2,correct,correct,4
+squat,baseline,483,1.0,35.457869347701624,27.062850301117816,0,0,16,,correct,correct,4
+squat,main,483,1.0,35.08894620186603,26.879691545675325,1,0,17,4,correct,correct,4
+lunge,baseline,278,0.6223021582733813,37.13763874429154,26.863898323640225,22,0,34,,correct,correct,3
+lunge,main,278,0.6223021582733813,36.803628966392665,26.563766640779477,27,0,15,0,correct,correct,3
+jumping_jack,baseline,576,0.8298611111111112,35.785355559149984,27.501933271675334,18,0,56,,unassessable,correct,10
+jumping_jack,main,576,0.8298611111111112,35.619140712807855,27.258092516429723,23,0,31,1,unassessable,correct,10

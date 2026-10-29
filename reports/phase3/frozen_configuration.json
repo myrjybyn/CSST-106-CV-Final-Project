@@ -1,0 +1,15 @@
+{
+  "frozen_at_utc": "2026-10-29T12:57:06.174061+00:00",
+  "local_time": "2026-10-29T20:57:06.174761+08:00",
+  "source_sha256": {
+    "src/posture_check/__main__.py": "c6b179cdbf09237ef8e4dfeba1d569465f4894a870f51e4fa765b597e9028b3a",
+    "src/posture_check/pose.py": "3536baf9a6edc4ac21387fae48a13be67050f680d47bf01ff85d2d90541d9d07",
+    "src/posture_check/features.py": "f6f6b841ae177b205c584e828f9ecfef754a08f46fd8ecea2dc7a3e31686f4d7",
+    "src/posture_check/baseline.py": "dc85f8ed5786199264535a8c701e6d5bde54e8ea0ea9cb2b99017eae7221f0ac",
+    "src/posture_check/clip.py": "9f4eeab1048188686e03414480fa471ea260d18365baa75d2699b84674a39da8",
+    "src/posture_check/exercises.py": "ddc01b07c5f9253307776ddf3fe700060d3d7e3beef3f51b3e275e3ca17d5ca9",
+    "src/posture_check/temporal.py": "8606ad8991fb350296f034f05f52868a6c1e3b69f92025b58ebda782c0bd1ca8"
+  },
+  "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "policy": "No parameter tuning on supplied clips; baseline and main frozen before inference."
+}

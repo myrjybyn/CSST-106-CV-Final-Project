@@ -4,22 +4,24 @@ import json
 from pathlib import Path
 import time
 import cv2
-from .baseline import assess
-from .clip import summarize, RULES
-from .features import extract
+from .exercises import (SUPPORTED_EXERCISES, extract_for_exercise, assess_for_exercise,
+                        summarize_for_exercise, rules_for_exercise)
 from .pose import PoseEstimator
+from .temporal import TemporalAnalyzer, PARAMETERS as TEMPORAL_PARAMETERS
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 CONNECTIONS = ((11, 12), (11, 23), (12, 24), (23, 24), (23, 25),
-               (25, 27), (24, 26), (26, 28))
+               (25, 27), (24, 26), (26, 28), (11, 13), (13, 15),
+               (12, 14), (14, 16))
 
 
-def process(frame, estimator):
+def process(frame, estimator, exercise='squat'):
     start = time.perf_counter()
     landmarks = estimator.detect(frame)
     height, width = frame.shape[:2]
-    features = extract(landmarks, width, height)
-    result = assess(features)
+    features = extract_for_exercise(landmarks, width, height, exercise)
+    result = assess_for_exercise(features, exercise)
+    result["exercise"] = exercise
     result["features"] = features.to_dict() if features else None
     result["pose_detected"] = bool(landmarks)
     result["processing_seconds"] = time.perf_counter() - start
@@ -34,15 +36,24 @@ def annotate(frame, landmarks, result):
             points = [(int(landmarks[i].x * width), int(landmarks[i].y * height)) for i in (a, b)]
             cv2.line(canvas, points[0], points[1], (0, 220, 255), 2)
     canvas = cv2.copyMakeBorder(canvas, 0, 90, 0, max(0, 750 - width), cv2.BORDER_CONSTANT)
-    lines = [f"SQUAT BASELINE | {result['status']} | {result['phase']}", result["feedback"],
-             "Provisional 2D rules; use a side view. Not validated posture advice."]
+    exercise = result.get('exercise', 'squat')
+    view = 'front' if exercise == 'jumping_jack' else 'side'
+    method = result.get('method', 'baseline').upper()
+    count = result.get('repetition_count')
+    count_text = f" | Reps: {count}" if count is not None else ''
+    lines = [f"{exercise.replace('_', ' ').upper()} {method} | {result['status']} | {result['phase']}{count_text}", result["feedback"],
+             f"Provisional 2D rules; use a {view} view. Not validated posture advice."]
     for i, line in enumerate(lines):
         cv2.putText(canvas, line, (8, height + 23 + 26 * i), cv2.FONT_HERSHEY_SIMPLEX,
                     .48, (255, 255, 255), 1, cv2.LINE_AA)
     return canvas
 
 
-def run(source, output, model):
+def run(source, output, model, exercise='squat', method='main'):
+    if exercise not in SUPPORTED_EXERCISES:
+        raise ValueError(f'Unsupported exercise: {exercise}')
+    if method not in ('baseline', 'main'):
+        raise ValueError(f'Unsupported method: {method}')
     source, output = Path(source), Path(output)
     if source.resolve() == output.resolve():
         raise ValueError("Input and output must be different files")
@@ -55,12 +66,14 @@ def run(source, output, model):
     records = []
     capture = writer = None
     estimator = PoseEstimator(model)
+    analyzer = None
     try:
         if is_image:
             frame = cv2.imread(str(source))
             if frame is None:
                 raise ValueError(f"Cannot decode image: {source}")
-            landmarks, result = process(frame, estimator)
+            landmarks, result = process(frame, estimator, exercise)
+            result.update(method=method, temporal_available=False, repetition_count=None)
             records.append(dict(frame_index=0, **result))
             if not cv2.imwrite(str(output), annotate(frame, landmarks, result)):
                 raise RuntimeError(f"Cannot write {output}")
@@ -71,11 +84,19 @@ def run(source, output, model):
             fps = capture.get(cv2.CAP_PROP_FPS)
             if not 0 < fps < 1000:
                 raise ValueError("Video has invalid FPS metadata")
+            if method == 'main':
+                analyzer = TemporalAnalyzer(exercise, fps)
             while True:
                 ok, frame = capture.read()
                 if not ok:
                     break
-                landmarks, result = process(frame, estimator)
+                landmarks, result = process(frame, estimator, exercise)
+                if analyzer is not None:
+                    temporal_start = time.perf_counter()
+                    result = analyzer.update(result)
+                    result['processing_seconds'] += time.perf_counter() - temporal_start
+                else:
+                    result.update(method=method, temporal_available=False, repetition_count=None)
                 records.append(dict(frame_index=len(records), **result))
                 canvas = annotate(frame, landmarks, result)
                 # Most MP4 encoders require even dimensions.
@@ -95,10 +116,13 @@ def run(source, output, model):
             capture.release()
         if writer is not None:
             writer.release()
-    report = {"input": str(source), "exercise": "squat", "method": "single-frame baseline",
-              "method_version": "squat-geometric-v2", "clip_rules": RULES,
-              "clip_assessment": summarize(records) if not is_image else None,
-              "clip_assumption": "Side-view squat clip supplied by operator; thresholds provisional",
+    report = {"input": str(source), "exercise": exercise, "method": method,
+              "method_version": "temporal-geometric-v1" if method == 'main' else ("squat-geometric-v2" if exercise == 'squat' else "multiexercise-geometric-v1"),
+              "temporal_parameters": TEMPORAL_PARAMETERS if analyzer is not None else None,
+              "repetition_count": analyzer.count if analyzer is not None else None,
+              "clip_rules": rules_for_exercise(exercise),
+              "clip_assessment": summarize_for_exercise(records, exercise) if not is_image else None,
+              "clip_assumption": f"Operator-selected {exercise}; {'front' if exercise == 'jumping_jack' else 'side'} view; thresholds provisional",
               "frames": len(records), "records": records,
               "processing_fps": len(records) / sum(r["processing_seconds"] for r in records),
               "timing_scope": "pose inference and rules; excludes decoding, drawing and encoding"}
@@ -111,9 +135,13 @@ def main():
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--model", type=Path, default=Path("models/pose_landmarker_lite.task"))
+    parser.add_argument("--exercise", choices=SUPPORTED_EXERCISES, default='squat',
+                        help="Selected exercise mode (default: squat); jumping jacks require a front view")
+    parser.add_argument("--method", choices=('baseline', 'main'), default='main',
+                        help="Main adds temporal smoothing, phase tracking and repetition counts")
     args = parser.parse_args()
     try:
-        report = run(args.input, args.output, args.model)
+        report = run(args.input, args.output, args.model, args.exercise, args.method)
     except (ValueError, FileNotFoundError, RuntimeError) as error:
         parser.exit(1, f"Error: {error}\n")
     print(f"Wrote {args.output} and JSON evidence; {report['frames']} frames, {report['processing_fps']:.2f} processing FPS")

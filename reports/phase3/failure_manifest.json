@@ -1,0 +1,115 @@
+{
+  "definition": "Ten observed technical rejection frames, not ten independent clips or proven classification errors. Original main-run outputs are shown; causes use post-hoc landmark gate checks.",
+  "examples": [
+    {
+      "id": 8,
+      "clip": "jumping_jack",
+      "frame_index": 231,
+      "time_seconds": 4.62,
+      "category": "Joint confidence",
+      "description": "Required joints below 0.5 visibility/presence; inferred occlusion, cropping or small subject may contribute.",
+      "original_status": "unassessable",
+      "original_pose_output": true,
+      "file": "failures/failure_08.jpg"
+    },
+    {
+      "id": 5,
+      "clip": "lunge",
+      "frame_index": 0,
+      "time_seconds": 0.0,
+      "category": "Joint confidence",
+      "description": "Required joints below 0.5 visibility/presence; inferred occlusion, cropping or small subject may contribute.",
+      "original_status": "unassessable",
+      "original_pose_output": true,
+      "file": "failures/failure_05.jpg"
+    },
+    {
+      "id": 6,
+      "clip": "lunge",
+      "frame_index": 193,
+      "time_seconds": 6.433333333333334,
+      "category": "Joint confidence",
+      "description": "Required joints below 0.5 visibility/presence; inferred occlusion, cropping or small subject may contribute.",
+      "original_status": "unassessable",
+      "original_pose_output": true,
+      "file": "failures/failure_06.jpg"
+    },
+    {
+      "id": 7,
+      "clip": "lunge",
+      "frame_index": 277,
+      "time_seconds": 9.233333333333333,
+      "category": "No pose output",
+      "description": "MediaPipe returned no landmarks; no anatomical assessment possible.",
+      "original_status": "unassessable",
+      "original_pose_output": false,
+      "file": "failures/failure_07.jpg"
+    },
+    {
+      "id": 9,
+      "clip": "jumping_jack",
+      "frame_index": 288,
+      "time_seconds": 5.76,
+      "category": "Out-of-frame joints",
+      "description": "Required predicted joints lie outside the image. Cropping or erroneous localization may contribute.",
+      "original_status": "unassessable",
+      "original_pose_output": true,
+      "file": "failures/failure_09.jpg"
+    },
+    {
+      "id": 10,
+      "clip": "jumping_jack",
+      "frame_index": 397,
+      "time_seconds": 7.94,
+      "category": "Out-of-frame joints",
+      "description": "Required predicted joints lie outside the image. Cropping or erroneous localization may contribute.",
+      "original_status": "unassessable",
+      "original_pose_output": true,
+      "file": "failures/failure_10.jpg"
+    },
+    {
+      "id": 1,
+      "clip": "pushup",
+      "frame_index": 0,
+      "time_seconds": 0.0,
+      "category": "Size/confidence gates",
+      "description": "One side fails required-joint confidence and the other fails the body-size gate. Padding/subject scale are candidate causes.",
+      "original_status": "unassessable",
+      "original_pose_output": true,
+      "file": "failures/failure_01.jpg"
+    },
+    {
+      "id": 2,
+      "clip": "pushup",
+      "frame_index": 51,
+      "time_seconds": 1.7,
+      "category": "Size/confidence gates",
+      "description": "One side fails required-joint confidence and the other fails the body-size gate. Padding/subject scale are candidate causes.",
+      "original_status": "unassessable",
+      "original_pose_output": true,
+      "file": "failures/failure_02.jpg"
+    },
+    {
+      "id": 3,
+      "clip": "pushup",
+      "frame_index": 311,
+      "time_seconds": 10.366666666666667,
+      "category": "Size/confidence gates",
+      "description": "One side fails required-joint confidence and the other fails the body-size gate. Padding/subject scale are candidate causes.",
+      "original_status": "unassessable",
+      "original_pose_output": true,
+      "file": "failures/failure_03.jpg"
+    },
+    {
+      "id": 4,
+      "clip": "pushup",
+      "frame_index": 362,
+      "time_seconds": 12.066666666666666,
+      "category": "Size/confidence gates",
+      "description": "One side fails required-joint confidence and the other fails the body-size gate. Padding/subject scale are candidate causes.",
+      "original_status": "unassessable",
+      "original_pose_output": true,
+      "file": "failures/failure_04.jpg"
+    }
+  ]
+}
