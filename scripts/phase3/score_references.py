@@ -7,7 +7,7 @@ from pathlib import Path
 import json
 
 ROOT=Path(__file__).resolve().parents[2]
-FOLDER=ROOT/'reports/phase3'
+FOLDER=ROOT/'docs/phase3'
 REFERENCES={'pushup':('correct',4),'squat':('correct',4),
             'lunge':('correct',3),'jumping_jack':('correct',10)}
 

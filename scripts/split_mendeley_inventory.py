@@ -17,6 +17,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--inventory",type=Path,default=Path("data/prepared/mendeley_inventory.csv"))
     p.add_argument("--output",type=Path,default=Path("data/prepared/mendeley"))
+    p.add_argument("--data-card",type=Path,default=Path("docs/data_cards/DATA_CARD_MENDELEY.md"))
     a=p.parse_args()
     with a.inventory.open(newline="",encoding="utf-8") as f:
         reader=csv.DictReader(f)
@@ -81,7 +82,8 @@ def main():
         content.append(f"| {ex} | {label} | {nums[0]} | {nums[1]} | {nums[2]} | {sum(nums)} |")
     content += ["",f"**Selected videos:** {len(rows)}; **verified subjects:** {len(subjects)}.",
                 "**Important:** If quality labels apply to whole video, do not assume every individual frame visibly shows an error."]
-    (a.output/"DATA_CARD_MENDELEY.md").write_text("\n".join(content)+"\n",encoding="utf-8")
+    a.data_card.parent.mkdir(parents=True,exist_ok=True)
+    a.data_card.write_text("\n".join(content)+"\n",encoding="utf-8")
     print(f"[ok] {len(rows)} videos, {len(subjects)} participants; grouped split manifests in {a.output}")
     for split in ("train","val","test"):
         print(f" {split}: {sum(r['split']==split for r in rows)} videos; {len(best[1][split])} participants")

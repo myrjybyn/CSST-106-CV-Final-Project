@@ -19,9 +19,9 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--manifest', type=Path, default=ROOT / 'reports/phase3/test_manifest.json')
-    parser.add_argument('--freeze', type=Path, default=ROOT / 'reports/phase3/frozen_configuration.json')
-    parser.add_argument('--results', type=Path, default=ROOT / 'reports/phase3/test_log.json')
+    parser.add_argument('--manifest', type=Path, default=ROOT / 'docs/phase3/test_manifest.json')
+    parser.add_argument('--freeze', type=Path, default=ROOT / 'docs/phase3/frozen_configuration.json')
+    parser.add_argument('--results', type=Path, default=ROOT / 'docs/phase3/test_log.json')
     parser.add_argument('--output-dir', type=Path, default=ROOT / 'outputs/phase3')
     parser.add_argument('--runtime-label', choices=('cloud', 'laptop'), default='cloud')
     args = parser.parse_args()

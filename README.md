@@ -1,5 +1,9 @@
 # Real-Time Exercise Posture Detection and Correction Using Computer Vision
 
+Milestone reports, the proposal, data cards and testing evidence are indexed in
+[docs/README.md](docs/README.md). The editable Phase 3 report is at
+[docs/phase3/Phase3_Testing_Report.docx](docs/phase3/Phase3_Testing_Report.docx).
+
 A computer vision-based system designed to analyze exercise posture through a webcam, evaluate body movements, and provide real-time feedback to help users improve their exercise form.
 
 ## Overview

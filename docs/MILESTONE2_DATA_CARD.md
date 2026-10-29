@@ -43,7 +43,7 @@ this dataset does not supply lunge/jumping-jack examples.
 **Additional acquired data:** REHAB24-6, [Zenodo 13305826](https://zenodo.org/records/13305826):
 130 RGB videos, 260 joint arrays and segmentation CSV. Existing subset annotations
 have 476 repetitions, split 354/65/57; see the original
-[REHAB24 card](../data/prepared/rehab24/DATA_CARD_REHAB24.md) for class counts,
+[REHAB24 card](data_cards/DATA_CARD_REHAB24.md) for class counts,
 citation and academic/non-commercial conditions. This data is not used in the
 current benchmark; coordinate and temporal conventions must be mapped first.
 

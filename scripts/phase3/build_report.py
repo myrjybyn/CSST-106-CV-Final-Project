@@ -14,7 +14,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
 
 ROOT=Path(__file__).resolve().parents[2]
-FOLDER=ROOT/'reports/phase3'
+FOLDER=ROOT/'docs/phase3'
 NAMES={'pushup':'Push-up','squat':'Squat','lunge':'Lunge','jumping_jack':'Jumping jack'}
 
 
@@ -157,7 +157,7 @@ def main():
     doc.add_heading('What is still needed for the hand-in',2)
     p('• Independently review the user-supplied form labels and repetition counts, ideally without viewing predictions. Document the form criteria and partial-cycle convention.\n• Add reference-incorrect clips and a separate fixed hard-case set covering low light, blur, clutter and occlusion. Keep this expanded test set out of tuning.\n• Run the unchanged methods on a laptop and record CPU/RAM/OS/power mode. Copy the code, model, supplied clips and frozen manifest before using the command below.\n• After reviewing results and pending items, commit/tag the submission as cp3-core. No such tag is created by generating this report.',size=9)
     p('Laptop command (environment activated; default manifest/freeze paths):',True,size=9)
-    p('python scripts/phase3/run_fixed_tests.py --runtime-label laptop --results reports/phase3/laptop_test_log.json --output-dir outputs/phase3_laptop',size=8)
+    p('python scripts/phase3/run_fixed_tests.py --runtime-label laptop --results docs/phase3/laptop_test_log.json --output-dir outputs/phase3_laptop',size=8)
     doc.add_heading('Reproducibility and source files',2)
     p('test_manifest.json: input hashes and updated references. reference_annotations.json: user reference values, origin and post-run timing; reference_metrics.json: scores and confusion matrices. test_log.json preserves the original eight runs, when labels were still unknown. frozen_configuration.json holds source/model hashes; comparison_summary.json contains merged scores; failure_manifest.json records gallery provenance. Annotated videos/JSON are in outputs/phase3/. Original YouTube channel/URL attribution remains to be supplied.',size=8)
     p('This editable preliminary report distinguishes model predictions, user-supplied references and independently verified measurements. The original clips, inference outputs, method parameters and measured timings are unchanged.',True,size=9)

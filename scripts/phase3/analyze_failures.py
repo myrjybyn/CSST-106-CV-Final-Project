@@ -51,7 +51,7 @@ def diagnose(points, mode, width, height):
 
 
 def main():
-    folder=ROOT/'reports/phase3';manifest=json.loads((folder/'test_manifest.json').read_text());log=json.loads((folder/'test_log.json').read_text())
+    folder=ROOT/'docs/phase3';manifest=json.loads((folder/'test_manifest.json').read_text());log=json.loads((folder/'test_log.json').read_text())
     if 'completed_at_utc' not in log:raise ValueError('Wait for all test runs')
     derived=[]
     for run in log['runs']:

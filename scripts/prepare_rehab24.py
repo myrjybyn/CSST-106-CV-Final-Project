@@ -145,6 +145,7 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument("--metadata", type=Path,default=Path("data/raw/rehab24/Segmentation.csv"))
     p.add_argument("--output",type=Path,default=Path("data/prepared/rehab24"))
+    p.add_argument("--data-card",type=Path,default=Path("docs/data_cards/DATA_CARD_REHAB24.md"))
     a=p.parse_args()
     acquire(a.metadata)
     rows, fields=read_rows(a.metadata)
@@ -158,7 +159,8 @@ def main():
     save_csv(a.output/"all_repetitions.csv",rows,fields)
     pmap=[{"person_id":sid,"split":spl} for sid,spl in sorted(split_map.items())]
     save_csv(a.output/"subject_assignments.csv",pmap,["person_id","split"])
-    card=a.output/"DATA_CARD_REHAB24.md"
+    card=a.data_card
+    card.parent.mkdir(parents=True,exist_ok=True)
     render_card(card,rows,split_map,a.metadata)
     print(f"[ok] {len(rows)} repetitions; {len(split_map)} participants, no cross-split subjects")
     for split in ("train","val","test"):

@@ -1,5 +1,9 @@
 # DATA EVIDENCE & FEASIBILITY — POSTURE CHECK
 
+This historical milestone-one review is now stored centrally under `docs/`.
+Its component-relative data, script and output paths refer to
+`milestone1/posture_check/` in the repository.
+
 Updated: 2026-10-15. Sources were verified through their public descriptions. This file is a factual source review + a reproducible generation plan; the actual frames are generated locally by running `python run_all.py`.
 
 ## A. Data acquisition for the Milestone 1 contact sheet

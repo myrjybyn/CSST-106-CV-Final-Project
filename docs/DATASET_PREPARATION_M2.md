@@ -31,8 +31,9 @@ data/prepared/rehab24/
   val_repetitions.csv
   test_repetitions.csv
   subject_assignments.csv
-  DATA_CARD_REHAB24.md
 ```
+
+The data card is written to `docs/data_cards/DATA_CARD_REHAB24.md`. The optional `--data-card` flag overrides its destination.
 
 Subjects, including all their videos and repetitions, stay in the **same split**. The split approximates 70/15/15 according to repetition counts. No frames are copied because the RGB videos have not been downloaded by this script. Preserve the test partition unchanged throughout training/tuning.
 
@@ -82,4 +83,4 @@ After reviewing the Mendeley inventory, save and run the subject-aware splitting
 python split_mendeley_inventory.py
 ```
 
-This refuses unknown labels/participants and generates `data/prepared/mendeley/{train,val,test}_videos.csv`, `subject_assignments.csv`, and `DATA_CARD_MENDELEY.md`. It never copies frames between partitions.
+This refuses unknown labels/participants and generates `data/prepared/mendeley/{train,val,test}_videos.csv` and `subject_assignments.csv`. The data card is written to `docs/data_cards/DATA_CARD_MENDELEY.md`. It never copies frames between partitions.

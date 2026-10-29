@@ -5,5 +5,5 @@ __pycache__/
 models/
 outputs/
 data/raw/
-/reports/Phase3_Testing_Package.zip
-/reports/PostureCheck_Laptop_Benchmark.zip
+/docs/Phase3_Testing_Package.zip
+/docs/PostureCheck_Laptop_Benchmark.zip
