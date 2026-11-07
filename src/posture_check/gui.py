@@ -1,5 +1,6 @@
 """Desktop interface for the selected-exercise live posture pipeline."""
 import argparse
+import math
 from pathlib import Path
 import queue
 import threading
@@ -15,9 +16,11 @@ from .pose import PoseEstimator
 from .temporal import TemporalAnalyzer
 
 ROOT = Path(__file__).resolve().parents[2]
+LOGO = ROOT / 'assets' / 'posture_check_logo.png'
 EXERCISES = {'Squat': 'squat', 'Push-up': 'pushup', 'Lunge': 'lunge',
              'Jumping jack': 'jumping_jack'}
-BG, PANEL, TEXT, MUTED, ACCENT = '#101719', '#1b2528', '#edf3ec', '#9aaba6', '#c6ed91'
+BG, PANEL, TEXT, MUTED, ACCENT = '#160805', '#2b100b', '#fff0d5', '#d2a38c', '#ffb454'
+CORAL, BUTTON, BUTTON_HOVER = '#ff705f', '#482019', '#642b20'
 
 
 def publish_latest(mailbox, item):
@@ -59,9 +62,9 @@ def camera_worker(mailbox, stop, model, exercise, camera, mirror, skeleton):
                 for a, b in CONNECTIONS:
                     if all(min(landmarks[i].visibility, landmarks[i].presence) >= .5 for i in (a, b)):
                         points = [(int(landmarks[i].x*w), int(landmarks[i].y*h)) for i in (a,b)]
-                        cv2.line(frame, *points, (145, 237, 198), 3, cv2.LINE_AA)
+                        cv2.line(frame, *points, (95, 112, 255), 3, cv2.LINE_AA)
                         for point in points:
-                            cv2.circle(frame, point, 4, (245, 250, 245), -1, cv2.LINE_AA)
+                            cv2.circle(frame, point, 4, (213, 240, 255), -1, cv2.LINE_AA)
             # Analyze the original camera orientation; mirror only the display.
             if mirror:
                 frame = cv2.flip(frame, 1)
@@ -73,6 +76,82 @@ def camera_worker(mailbox, stop, model, exercise, camera, mirror, skeleton):
             capture.release()
         if estimator is not None:
             estimator.close()
+
+
+class RoundedButton(tk.Canvas):
+    """Canvas button with a crisp rounded shape and native Tk interaction."""
+    def __init__(self, parent, text, command, primary=False):
+        super().__init__(parent, height=50, bg=parent.cget('bg'),
+                         highlightthickness=0, bd=0, cursor='hand2', takefocus=True)
+        self.text, self.command, self.primary = text, command, primary
+        self.enabled, self.hovered, self.pressed = True, False, False
+        self.fill = self.create_polygon(0, 0, 1, 1, smooth=False, outline='', tags='button')
+        self.caption = self.create_text(18, 25, text=text, anchor='w',
+            font=('Arial', 12, 'bold'), tags='button')
+        self.bind('<Configure>', self._draw)
+        self.bind('<Enter>', self._enter)
+        self.bind('<Leave>', self._leave)
+        self.bind('<ButtonPress-1>', self._press)
+        self.bind('<ButtonRelease-1>', self._release)
+        self.bind('<space>', self._activate)
+        self.bind('<Return>', self._activate)
+        self._draw()
+
+    def _colors(self):
+        if not self.enabled:
+            return '#634b42', MUTED
+        if self.primary:
+            return (ACCENT if self.hovered or self.pressed else CORAL), BG
+        return (BUTTON_HOVER if self.hovered or self.pressed else BUTTON), TEXT
+
+    def _draw(self, _event=None):
+        width, height = max(1, self.winfo_width()), max(1, self.winfo_height())
+        radius = min(11, height / 2, width / 2)
+        corners = ((width-radius, radius, -90), (width-radius, height-radius, 0),
+                   (radius, height-radius, 90), (radius, radius, 180))
+        points = []
+        for cx, cy, start in corners:
+            for step in range(7):
+                angle = math.radians(start + step * 15)
+                points.extend((cx + radius * math.cos(angle), cy + radius * math.sin(angle)))
+        fill, foreground = self._colors()
+        self.coords(self.fill, *points)
+        self.itemconfigure(self.fill, fill=fill)
+        self.itemconfigure(self.caption, fill=foreground)
+        self.coords(self.caption, 18, height / 2)
+
+    def _enter(self, _event):
+        self.hovered = True
+        self._draw()
+
+    def _leave(self, _event):
+        self.hovered = self.pressed = False
+        self._draw()
+
+    def _press(self, _event):
+        if self.enabled:
+            self.pressed = True
+            self.focus_set()
+            self._draw()
+
+    def _release(self, event):
+        activate = self.enabled and self.pressed and 0 <= event.x <= self.winfo_width() and 0 <= event.y <= self.winfo_height()
+        self.pressed = False
+        self._draw()
+        if activate:
+            self.command()
+
+    def _activate(self, _event):
+        if self.enabled:
+            self.command()
+
+    def set_text(self, text):
+        self.itemconfigure(self.caption, text=text)
+
+    def set_enabled(self, enabled):
+        self.enabled = enabled
+        self.configure(cursor='hand2' if enabled else 'arrow')
+        self._draw()
 
 
 class PostureApp:
@@ -87,7 +166,7 @@ class PostureApp:
         self.worker = None
         self.active = self.closing = False
         self.dialog = None
-        root.title('Posture Check')
+        root.title('Sparkling Pixel Posture Check')
         width = min(1200, max(1000, root.winfo_screenwidth() - 80))
         height = min(780, max(640, root.winfo_screenheight() - 100))
         root.geometry(f'{width}x{height}'); root.minsize(1000, 640)
@@ -95,13 +174,20 @@ class PostureApp:
         root.protocol('WM_DELETE_WINDOW', self.quit)
         root.bind('<Escape>', lambda event: self.stop_camera() if self.active else None)
         style = ttk.Style(root); style.theme_use('clam')
-        style.configure('TCombobox', padding=8)
+        style.configure('TCombobox', padding=8, fieldbackground='#fff0d5',
+                        background='#e9a04e', foreground='#32120b')
+        style.map('TCombobox', fieldbackground=[('readonly', '#fff0d5')],
+                  foreground=[('readonly', '#32120b')])
         self.shell = tk.Frame(root, bg=BG); self.shell.pack(fill='both', expand=True, padx=28, pady=28)
-        self.menu = tk.Frame(self.shell, bg=PANEL, padx=32, pady=30, width=310)
-        self.menu.place(relx=.5, rely=.5, anchor='center', width=390, height=min(650, height - 56))
-        self.label(self.menu, 'MOVE WITH INTENTION', 10, MUTED).pack(anchor='w')
-        self.label(self.menu, 'Posture\nCheck', 42, TEXT, bold=True).pack(anchor='w', pady=(18,10))
-        self.label(self.menu, 'Your movement. A clearer view.', 11, MUTED).pack(anchor='w', pady=(0,24))
+        self.menu = tk.Frame(self.shell, bg=PANEL, padx=26, pady=22, width=310,
+                             highlightthickness=1, highlightbackground='#74301e')
+        self.menu.place(relx=.5, rely=.5, anchor='center', width=410, height=min(700, height - 56))
+        self.logo_source = Image.open(LOGO).convert('RGBA')
+        self.logo_label = tk.Label(self.menu, bg=PANEL, bd=0)
+        self.logo_label.pack(pady=(0, 9))
+        self.set_logo_width(330)
+        self.label(self.menu, 'MOVE WITH INTENTION', 10, ACCENT, bold=True).pack(anchor='w')
+        self.label(self.menu, 'Your movement. A clearer view.', 11, MUTED).pack(anchor='w', pady=(5,16))
         self.start_button = self.button(self.menu, 'Start Camera', self.toggle_camera, primary=True)
         self.start_button.pack(fill='x', pady=5)
         self.button(self.menu, 'Choose Exercise', self.choose_exercise).pack(fill='x', pady=5)
@@ -115,10 +201,12 @@ class PostureApp:
         header = tk.Frame(self.workspace, bg=BG);header.pack(fill='x', pady=(0,14))
         self.label(header, 'LIVE SESSION', 11, ACCENT, bold=True).pack(side='left')
         self.camera_state = self.label(header, 'Camera off', 10, MUTED);self.camera_state.pack(side='right')
-        self.preview = tk.Label(self.workspace, bg='#080d0f', fg=MUTED,
+        self.preview_area = tk.Frame(self.workspace, bg=BG)
+        self.preview_area.pack(fill='both', expand=True)
+        self.preview = tk.Label(self.preview_area, bg='#1b0b08', fg=MUTED,
                                 text='Your camera preview will appear here', font=('Arial',12))
         self.preview.image = None
-        self.preview.pack(fill='both', expand=True)
+        self.preview_area.bind('<Configure>', self.resize_preview)
         stats = tk.Frame(self.workspace, bg=PANEL, padx=20, pady=15);stats.pack(fill='x', pady=(14,0))
         self.reps = self.label(stats, '0', 32, ACCENT, bold=True);self.reps.pack(side='left')
         self.label(stats, '  ESTIMATED REPS', 10, MUTED).pack(side='left', padx=(0,25))
@@ -137,18 +225,30 @@ class PostureApp:
 
     @staticmethod
     def button(parent, text, command, primary=False):
-        return tk.Button(parent, text=text, command=command, font=('Arial',12,'bold'),
-                         bg=ACCENT if primary else '#2a3639', fg=BG if primary else TEXT,
-                         activebackground='#b4dc7e' if primary else '#3a484b', activeforeground=TEXT,
-                         relief='flat', bd=0, padx=18, pady=12, anchor='w', cursor='hand2')
+        return RoundedButton(parent, text, command, primary)
 
     def update_mode(self):
         self.mode_label.configure(text='Selected  /  '+self.exercise.get())
+
+    def set_logo_width(self, width):
+        logo_image = self.logo_source.copy()
+        logo_image.thumbnail((width, 220), Image.Resampling.LANCZOS)
+        logo_layer = Image.new('RGBA', logo_image.size, PANEL)
+        logo_layer.alpha_composite(logo_image)
+        self.logo_photo = ImageTk.PhotoImage(logo_layer.convert('RGB'))
+        self.logo_label.configure(image=self.logo_photo)
+
+    def resize_preview(self, event):
+        # Keep a 16:9 preview capped at 640x360, centered in the remaining space.
+        scale = min(1, max(1, event.width - 32) / 640, max(1, event.height - 32) / 360)
+        width, height = int(640 * scale), int(360 * scale)
+        self.preview.place(relx=.5, rely=.5, anchor='center', width=width, height=height)
 
     def show_workspace(self):
         self.menu.place_forget()
         self.menu.pack(side='left', fill='y', padx=(0,24));self.menu.pack_propagate(False)
         self.menu.configure(width=300)
+        self.set_logo_width(220)
         self.workspace.pack(side='left', fill='both', expand=True)
         view = 'front' if self.exercise.get() == 'Jumping jack' else 'side'
         self.guidance.configure(text=f'{self.exercise.get()} | Use a {view} view. Keep your entire body visible.')
@@ -170,14 +270,14 @@ class PostureApp:
         self.active = True
         self.reps.configure(text='0');self.phase.configure(text='Waiting for movement')
         self.feedback.configure(text='Opening camera…', fg=TEXT)
-        self.camera_state.configure(text='Connecting…');self.start_button.configure(text='Stop Camera')
+        self.camera_state.configure(text='Connecting…');self.start_button.set_text('Stop Camera')
         self.worker = threading.Thread(target=camera_worker, args=(self.mailbox,self.stop,self.model,
             EXERCISES[self.exercise.get()],self.camera.get(),self.mirror.get(),self.skeleton.get()),daemon=True)
         self.worker.start()
 
     def stop_camera(self):
         self.active = False;self.stop.set()
-        self.start_button.configure(text='Stopping…', state='disabled')
+        self.start_button.set_text('Stopping…');self.start_button.set_enabled(False)
         self.camera_state.configure(text='Camera off')
         self.preview.configure(image='', text='Camera stopped');self.preview.image = None
         self.feedback.configure(text='Session stopped. Start Camera begins a new count.', fg=TEXT)
@@ -204,7 +304,7 @@ class PostureApp:
         body,close=dialog
         for name in EXERCISES:
             tk.Radiobutton(body,text=name,variable=self.exercise,value=name,bg=PANEL,fg=TEXT,
-                selectcolor='#34443a',activebackground=PANEL,activeforeground=ACCENT,
+                selectcolor='#642b20',activebackground=PANEL,activeforeground=ACCENT,
                 font=('Arial',12),padx=8,pady=8).pack(anchor='w')
         self.label(body,'Side view for squat, push-up and lunge.\nFront view for jumping jacks.',10,MUTED).pack(pady=12)
         self.button(body,'Done',close,True).pack(fill='x')
@@ -217,7 +317,7 @@ class PostureApp:
         selected=tk.StringVar(value=str(self.camera.get()))
         ttk.Combobox(body,textvariable=selected,values=[str(i) for i in range(6)],state='readonly',width=24).pack(pady=(6,16))
         for text,variable in [('Mirror preview',self.mirror),('Show pose skeleton',self.skeleton)]:
-            tk.Checkbutton(body,text=text,variable=variable,bg=PANEL,fg=TEXT,selectcolor='#34443a',
+            tk.Checkbutton(body,text=text,variable=variable,bg=PANEL,fg=TEXT,selectcolor='#642b20',
                 activebackground=PANEL,activeforeground=TEXT,font=('Arial',11)).pack(anchor='w',pady=7)
         self.label(body,'Video stays on this device.\nLive sessions are not recorded.',10,MUTED).pack(pady=16)
         def save():
@@ -251,10 +351,10 @@ class PostureApp:
                 status=result['status']
                 title={'rule_pass':'No rule issue detected', 'rule_flag':'Check your movement',
                        'pending':'Checking movement', 'unassessable':'Adjust your position'}.get(status,status)
-                color=ACCENT if status=='rule_pass' else '#ffbb9c' if status=='rule_flag' else TEXT
+                color=ACCENT if status=='rule_pass' else CORAL if status=='rule_flag' else TEXT
                 self.feedback.configure(text=title+' | '+result['feedback'],fg=color)
         if not self.active and (self.worker is None or not self.worker.is_alive()):
-            self.start_button.configure(text='Start Camera',state='normal')
+            self.start_button.set_text('Start Camera');self.start_button.set_enabled(True)
         self.root.after(30,self.poll)
 
     def quit(self):
