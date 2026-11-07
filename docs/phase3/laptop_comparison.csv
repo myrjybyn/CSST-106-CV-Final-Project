@@ -1,0 +1,9 @@
+exercise,method,frames,processing_fps,processing_ms_per_frame,full_run_fps,estimated_reps,form_prediction
+pushup,baseline,363,11.6123,86.1158,3.7237,,correct
+pushup,main,363,13.8469,72.2183,7.1481,2,correct
+squat,baseline,483,13.3991,74.6318,8.4475,,correct
+squat,main,483,13.6412,73.3073,8.6282,4,correct
+lunge,baseline,278,14.6113,68.4402,8.5778,,correct
+lunge,main,278,14.1085,70.8794,8.4405,0,correct
+jumping_jack,baseline,576,13.9441,71.7147,9.1831,,unassessable
+jumping_jack,main,576,11.2609,88.8027,7.4793,1,unassessable

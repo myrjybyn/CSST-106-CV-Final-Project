@@ -2,7 +2,7 @@
 
 Milestone reports, the proposal, data cards and testing evidence are indexed in
 [docs/README.md](docs/README.md). The editable Phase 3 report is at
-[docs/phase3/Phase3_Testing_Report.docx](docs/phase3/Phase3_Testing_Report.docx).
+[docs/phase3/Phase3_Testing_Report_Editable.docx](docs/phase3/Phase3_Testing_Report_Editable.docx).
 
 A computer vision-based system designed to analyze exercise posture through a webcam, evaluate body movements, and provide real-time feedback to help users improve their exercise form.
 
@@ -40,12 +40,44 @@ The system is being developed as a Computer Vision Final Project for CSST 106 at
 | Geometric calculations | Joint-angle, relative-distance, and body-alignment measurements |
 | Rule-based classification | Evaluation of exercise posture against predefined criteria |
 
+## Desktop interface: how to run
+
+After installing the pinned root requirements and downloading the pose model
+with the setup commands below, launch the desktop app from the repository root:
+
+```powershell
+.\.venv\Scripts\python.exe app.py
+```
+
+On Linux/macOS with the environment activated, use `python app.py`.
+The interface needs a graphical desktop and Tkinter (included in the standard
+Windows Python installer; Linux distributions commonly provide `python3-tk`).
+There are no additional pip dependencies for the interface.
+
+The home menu shows **Posture Check**, **Start Camera**, **Choose Exercise**,
+**Settings**, and **Quit**. Choose squat, push-up, lunge or jumping jack before
+starting. Start Camera moves the menu to the left and opens the live view with
+pose lines, feedback, movement phase, estimated repetitions and live FPS.
+Settings offer camera indices 0–5, mirrored preview and skeleton visibility.
+Stop the camera before changing settings or exercise. Stop/Start begins a new
+session with zero counts; Escape stops the current session. Quit releases the
+camera and closes the app. Frames remain local and are not recorded.
+
+Use a side view for squat/push-up/lunge and a front view for jumping jacks, with
+your whole body visible. Mirroring affects only the preview. The live pipeline
+uses the existing main method with elapsed-time smoothing and dwell checks to
+handle variable camera cadence. A camera stall of at least 0.5 seconds discards
+partial repetitions. Counts estimate movement; a rule pass is not a verified
+correct-form label. Camera testing on the target laptop is still required.
+The historical Phase 3 frozen-code benchmark remains tied to its original commit;
+new source changes intentionally fail its checksum guard.
+
 ## Milestone 2: how to run
 
-The initial implementation supports **squats in side-view images or videos**.
+The historical milestone 2 implementation supports **squats in side-view images or videos**.
 It uses the pretrained MediaPipe Tasks Pose Landmarker and provisional geometric
-rules; no custom model training is required. Other exercise evaluators, temporal
-smoothing, repetition counting and live webcam input remain future work.
+rules; no custom model training is required. The current desktop interface above
+adds four selected exercise modes, temporal processing, counts and webcam input.
 
 Use **Python 3.12**, from the repository root. On Linux:
 

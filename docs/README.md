@@ -28,8 +28,10 @@ their respective directories.
 
 ## Milestone 3
 
-- [Editable testing report](phase3/Phase3_Testing_Report.docx)
+- [Submitted PDF report](phase3/PHASE_3_Report.pdf)
+- [Editable testing report](phase3/Phase3_Testing_Report_Editable.docx)
 - [Comparison CSV](phase3/comparison_summary.csv)
+- [Laptop benchmark summary](phase3/LAPTOP_BENCHMARK_STATUS.md), [per-exercise timings](phase3/laptop_comparison.csv), and [completed log](phase3/laptop_test_log.json)
 - [Reference metrics and confusion matrices](phase3/reference_metrics.json)
 - [User-supplied reference annotations](phase3/reference_annotations.json)
 - [Fixed test manifest](phase3/test_manifest.json) and [original test log](phase3/test_log.json)

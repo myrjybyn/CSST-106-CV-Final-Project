@@ -26,6 +26,14 @@ def main():
     failures=json.loads((FOLDER/'failure_manifest.json').read_text())
     freeze=json.loads((FOLDER/'frozen_configuration.json').read_text())
     scores=json.loads((FOLDER/'reference_metrics.json').read_text())
+    laptop_path=FOLDER/'laptop_test_log.json'
+    laptop=json.loads(laptop_path.read_text()) if laptop_path.exists() else None
+    if laptop is not None:
+        expected={(mode, method) for mode in NAMES for method in ('baseline','main')}
+        if ('completed_at_utc' not in laptop or len(laptop['runs']) != 8
+                or {(r['clip_id'],r['method']) for r in laptop['runs']} != expected
+                or any(r['exit_code'] != 0 or r['frames'] != r['decoded_output_frames'] for r in laptop['runs'])):
+            raise ValueError('Laptop benchmark incomplete or failed')
     doc=Document();section=doc.sections[0]
     section.page_width=Inches(8.27);section.page_height=Inches(11.69)
     section.top_margin=section.bottom_margin=Inches(.6)
@@ -108,7 +116,14 @@ def main():
         row=next(r for r in runs if r['clip_id']==mode and r['method']=='main')
         count_rows.append([NAMES[mode],row['ground_truth_reps'],row['repetition_count'],row['count_absolute_error']])
     table(['Exercise','Reference reps','Main estimate','Absolute error'],count_rows,size=8)
-    p(f"Main repetition MAE = {scores['main']['count_mae']:.2f} reps/clip; exact counts on {scores['main']['exact_count_matches']}/4 clips. Baseline counting error is unavailable because counting is not implemented. Laptop FPS remains unmeasured; the timings above are cloud measurements.",True,size=9)
+    p(f"Main repetition MAE = {scores['main']['count_mae']:.2f} reps/clip; exact counts on {scores['main']['exact_count_matches']}/4 clips. Baseline counting error is unavailable because counting is not implemented.",True,size=9)
+    if laptop is not None:
+        b=laptop['method_summary']['baseline'];m=laptop['method_summary']['main']
+        hw=laptop['runtime'].get('windows_hardware',{})
+        p(f"Laptop benchmark: baseline {b['processing_fps']:.2f} FPS ({b['processing_ms_per_frame']:.2f} ms/frame); main {m['processing_fps']:.2f} FPS ({m['processing_ms_per_frame']:.2f} ms/frame). Full-run FPS: {b['end_to_end_fps']:.2f} / {m['end_to_end_fps']:.2f}. Frame-weighted throughput across all four clips; eight successful runs, 3,400 output frames checked.",True,size=8)
+        p(f"{str(hw.get('cpu',laptop['runtime']['cpu'])).strip()}; {hw.get('ram_gib','unknown')} GiB RAM; Windows 11; {laptop['runtime']['logical_cpus']} logical CPUs; Balanced power mode; Python {laptop['runtime']['python']} (cloud: {runtime['python']}; dependency parity unverified). Single sequential runs; no speed-improvement claim. Details: laptop_test_log.json.",size=8)
+    else:
+        p('Laptop FPS remains unmeasured; the timings above are cloud measurements.',size=9)
 
     doc.add_page_break()
     doc.add_heading('3. Failure gallery — ten observed rejection frames',1)
@@ -155,13 +170,13 @@ def main():
          'Reduce feedback instability and counting errors; measure count MAE and completion events against manual references.']
     ],size=9)
     doc.add_heading('What is still needed for the hand-in',2)
-    p('• Independently review the user-supplied form labels and repetition counts, ideally without viewing predictions. Document the form criteria and partial-cycle convention.\n• Add reference-incorrect clips and a separate fixed hard-case set covering low light, blur, clutter and occlusion. Keep this expanded test set out of tuning.\n• Run the unchanged methods on a laptop and record CPU/RAM/OS/power mode. Copy the code, model, supplied clips and frozen manifest before using the command below.\n• After reviewing results and pending items, commit/tag the submission as cp3-core. No such tag is created by generating this report.',size=9)
+    p('• Independently review the user-supplied form labels and repetition counts, ideally without viewing predictions. Document the form criteria and partial-cycle convention.\n• Add reference-incorrect clips and a separate fixed hard-case set covering low light, blur, clutter and occlusion. Keep this expanded test set out of tuning.\n• Laptop testing is complete when the eight-run laptop log accompanies this report; retain its hardware, power-mode and environment details. Use repeated runs for reliable speed comparisons.\n• After reviewing results and pending items, commit/tag the submission as cp3-core. No such tag is created by generating this report.',size=9)
     p('Laptop command (environment activated; default manifest/freeze paths):',True,size=9)
     p('python scripts/phase3/run_fixed_tests.py --runtime-label laptop --results docs/phase3/laptop_test_log.json --output-dir outputs/phase3_laptop',size=8)
     doc.add_heading('Reproducibility and source files',2)
     p('test_manifest.json: input hashes and updated references. reference_annotations.json: user reference values, origin and post-run timing; reference_metrics.json: scores and confusion matrices. test_log.json preserves the original eight runs, when labels were still unknown. frozen_configuration.json holds source/model hashes; comparison_summary.json contains merged scores; failure_manifest.json records gallery provenance. Annotated videos/JSON are in outputs/phase3/. Original YouTube channel/URL attribution remains to be supplied.',size=8)
     p('This editable preliminary report distinguishes model predictions, user-supplied references and independently verified measurements. The original clips, inference outputs, method parameters and measured timings are unchanged.',True,size=9)
-    output=FOLDER/'Phase3_Testing_Report.docx';doc.save(output)
+    output=FOLDER/'Phase3_Testing_Report_Editable.docx';doc.save(output)
     with (FOLDER/'comparison_summary.csv').open('w',newline='') as stream:
         writer=csv.writer(stream,lineterminator="\n");writer.writerow(['exercise','method','frames','feature_coverage','processing_fps_cloud','full_run_fps_cloud','state_changes','actionable_flips','phase_changes','predicted_reps','clip_prediction','reference_form','reference_reps'])
         for r in runs:writer.writerow([r['exercise'],r['method'],r['frames'],r['assessable_frames']/r['frames'],r['processing_fps'],r['end_to_end_fps'],r['status_changes'],r['actionable_status_flips'],r['phase_changes'],r['repetition_count'],r['clip_assessment']['prediction'],r['ground_truth_form'],r['ground_truth_reps']])
