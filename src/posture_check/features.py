@@ -37,6 +37,8 @@ def extract(landmarks, width, height, confidence=0.5):
     candidates = []
     for side, indices in (("left", (11, 23, 25, 27)), ("right", (12, 24, 26, 28))):
         joints = [landmarks[i] for i in indices]
+        if any(not math.isfinite(p.visibility) or not math.isfinite(p.presence) for p in joints):
+            continue
         scores = [min(p.visibility, p.presence) for p in joints]
         if any(not math.isfinite(x) or x < confidence for x in scores):
             continue

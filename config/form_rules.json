@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "calibration_id": "form-rules-v1",
+  "created_at_utc": "2026-11-18T14:33:11.701068+00:00",
+  "plan_sha256": "6ad1d48daf19384ae342cb77fd1f076bc9de9a4003f39f0cd09f3c6a81793eb7",
+  "label_scope": "Whole-clip source labels only; no calibrated frame-level probability.",
+  "exercises": {
+    "squat": {
+      "enabled": true,
+      "tree": {
+        "feature": "hip_p10",
+        "threshold": 71.1473675034938,
+        "left": {
+          "prediction": "correct",
+          "class_counts": {
+            "correct": 11,
+            "incorrect": 4
+          },
+          "training_subjects": 12
+        },
+        "right": {
+          "prediction": "incorrect",
+          "class_counts": {
+            "correct": 1,
+            "incorrect": 8
+          },
+          "training_subjects": 8
+        }
+      },
+      "feature_names": [
+        "knee_p10",
+        "knee_p50",
+        "knee_p90",
+        "knee_range",
+        "hip_p10",
+        "hip_p50",
+        "hip_p90",
+        "hip_range",
+        "active_trunk_p50",
+        "active_trunk_p90",
+        "deep_fraction"
+      ],
+      "selected_parameters": {
+        "max_depth": 1,
+        "min_leaf_clips": 6,
+        "min_leaf_subjects": 2
+      },
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fitting_participants": [
+        "mendeley_1",
+        "mendeley_10",
+        "mendeley_12",
+        "mendeley_13",
+        "mendeley_14",
+        "mendeley_15",
+        "mendeley_16",
+        "mendeley_2",
+        "mendeley_26",
+        "mendeley_3",
+        "mendeley_5",
+        "mendeley_7",
+        "mendeley_8",
+        "mendeley_9"
+      ],
+      "validation_participants": [
+        "mendeley_11",
+        "mendeley_24",
+        "mendeley_4",
+        "mendeley_6"
+      ],
+      "prospective_participants": [
+        "mendeley_17",
+        "mendeley_19",
+        "mendeley_21",
+        "mendeley_23"
+      ],
+      "promotion_reason": "Validation macro F1 improved without lowering incorrect recall; fitting OOF guard passed."
+    },
+    "pushup": {
+      "enabled": false,
+      "tree": {
+        "feature": "alignment_p10",
+        "threshold": 168.13596926153247,
+        "left": {
+          "prediction": "incorrect",
+          "class_counts": {
+            "correct": 3,
+            "incorrect": 11
+          },
+          "training_subjects": 11
+        },
+        "right": {
+          "prediction": "correct",
+          "class_counts": {
+            "correct": 10,
+            "incorrect": 1
+          },
+          "training_subjects": 10
+        }
+      },
+      "feature_names": [
+        "elbow_p10",
+        "elbow_p50",
+        "elbow_p90",
+        "elbow_range",
+        "alignment_p10",
+        "alignment_p50",
+        "inclination_p10",
+        "inclination_p50",
+        "inclination_p90",
+        "bent_fraction",
+        "misalignment_fraction"
+      ],
+      "selected_parameters": {
+        "max_depth": 1,
+        "min_leaf_clips": 6,
+        "min_leaf_subjects": 2
+      },
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fitting_participants": [
+        "mendeley_1",
+        "mendeley_10",
+        "mendeley_12",
+        "mendeley_13",
+        "mendeley_14",
+        "mendeley_15",
+        "mendeley_16",
+        "mendeley_2",
+        "mendeley_3",
+        "mendeley_5",
+        "mendeley_7",
+        "mendeley_8",
+        "mendeley_9"
+      ],
+      "validation_participants": [
+        "mendeley_11",
+        "mendeley_24",
+        "mendeley_4",
+        "mendeley_6"
+      ],
+      "prospective_participants": [
+        "mendeley_17",
+        "mendeley_19",
+        "mendeley_21",
+        "mendeley_23"
+      ],
+      "promotion_reason": "Promotion guard failed; retain uncalibrated rules."
+    }
+  },
+  "pose_model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a"
+}

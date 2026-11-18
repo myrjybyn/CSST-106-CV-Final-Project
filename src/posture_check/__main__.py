@@ -7,6 +7,10 @@ import cv2
 from .exercises import (SUPPORTED_EXERCISES, extract_for_exercise, assess_for_exercise,
                         summarize_for_exercise, rules_for_exercise)
 from .pose import PoseEstimator
+from .preprocessing import active_region, restore_landmarks, PARAMETERS as PREPROCESSING_PARAMETERS
+from .counting import PARAMETERS as COUNTING_PARAMETERS
+from .quality import explain
+from .calibrated import profile_identity, require_compatible_model
 from .temporal import TemporalAnalyzer, PARAMETERS as TEMPORAL_PARAMETERS
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
@@ -15,12 +19,25 @@ CONNECTIONS = ((11, 12), (11, 23), (12, 24), (23, 24), (23, 25),
                (12, 14), (14, 16))
 
 
-def process(frame, estimator, exercise='squat'):
+def process(frame, estimator, exercise='squat', *, enhanced=False):
     start = time.perf_counter()
-    landmarks = estimator.detect(frame)
     height, width = frame.shape[:2]
-    features = extract_for_exercise(landmarks, width, height, exercise)
+    region = (0, 0, width, height)
+    inference_frame = frame
+    if enhanced:
+        inference_frame, region = active_region(frame)
+    landmarks = estimator.detect(inference_frame)
+    analysis_height, analysis_width = inference_frame.shape[:2]
+    features = extract_for_exercise(landmarks, analysis_width, analysis_height, exercise)
     result = assess_for_exercise(features, exercise)
+    if enhanced:
+        if features is None:
+            result['assessability_reason'], result['feedback'] = explain(landmarks, exercise)
+        else:
+            result['assessability_reason'] = 'assessable'
+        result['analysis_region'] = list(region)
+        result['padding_removed'] = region != (0, 0, width, height)
+        landmarks = restore_landmarks(landmarks, region, width, height)
     result["exercise"] = exercise
     result["features"] = features.to_dict() if features else None
     result["pose_detected"] = bool(landmarks)
@@ -62,17 +79,19 @@ def run(source, output, model, exercise='squat', method='main'):
     is_image = source.suffix.lower() in IMAGE_EXTENSIONS
     if (is_image and output.suffix.lower() not in IMAGE_EXTENSIONS) or (not is_image and output.suffix.lower() != ".mp4"):
         raise ValueError("Use an image output extension for images, or .mp4 for videos")
+    if method == 'main':
+        require_compatible_model(model, exercise)
     output.parent.mkdir(parents=True, exist_ok=True)
     records = []
-    capture = writer = None
-    estimator = PoseEstimator(model)
+    capture = writer = estimator = None
     analyzer = None
     try:
         if is_image:
+            estimator = PoseEstimator(model)
             frame = cv2.imread(str(source))
             if frame is None:
                 raise ValueError(f"Cannot decode image: {source}")
-            landmarks, result = process(frame, estimator, exercise)
+            landmarks, result = process(frame, estimator, exercise, enhanced=method == 'main')
             result.update(method=method, temporal_available=False, repetition_count=None)
             records.append(dict(frame_index=0, **result))
             if not cv2.imwrite(str(output), annotate(frame, landmarks, result)):
@@ -84,13 +103,14 @@ def run(source, output, model, exercise='squat', method='main'):
             fps = capture.get(cv2.CAP_PROP_FPS)
             if not 0 < fps < 1000:
                 raise ValueError("Video has invalid FPS metadata")
+            estimator = PoseEstimator(model, video=method == 'main', fps=fps if method == 'main' else None)
             if method == 'main':
                 analyzer = TemporalAnalyzer(exercise, fps)
             while True:
                 ok, frame = capture.read()
                 if not ok:
                     break
-                landmarks, result = process(frame, estimator, exercise)
+                landmarks, result = process(frame, estimator, exercise, enhanced=method == 'main')
                 if analyzer is not None:
                     temporal_start = time.perf_counter()
                     result = analyzer.update(result)
@@ -111,17 +131,22 @@ def run(source, output, model, exercise='squat', method='main'):
             if not records:
                 raise ValueError("Video contains no decodable frames")
     finally:
-        estimator.close()
+        if estimator is not None:
+            estimator.close()
         if capture is not None:
             capture.release()
         if writer is not None:
             writer.release()
     report = {"input": str(source), "exercise": exercise, "method": method,
-              "method_version": "temporal-geometric-v1" if method == 'main' else ("squat-geometric-v2" if exercise == 'squat' else "multiexercise-geometric-v1"),
+              "method_version": "temporal-geometric-v3" if method == 'main' else ("squat-geometric-v2" if exercise == 'squat' else "multiexercise-geometric-v1"),
+              "pose_running_mode": "VIDEO" if method == "main" and not is_image else "IMAGE",
+              "counting_parameters": COUNTING_PARAMETERS if analyzer is not None else None,
+              "preprocessing_parameters": PREPROCESSING_PARAMETERS if method == 'main' else None,
               "temporal_parameters": TEMPORAL_PARAMETERS if analyzer is not None else None,
               "repetition_count": analyzer.count if analyzer is not None else None,
-              "clip_rules": rules_for_exercise(exercise),
-              "clip_assessment": summarize_for_exercise(records, exercise) if not is_image else None,
+              "clip_rules": rules_for_exercise(exercise, calibrated=method == 'main'),
+              "form_calibration": profile_identity() if method == 'main' else None,
+              "clip_assessment": summarize_for_exercise(records, exercise, calibrated=method == 'main') if not is_image else None,
               "clip_assumption": f"Operator-selected {exercise}; {'front' if exercise == 'jumping_jack' else 'side'} view; thresholds provisional",
               "frames": len(records), "records": records,
               "processing_fps": len(records) / sum(r["processing_seconds"] for r in records),

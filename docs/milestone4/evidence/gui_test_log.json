@@ -1,0 +1,10 @@
+{
+  "completed_at_utc": "2026-11-18T13:44:01.339444+00:00",
+  "status": "PASS",
+  "input": "Training push-up video (rejected-view screenshot); previously inspected squat excerpt at frame 90 (accepted-preview screenshot)",
+  "condition": "Virtual desktop; two recorded videos substituted for webcam capture; actual pose inference and GUI thread used. Known squat clip used for UI display, not new accuracy evidence.",
+  "expected": "Home and live preview render; stopping releases capture and re-enables start; quit closes window.",
+  "actual": "Home, accepted live preview and rejected-view screenshots saved; capture released; start re-enabled; both windows closed.",
+  "physical_laptop_webcam_tested": false,
+  "capture_note": "Accepted preview captured after Camera on and movement phase, after idle rendering and a 150 ms display delay."
+}

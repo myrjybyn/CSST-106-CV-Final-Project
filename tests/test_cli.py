@@ -13,7 +13,7 @@ from posture_check.__main__ import run
 
 
 class NoPose:
-    def __init__(self, model):
+    def __init__(self, model, **options):
         pass
 
     def detect(self, frame):

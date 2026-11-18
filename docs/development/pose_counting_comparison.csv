@@ -1,0 +1,11 @@
+clip,version,frames,assessable_frames,coverage,estimated_reps,reference_form,predicted_form,processing_fps
+pushup_correct,reference,434,214,0.4930875576036866,2,correct,unassessable,34.246051255846034
+pushup_correct,candidate,434,371,0.8548387096774194,4,correct,incorrect,40.98675531058813
+pushup_incorrect,reference,378,340,0.8994708994708994,1,incorrect,incorrect,28.901846257039136
+pushup_incorrect,candidate,378,357,0.9444444444444444,11,incorrect,incorrect,45.252980836437175
+squat_correct,reference,479,89,0.18580375782881003,0,correct,unassessable,32.051374854603935
+squat_correct,candidate,479,79,0.1649269311064718,0,correct,unassessable,40.64769866859292
+squat_incorrect,reference,485,190,0.3917525773195876,0,incorrect,unassessable,32.88467971051831
+squat_incorrect,candidate,485,231,0.4762886597938144,3,incorrect,unassessable,39.073598579363576
+lunge_half_profile,reference,2846,1664,0.5846802529866479,9,,correct,36.2009779574153
+lunge_half_profile,candidate,2846,2735,0.9609978917779339,15,,correct,40.68502193422626

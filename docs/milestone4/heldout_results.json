@@ -1,0 +1,1218 @@
+{
+  "started_at_utc": "2026-11-18T13:27:26.871902+00:00",
+  "suite": "heldout",
+  "runtime": {
+    "location": "cloud",
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logical_cpus": 5,
+    "dependencies": {
+      "mediapipe": "0.10.21",
+      "numpy": "1.26.4",
+      "opencv-contrib-python": "4.11.0.86",
+      "pillow": "12.3.0"
+    }
+  },
+  "freeze_sha256": "03b66a0eb285d718e629ad005184cf0e8ffc283c02394ff82e83e12c050568f5",
+  "source_sha256": {
+    "src/evaluate.py": "9ea6bc8c095cf0765b9c08390d460564262af6bb24c85c29aa45202427ccb48b",
+    "src/posture_check/__init__.py": "b0b321613c14ed5dccb7a11b09244385a184192ed54b16f55cbb0b16e1b1ff4c",
+    "src/posture_check/__main__.py": "ca14589e6ebec05a8d62adb19a112f2179731d7e1f9a4bb046c594b431e0710d",
+    "src/posture_check/baseline.py": "dc85f8ed5786199264535a8c701e6d5bde54e8ea0ea9cb2b99017eae7221f0ac",
+    "src/posture_check/clip.py": "9f4eeab1048188686e03414480fa471ea260d18365baa75d2699b84674a39da8",
+    "src/posture_check/counting.py": "4b30a846a60127148285e10c5db869d70944b0c76816835c8d04ddb4939bfb1b",
+    "src/posture_check/evaluation.py": "1cab70b9de006fcae16d4b1f62cee60171c5c76a0f982e15561bd5d90ab70d3d",
+    "src/posture_check/exercises.py": "ddc01b07c5f9253307776ddf3fe700060d3d7e3beef3f51b3e275e3ca17d5ca9",
+    "src/posture_check/features.py": "874c35447dacb84337270af5c86ea8296ee31bd78d4d33171d43e990e133b2f5",
+    "src/posture_check/gui.py": "043c3101fcc4e773fe378af9921f0c8132db6afd3a850e017ea07d9e840581ae",
+    "src/posture_check/pose.py": "2b527e78dc265798eb7a919c68cd6f37f3fb291ef3c4b8dfb4561f8785fa3443",
+    "src/posture_check/preprocessing.py": "c9248fc7716259e0a2cd72ebb9df4ca45202487cd0d707aa9f892d8246af782b",
+    "src/posture_check/quality.py": "cba910cb6ddcac02b20ad3c9b5d60e9b4357172d81cd0027d16a6fc215c2d5cd",
+    "src/posture_check/temporal.py": "c9fcd3942c5f928112157ff088da5eaf07bd478d00156efaa4b192946090049f",
+    "run.py": "cdfcf64bc314b7fd8faa41fdb042e5e5ec2a4488f96b83afe86822d6080af022",
+    "app.py": "15aded235469a57e4a02772e0d1dd3430f018895dc03fd650470088bef964f54",
+    "requirements.txt": "2cd47cb3dab50983e7a020dabe7eaf7b96048d4e666544eb4e334290b19fb8a4"
+  },
+  "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "checkpoint3_commit": "3a568d7bfabbd45b1bf7d4d01f778c96754d0fa3",
+  "methods": [
+    "cp3",
+    "current"
+  ],
+  "runs": [
+    {
+      "id": "subject_018_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_018/push_up/bad/side/subject_018_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_18",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "0d929360090f5e3af54d604ce6e94266ab0ce30830a40b6fcc6140cdad3bb02f",
+      "metadata_frames": 235,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 235,
+      "assessable_frames": 196,
+      "pose_frames": 220,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 196,
+        "valid_fraction": 0.8340425531914893,
+        "reasons": [
+          "projected_body_misalignment"
+        ],
+        "measurements": {
+          "elbow_p10": 77.38278370281859,
+          "elbow_p90": 164.36923909987325,
+          "body_alignment_p10": 142.82819336800515
+        }
+      },
+      "estimated_reps": 7,
+      "processing_seconds": 7.6195556629995735,
+      "processing_fps": 30.841693452172784,
+      "decode_and_processing_fps": 30.041303697690882,
+      "model_initialization_seconds": 0.27561456000000817,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_018_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_018/push_up/bad/side/subject_018_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_18",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "0d929360090f5e3af54d604ce6e94266ab0ce30830a40b6fcc6140cdad3bb02f",
+      "metadata_frames": 235,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 235,
+      "assessable_frames": 219,
+      "pose_frames": 235,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 219,
+        "valid_fraction": 0.9319148936170213,
+        "reasons": [
+          "projected_body_misalignment"
+        ],
+        "measurements": {
+          "elbow_p10": 75.04609802595301,
+          "elbow_p90": 164.0855374953029,
+          "body_alignment_p10": 144.13749625542465
+        }
+      },
+      "estimated_reps": 8,
+      "processing_seconds": 5.000274036999656,
+      "processing_fps": 46.997424193376496,
+      "decode_and_processing_fps": 45.016911347921386,
+      "model_initialization_seconds": 0.05334148100001812,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_018_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_018/push_up/good/side/subject_018_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_18",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "c19242117db5201e438e6dd68ecbdae7258a6e3620a39d18341e342fa675f8a7",
+      "metadata_frames": 249,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 249,
+      "assessable_frames": 166,
+      "pose_frames": 224,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 166,
+        "valid_fraction": 0.6666666666666666,
+        "reasons": [
+          "limited_projected_elbow_extension"
+        ],
+        "measurements": {
+          "elbow_p10": 75.02538431367822,
+          "elbow_p90": 148.32615182883205,
+          "body_alignment_p10": 171.1742689088501
+        }
+      },
+      "estimated_reps": 0,
+      "processing_seconds": 7.973342845000332,
+      "processing_fps": 31.22905973573367,
+      "decode_and_processing_fps": 30.382959980116446,
+      "model_initialization_seconds": 0.09817233400002578,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_018_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_018/push_up/good/side/subject_018_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_18",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "c19242117db5201e438e6dd68ecbdae7258a6e3620a39d18341e342fa675f8a7",
+      "metadata_frames": 249,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 249,
+      "assessable_frames": 249,
+      "pose_frames": 249,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 249,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 74.86679298605132,
+          "elbow_p90": 158.41121335386805,
+          "body_alignment_p10": 174.20357116742557
+        }
+      },
+      "estimated_reps": 8,
+      "processing_seconds": 4.9286822480000865,
+      "processing_fps": 50.52060316954635,
+      "decode_and_processing_fps": 48.19014339592643,
+      "model_initialization_seconds": 0.14095894599995518,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_018_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_018/squat/bad/side/subject_018_squat_bad_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_18",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "a5d0ff01ab16b37e3fe659d0eac2415064435cc7d0a45b59ae0ac4329141874a",
+      "metadata_frames": 436,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 436,
+      "assessable_frames": 365,
+      "pose_frames": 423,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 365,
+        "valid_fraction": 0.8371559633027523,
+        "reasons": [
+          "limited_projected_depth"
+        ],
+        "measurements": {
+          "knee_p10": 111.6488403160275,
+          "knee_p90": 175.0563699011908,
+          "active_trunk_lean_p90": 26.340758244799808
+        }
+      },
+      "estimated_reps": 4,
+      "processing_seconds": 13.695779538001034,
+      "processing_fps": 31.834624585643436,
+      "decode_and_processing_fps": 31.01205054210784,
+      "model_initialization_seconds": 0.07788851600003,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_018_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_018/squat/bad/side/subject_018_squat_bad_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_18",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "a5d0ff01ab16b37e3fe659d0eac2415064435cc7d0a45b59ae0ac4329141874a",
+      "metadata_frames": 436,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 436,
+      "assessable_frames": 436,
+      "pose_frames": 436,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 436,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 79.49206942701241,
+          "knee_p90": 175.29266082691936,
+          "active_trunk_lean_p90": 39.05213178665929
+        }
+      },
+      "estimated_reps": 11,
+      "processing_seconds": 8.380397817000471,
+      "processing_fps": 52.026169821619995,
+      "decode_and_processing_fps": 49.814841399360795,
+      "model_initialization_seconds": 0.2000632949999499,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_018_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_018/squat/good/side/subject_018_squat_good_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_18",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "21014302d231ec006ea15c0e8d3ca004a4053e716f487652b9bf043a586f9659",
+      "metadata_frames": 466,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 466,
+      "assessable_frames": 426,
+      "pose_frames": 442,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 426,
+        "valid_fraction": 0.9141630901287554,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 96.78682024080794,
+          "knee_p90": 174.47877920583542,
+          "active_trunk_lean_p90": 22.144688348660193
+        }
+      },
+      "estimated_reps": 8,
+      "processing_seconds": 14.019113686999958,
+      "processing_fps": 33.24033247780319,
+      "decode_and_processing_fps": 32.330114885127905,
+      "model_initialization_seconds": 0.12197897299995475,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_018_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_018/squat/good/side/subject_018_squat_good_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_18",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "21014302d231ec006ea15c0e8d3ca004a4053e716f487652b9bf043a586f9659",
+      "metadata_frames": 466,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 466,
+      "assessable_frames": 466,
+      "pose_frames": 466,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 466,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 87.89679954546082,
+          "knee_p90": 175.96876460172112,
+          "active_trunk_lean_p90": 31.909684340421695
+        }
+      },
+      "estimated_reps": 14,
+      "processing_seconds": 8.920423887999846,
+      "processing_fps": 52.23966998102905,
+      "decode_and_processing_fps": 50.05489585951387,
+      "model_initialization_seconds": 0.0793969640000114,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_020_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_020/push_up/bad/side/subject_020_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_20",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "3bc26e4710eef32ac59984b2c1f3efae90aa800d8ab4bb7322fae6af0ee07ffd",
+      "metadata_frames": 253,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 253,
+      "assessable_frames": 214,
+      "pose_frames": 215,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 214,
+        "valid_fraction": 0.8458498023715415,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 118.51590859574713,
+          "elbow_p90": 169.05931412614385,
+          "body_alignment_p10": 165.80054265847684
+        }
+      },
+      "estimated_reps": 1,
+      "processing_seconds": 6.723585855999886,
+      "processing_fps": 37.628730474859914,
+      "decode_and_processing_fps": 36.5309403204411,
+      "model_initialization_seconds": 0.2001979220000294,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_020_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_020/push_up/bad/side/subject_020_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_20",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "3bc26e4710eef32ac59984b2c1f3efae90aa800d8ab4bb7322fae6af0ee07ffd",
+      "metadata_frames": 253,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 253,
+      "assessable_frames": 253,
+      "pose_frames": 253,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 253,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 82.34573203868898,
+          "elbow_p90": 169.10166230212832,
+          "body_alignment_p10": 167.7618101354626
+        }
+      },
+      "estimated_reps": 15,
+      "processing_seconds": 5.119062487001088,
+      "processing_fps": 49.423112267616716,
+      "decode_and_processing_fps": 47.129434041892225,
+      "model_initialization_seconds": 0.07155712899998434,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_020_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_020/push_up/good/side/subject_020_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_20",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "c56bdd6553418f52ef31ec3bce2d2c8a1b2fa85e0ce50c1bf47e583d2f9de193",
+      "metadata_frames": 266,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 266,
+      "assessable_frames": 257,
+      "pose_frames": 261,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 257,
+        "valid_fraction": 0.9661654135338346,
+        "reasons": [
+          "limited_projected_elbow_extension"
+        ],
+        "measurements": {
+          "elbow_p10": 97.68597614459469,
+          "elbow_p90": 129.9124244490943,
+          "body_alignment_p10": 175.6977520136996
+        }
+      },
+      "estimated_reps": 0,
+      "processing_seconds": 8.067794369000126,
+      "processing_fps": 32.97059739426235,
+      "decode_and_processing_fps": 31.998946527314523,
+      "model_initialization_seconds": 0.06378811599995515,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_020_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_020/push_up/good/side/subject_020_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_20",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "c56bdd6553418f52ef31ec3bce2d2c8a1b2fa85e0ce50c1bf47e583d2f9de193",
+      "metadata_frames": 266,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 266,
+      "assessable_frames": 258,
+      "pose_frames": 266,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 258,
+        "valid_fraction": 0.9699248120300752,
+        "reasons": [
+          "limited_projected_elbow_extension"
+        ],
+        "measurements": {
+          "elbow_p10": 98.95247207572869,
+          "elbow_p90": 127.04848869608752,
+          "body_alignment_p10": 175.8484598714572
+        }
+      },
+      "estimated_reps": 0,
+      "processing_seconds": 4.992778958000713,
+      "processing_fps": 53.27694300861176,
+      "decode_and_processing_fps": 50.79227748782482,
+      "model_initialization_seconds": 0.045030925999981264,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_020_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_020/squat/bad/side/subject_020_squat_bad_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_20",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "f611070301e3470dc74dddee46c42ad60b886f87cc87e6eb9fab5a40c7ce2c74",
+      "metadata_frames": 385,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 385,
+      "assessable_frames": 270,
+      "pose_frames": 333,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 270,
+        "valid_fraction": 0.7012987012987013,
+        "reasons": [
+          "large_projected_trunk_lean"
+        ],
+        "measurements": {
+          "knee_p10": 79.24714371309149,
+          "knee_p90": 169.54408614105347,
+          "active_trunk_lean_p90": 152.48854688654646
+        }
+      },
+      "estimated_reps": 7,
+      "processing_seconds": 11.394381903000749,
+      "processing_fps": 33.788581362066594,
+      "decode_and_processing_fps": 32.855822699336386,
+      "model_initialization_seconds": 0.18755307099991114,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_020_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_020/squat/bad/side/subject_020_squat_bad_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_20",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "f611070301e3470dc74dddee46c42ad60b886f87cc87e6eb9fab5a40c7ce2c74",
+      "metadata_frames": 385,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 385,
+      "assessable_frames": 359,
+      "pose_frames": 380,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 359,
+        "valid_fraction": 0.9324675324675324,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 79.71439245691364,
+          "knee_p90": 170.01050949160086,
+          "active_trunk_lean_p90": 32.36497158587882
+        }
+      },
+      "estimated_reps": 9,
+      "processing_seconds": 7.362132473000884,
+      "processing_fps": 52.29463085755504,
+      "decode_and_processing_fps": 49.90261487209389,
+      "model_initialization_seconds": 0.1089328509999632,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_020_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_020/squat/good/side/subject_020_squat_good_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_20",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "0ffd0f439a63e0b7641c387806bf3f75146de75e570befc3bd586a7c75f0be60",
+      "metadata_frames": 461,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 461,
+      "assessable_frames": 331,
+      "pose_frames": 340,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 331,
+        "valid_fraction": 0.7180043383947939,
+        "reasons": [
+          "limited_projected_depth"
+        ],
+        "measurements": {
+          "knee_p10": 102.05634488054324,
+          "knee_p90": 167.82307090675565,
+          "active_trunk_lean_p90": 29.382435136262544
+        }
+      },
+      "estimated_reps": 4,
+      "processing_seconds": 12.81550685700006,
+      "processing_fps": 35.9720458304147,
+      "decode_and_processing_fps": 34.93281711557052,
+      "model_initialization_seconds": 0.10218578399997114,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_020_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_020/squat/good/side/subject_020_squat_good_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_20",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "0ffd0f439a63e0b7641c387806bf3f75146de75e570befc3bd586a7c75f0be60",
+      "metadata_frames": 461,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 461,
+      "assessable_frames": 359,
+      "pose_frames": 455,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 359,
+        "valid_fraction": 0.7787418655097614,
+        "reasons": [
+          "limited_projected_depth"
+        ],
+        "measurements": {
+          "knee_p10": 107.65116135958866,
+          "knee_p90": 169.6908906172209,
+          "active_trunk_lean_p90": 26.90954435572544
+        }
+      },
+      "estimated_reps": 7,
+      "processing_seconds": 8.746686514999055,
+      "processing_fps": 52.705673080824916,
+      "decode_and_processing_fps": 50.32172502287368,
+      "model_initialization_seconds": 0.09835755799997514,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_022_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_022/push_up/bad/side/subject_022_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_22",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "44d1599d0e19b731b74cf76dcbbf7f7bd2f7d8df37b696454f6c69f3c88eea27",
+      "metadata_frames": 251,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 251,
+      "assessable_frames": 234,
+      "pose_frames": 243,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 234,
+        "valid_fraction": 0.9322709163346613,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 117.18652469886197,
+          "elbow_p90": 162.3219884629451,
+          "body_alignment_p10": 159.54451186152
+        }
+      },
+      "estimated_reps": 0,
+      "processing_seconds": 7.77136341000039,
+      "processing_fps": 32.298064928607864,
+      "decode_and_processing_fps": 31.372129387416678,
+      "model_initialization_seconds": 0.11059229199997844,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_022_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_022/push_up/bad/side/subject_022_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_22",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "44d1599d0e19b731b74cf76dcbbf7f7bd2f7d8df37b696454f6c69f3c88eea27",
+      "metadata_frames": 251,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 251,
+      "assessable_frames": 251,
+      "pose_frames": 251,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 251,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 115.17480297245591,
+          "elbow_p90": 162.16297144943968,
+          "body_alignment_p10": 164.2337407045644
+        }
+      },
+      "estimated_reps": 3,
+      "processing_seconds": 5.224880457000381,
+      "processing_fps": 48.039376606924286,
+      "decode_and_processing_fps": 45.80907652314782,
+      "model_initialization_seconds": 0.06332944199994017,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_022_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_022/push_up/good/side/subject_022_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_22",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "00d0127c6241ef311a27b4a01cb6302576b9a7dfc20a78547fec213073908070",
+      "metadata_frames": 274,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 274,
+      "assessable_frames": 235,
+      "pose_frames": 261,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 235,
+        "valid_fraction": 0.8576642335766423,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 107.88455770008481,
+          "elbow_p90": 154.54243236657157,
+          "body_alignment_p10": 166.4262618425259
+        }
+      },
+      "estimated_reps": 1,
+      "processing_seconds": 8.440119075999974,
+      "processing_fps": 32.46399695700227,
+      "decode_and_processing_fps": 31.553476823711037,
+      "model_initialization_seconds": 0.042247894999945856,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_022_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_022/push_up/good/side/subject_022_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "participant": "mendeley_22",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "00d0127c6241ef311a27b4a01cb6302576b9a7dfc20a78547fec213073908070",
+      "metadata_frames": 274,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 274,
+      "assessable_frames": 274,
+      "pose_frames": 274,
+      "prediction": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 274,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 104.53571699198581,
+          "elbow_p90": 150.3621298051942,
+          "body_alignment_p10": 174.85179757320867
+        }
+      },
+      "estimated_reps": 9,
+      "processing_seconds": 5.324830481998561,
+      "processing_fps": 51.45703716321125,
+      "decode_and_processing_fps": 48.98283240608366,
+      "model_initialization_seconds": 0.05755232100000285,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_022_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_022/squat/bad/side/subject_022_squat_bad_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_22",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "c7b18810c4a9aecbdc30d51222ca60aa58e56cec8c4dcb92892e993c2d652970",
+      "metadata_frames": 425,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 425,
+      "assessable_frames": 351,
+      "pose_frames": 390,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 351,
+        "valid_fraction": 0.8258823529411765,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 79.70151794176428,
+          "knee_p90": 164.32541379444115,
+          "active_trunk_lean_p90": 24.729337629731216
+        }
+      },
+      "estimated_reps": 11,
+      "processing_seconds": 12.652276079999751,
+      "processing_fps": 33.590794044703486,
+      "decode_and_processing_fps": 32.67047574239134,
+      "model_initialization_seconds": 0.21463803999995434,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_022_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_022/squat/bad/side/subject_022_squat_bad_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_22",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "c7b18810c4a9aecbdc30d51222ca60aa58e56cec8c4dcb92892e993c2d652970",
+      "metadata_frames": 425,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 425,
+      "assessable_frames": 393,
+      "pose_frames": 416,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 393,
+        "valid_fraction": 0.9247058823529412,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 76.25842673341494,
+          "knee_p90": 163.94291315931451,
+          "active_trunk_lean_p90": 28.980486425180004
+        }
+      },
+      "estimated_reps": 14,
+      "processing_seconds": 8.171322045000238,
+      "processing_fps": 52.01116755152778,
+      "decode_and_processing_fps": 49.71160700158499,
+      "model_initialization_seconds": 0.11164002500004244,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_022_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_022/squat/good/side/subject_022_squat_good_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_22",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "79ca2bb8286df0f314cdce3918c995c1def43fd33d412405099b121c7fb12851",
+      "metadata_frames": 423,
+      "fps": 15.0,
+      "method": "cp3",
+      "frames": 423,
+      "assessable_frames": 338,
+      "pose_frames": 391,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 338,
+        "valid_fraction": 0.7990543735224587,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 83.83607301617255,
+          "knee_p90": 168.45140188785825,
+          "active_trunk_lean_p90": 28.9091587865533
+        }
+      },
+      "estimated_reps": 11,
+      "processing_seconds": 13.22459019500036,
+      "processing_fps": 31.985868277409296,
+      "decode_and_processing_fps": 31.13934851281967,
+      "model_initialization_seconds": 0.08218989600004534,
+      "exit_code": 0
+    },
+    {
+      "id": "subject_022_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_022/squat/good/side/subject_022_squat_good_side.mp4",
+      "exercise": "squat",
+      "participant": "mendeley_22",
+      "split": "test",
+      "condition": "source side view; full original video",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "sha256": "79ca2bb8286df0f314cdce3918c995c1def43fd33d412405099b121c7fb12851",
+      "metadata_frames": 423,
+      "fps": 15.0,
+      "method": "current",
+      "frames": 423,
+      "assessable_frames": 421,
+      "pose_frames": 423,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 421,
+        "valid_fraction": 0.9952718676122931,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 79.28686919033325,
+          "knee_p90": 169.63234261841674,
+          "active_trunk_lean_p90": 36.61627535957901
+        }
+      },
+      "estimated_reps": 14,
+      "processing_seconds": 8.987916103000543,
+      "processing_fps": 47.06318963733816,
+      "decode_and_processing_fps": 45.15166155394206,
+      "model_initialization_seconds": 0.1317345650001016,
+      "exit_code": 0
+    }
+  ],
+  "timing_scope": "CPU pose inference, preprocessing, rules and temporal updates; excludes decoding, drawing, encoding and model initialization. Decode-plus-processing throughput logged separately.",
+  "limitations": "Held-out results cover side-view squat and push-up only. Whole-clip form labels are not frame labels. Repetition references unavailable for held-out videos. Known benchmark clips are not new held-out evidence. Single timing pass.",
+  "summary": {
+    "cp3": {
+      "videos": 12,
+      "frames": 4124,
+      "classification": {
+        "labelled_clips": 12,
+        "assessed_clips": 12,
+        "abstentions": 0,
+        "accuracy_all": 0.5833333333333334,
+        "accuracy_assessed": 0.5833333333333334,
+        "classification_coverage": 1.0,
+        "macro_f1": 0.5555555555555556,
+        "per_class": {
+          "correct": {
+            "support": 6,
+            "precision": 0.6666666666666666,
+            "recall": 0.3333333333333333,
+            "f1": 0.4444444444444444
+          },
+          "incorrect": {
+            "support": 6,
+            "precision": 0.5555555555555556,
+            "recall": 0.8333333333333334,
+            "f1": 0.6666666666666666
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 2,
+            "incorrect": 4,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 1,
+            "incorrect": 5,
+            "unassessable": 0
+          }
+        }
+      },
+      "feature_coverage": 0.8203200775945684,
+      "processing_fps": 33.151815759444055,
+      "processing_ms_per_frame": 30.164260300437,
+      "count_labelled_clips": 0,
+      "count_mae": null,
+      "count_exact_matches": null
+    },
+    "current": {
+      "videos": 12,
+      "frames": 4124,
+      "classification": {
+        "labelled_clips": 12,
+        "assessed_clips": 12,
+        "abstentions": 0,
+        "accuracy_all": 0.4166666666666667,
+        "accuracy_assessed": 0.4166666666666667,
+        "classification_coverage": 1.0,
+        "macro_f1": 0.4125874125874126,
+        "per_class": {
+          "correct": {
+            "support": 6,
+            "precision": 0.42857142857142855,
+            "recall": 0.5,
+            "f1": 0.46153846153846156
+          },
+          "incorrect": {
+            "support": 6,
+            "precision": 0.4,
+            "recall": 0.3333333333333333,
+            "f1": 0.36363636363636365
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 3,
+            "incorrect": 3,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 4,
+            "incorrect": 2,
+            "unassessable": 0
+          }
+        }
+      },
+      "feature_coverage": 0.954898157129001,
+      "processing_fps": 50.81359195190805,
+      "processing_ms_per_frame": 19.67977388700328,
+      "count_labelled_clips": 0,
+      "count_mae": null,
+      "count_exact_matches": null
+    }
+  },
+  "by_exercise": {
+    "cp3": {
+      "pushup": {
+        "videos": 6,
+        "frames": 1528,
+        "classification": {
+          "labelled_clips": 6,
+          "assessed_clips": 6,
+          "abstentions": 0,
+          "accuracy_all": 0.5,
+          "accuracy_assessed": 0.5,
+          "classification_coverage": 1.0,
+          "macro_f1": 0.3333333333333333,
+          "per_class": {
+            "correct": {
+              "support": 3,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "incorrect": {
+              "support": 3,
+              "precision": 0.5,
+              "recall": 1.0,
+              "f1": 0.6666666666666666
+            }
+          },
+          "confusion_matrix": {
+            "correct": {
+              "correct": 0,
+              "incorrect": 3,
+              "unassessable": 0
+            },
+            "incorrect": {
+              "correct": 0,
+              "incorrect": 3,
+              "unassessable": 0
+            }
+          }
+        },
+        "feature_coverage": 0.8520942408376964,
+        "processing_fps": 32.79268242487537,
+        "processing_ms_per_frame": 30.494608127617987,
+        "count_labelled_clips": 0,
+        "count_mae": null,
+        "count_exact_matches": null
+      },
+      "squat": {
+        "videos": 6,
+        "frames": 2596,
+        "classification": {
+          "labelled_clips": 6,
+          "assessed_clips": 6,
+          "abstentions": 0,
+          "accuracy_all": 0.6666666666666666,
+          "accuracy_assessed": 0.6666666666666666,
+          "classification_coverage": 1.0,
+          "macro_f1": 0.6666666666666666,
+          "per_class": {
+            "correct": {
+              "support": 3,
+              "precision": 0.6666666666666666,
+              "recall": 0.6666666666666666,
+              "f1": 0.6666666666666666
+            },
+            "incorrect": {
+              "support": 3,
+              "precision": 0.6666666666666666,
+              "recall": 0.6666666666666666,
+              "f1": 0.6666666666666666
+            }
+          },
+          "confusion_matrix": {
+            "correct": {
+              "correct": 2,
+              "incorrect": 1,
+              "unassessable": 0
+            },
+            "incorrect": {
+              "correct": 1,
+              "incorrect": 2,
+              "unassessable": 0
+            }
+          }
+        },
+        "feature_coverage": 0.801617873651772,
+        "processing_fps": 33.36690234793666,
+        "processing_ms_per_frame": 29.969818281973,
+        "count_labelled_clips": 0,
+        "count_mae": null,
+        "count_exact_matches": null
+      }
+    },
+    "current": {
+      "pushup": {
+        "videos": 6,
+        "frames": 1528,
+        "classification": {
+          "labelled_clips": 6,
+          "assessed_clips": 6,
+          "abstentions": 0,
+          "accuracy_all": 0.5,
+          "accuracy_assessed": 0.5,
+          "classification_coverage": 1.0,
+          "macro_f1": 0.4857142857142857,
+          "per_class": {
+            "correct": {
+              "support": 3,
+              "precision": 0.5,
+              "recall": 0.3333333333333333,
+              "f1": 0.4
+            },
+            "incorrect": {
+              "support": 3,
+              "precision": 0.5,
+              "recall": 0.6666666666666666,
+              "f1": 0.5714285714285714
+            }
+          },
+          "confusion_matrix": {
+            "correct": {
+              "correct": 1,
+              "incorrect": 2,
+              "unassessable": 0
+            },
+            "incorrect": {
+              "correct": 1,
+              "incorrect": 2,
+              "unassessable": 0
+            }
+          }
+        },
+        "feature_coverage": 0.9842931937172775,
+        "processing_fps": 49.95013376643946,
+        "processing_ms_per_frame": 20.019966406413932,
+        "count_labelled_clips": 0,
+        "count_mae": null,
+        "count_exact_matches": null
+      },
+      "squat": {
+        "videos": 6,
+        "frames": 2596,
+        "classification": {
+          "labelled_clips": 6,
+          "assessed_clips": 6,
+          "abstentions": 0,
+          "accuracy_all": 0.3333333333333333,
+          "accuracy_assessed": 0.3333333333333333,
+          "classification_coverage": 1.0,
+          "macro_f1": 0.25,
+          "per_class": {
+            "correct": {
+              "support": 3,
+              "precision": 0.4,
+              "recall": 0.6666666666666666,
+              "f1": 0.5
+            },
+            "incorrect": {
+              "support": 3,
+              "precision": 0.0,
+              "recall": 0.0,
+              "f1": 0.0
+            }
+          },
+          "confusion_matrix": {
+            "correct": {
+              "correct": 2,
+              "incorrect": 1,
+              "unassessable": 0
+            },
+            "incorrect": {
+              "correct": 3,
+              "incorrect": 0,
+              "unassessable": 0
+            }
+          }
+        },
+        "feature_coverage": 0.9375963020030816,
+        "processing_fps": 51.335921608275285,
+        "processing_ms_per_frame": 19.479537303929522,
+        "count_labelled_clips": 0,
+        "count_mae": null,
+        "count_exact_matches": null
+      }
+    }
+  },
+  "completed_at_utc": "2026-11-18T13:31:02.832716+00:00"
+}

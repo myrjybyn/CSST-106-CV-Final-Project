@@ -1,0 +1,420 @@
+{
+  "started_at_utc": "2026-11-18T13:32:31.295155+00:00",
+  "suite": "benchmark",
+  "runtime": {
+    "location": "cloud",
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu": "AMD EPYC 9V74 80-Core Processor",
+    "logical_cpus": 5,
+    "dependencies": {
+      "mediapipe": "0.10.21",
+      "numpy": "1.26.4",
+      "opencv-contrib-python": "4.11.0.86",
+      "pillow": "12.3.0"
+    }
+  },
+  "freeze_sha256": "03b66a0eb285d718e629ad005184cf0e8ffc283c02394ff82e83e12c050568f5",
+  "source_sha256": {
+    "src/evaluate.py": "9ea6bc8c095cf0765b9c08390d460564262af6bb24c85c29aa45202427ccb48b",
+    "src/posture_check/__init__.py": "b0b321613c14ed5dccb7a11b09244385a184192ed54b16f55cbb0b16e1b1ff4c",
+    "src/posture_check/__main__.py": "ca14589e6ebec05a8d62adb19a112f2179731d7e1f9a4bb046c594b431e0710d",
+    "src/posture_check/baseline.py": "dc85f8ed5786199264535a8c701e6d5bde54e8ea0ea9cb2b99017eae7221f0ac",
+    "src/posture_check/clip.py": "9f4eeab1048188686e03414480fa471ea260d18365baa75d2699b84674a39da8",
+    "src/posture_check/counting.py": "4b30a846a60127148285e10c5db869d70944b0c76816835c8d04ddb4939bfb1b",
+    "src/posture_check/evaluation.py": "1cab70b9de006fcae16d4b1f62cee60171c5c76a0f982e15561bd5d90ab70d3d",
+    "src/posture_check/exercises.py": "ddc01b07c5f9253307776ddf3fe700060d3d7e3beef3f51b3e275e3ca17d5ca9",
+    "src/posture_check/features.py": "874c35447dacb84337270af5c86ea8296ee31bd78d4d33171d43e990e133b2f5",
+    "src/posture_check/gui.py": "043c3101fcc4e773fe378af9921f0c8132db6afd3a850e017ea07d9e840581ae",
+    "src/posture_check/pose.py": "2b527e78dc265798eb7a919c68cd6f37f3fb291ef3c4b8dfb4561f8785fa3443",
+    "src/posture_check/preprocessing.py": "c9248fc7716259e0a2cd72ebb9df4ca45202487cd0d707aa9f892d8246af782b",
+    "src/posture_check/quality.py": "cba910cb6ddcac02b20ad3c9b5d60e9b4357172d81cd0027d16a6fc215c2d5cd",
+    "src/posture_check/temporal.py": "c9fcd3942c5f928112157ff088da5eaf07bd478d00156efaa4b192946090049f",
+    "run.py": "cdfcf64bc314b7fd8faa41fdb042e5e5ec2a4488f96b83afe86822d6080af022",
+    "app.py": "15aded235469a57e4a02772e0d1dd3430f018895dc03fd650470088bef964f54",
+    "requirements.txt": "2cd47cb3dab50983e7a020dabe7eaf7b96048d4e666544eb4e334290b19fb8a4"
+  },
+  "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "checkpoint3_commit": "3a568d7bfabbd45b1bf7d4d01f778c96754d0fa3",
+  "methods": [
+    "current"
+  ],
+  "runs": [
+    {
+      "id": "pushup",
+      "file": "phase3_user/push_up.mp4",
+      "exercise": "pushup",
+      "split": "known_regression",
+      "reference_form": "correct",
+      "reference_reps": 4,
+      "sha256": "07dba628e8fe49d3e62e75948b592cb72e73fa25f8077d7a63c36be074bd13d0",
+      "condition": "previously inspected YouTube excerpt",
+      "reference_source": "User-supplied after checkpoint 3 predictions; not independently expert verified",
+      "metadata_frames": 363,
+      "fps": 30.0,
+      "method": "current",
+      "frames": 363,
+      "assessable_frames": 207,
+      "pose_frames": 363,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 207,
+        "valid_fraction": 0.5702479338842975,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 72.14044280869291,
+          "elbow_p90": 166.33203049739691,
+          "body_alignment_p10": 168.84237298823172
+        }
+      },
+      "estimated_reps": 2,
+      "processing_seconds": 7.120847292001258,
+      "processing_fps": 50.977079709004926,
+      "decode_and_processing_fps": 48.016579723385334,
+      "model_initialization_seconds": 0.27347896499998114,
+      "exit_code": 0
+    },
+    {
+      "id": "squat",
+      "file": "phase3_user/squat.mp4",
+      "exercise": "squat",
+      "split": "known_regression",
+      "reference_form": "correct",
+      "reference_reps": 4,
+      "sha256": "2008316db030ac03f8a8c436a2af6e4ebe2a8ad08f2dd52ce3d5b3fea3511d14",
+      "condition": "previously inspected YouTube excerpt",
+      "reference_source": "User-supplied after checkpoint 3 predictions; not independently expert verified",
+      "metadata_frames": 483,
+      "fps": 30.0,
+      "method": "current",
+      "frames": 483,
+      "assessable_frames": 483,
+      "pose_frames": 483,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 483,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 76.68160189121643,
+          "knee_p90": 175.8493789021635,
+          "active_trunk_lean_p90": 35.356236544369594
+        }
+      },
+      "estimated_reps": 4,
+      "processing_seconds": 9.31906318599897,
+      "processing_fps": 51.82924403020067,
+      "decode_and_processing_fps": 48.94623527954388,
+      "model_initialization_seconds": 0.15131232900000668,
+      "exit_code": 0
+    },
+    {
+      "id": "lunge",
+      "file": "phase3_user/lunge.mp4",
+      "exercise": "lunge",
+      "split": "known_regression",
+      "reference_form": "correct",
+      "reference_reps": 3,
+      "sha256": "65bf2eb6ec7c57f64f10fddfeab3b09013d35f86f04c47c99a0eeb2637090e8d",
+      "condition": "previously inspected YouTube excerpt",
+      "reference_source": "User-supplied after checkpoint 3 predictions; not independently expert verified",
+      "metadata_frames": 278,
+      "fps": 30.0,
+      "method": "current",
+      "frames": 278,
+      "assessable_frames": 186,
+      "pose_frames": 265,
+      "prediction": "correct",
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 186,
+        "valid_fraction": 0.6690647482014388,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 81.78045871726195,
+          "knee_p90": 154.6191403122239,
+          "active_trunk_lean_p90": 16.625574738393535
+        }
+      },
+      "estimated_reps": 2,
+      "processing_seconds": 5.596466698998597,
+      "processing_fps": 49.67419891013448,
+      "decode_and_processing_fps": 46.87483502913963,
+      "model_initialization_seconds": 0.12320636699996612,
+      "exit_code": 0
+    },
+    {
+      "id": "jumping_jack",
+      "file": "phase3_user/jumping_jacks.mp4",
+      "exercise": "jumping_jack",
+      "split": "known_regression",
+      "reference_form": "correct",
+      "reference_reps": 10,
+      "sha256": "e172c3b523d6428d99f5b6eb1d3511f4f3ed68fc5c7eb852c3694d72a3ce6f31",
+      "condition": "previously inspected YouTube excerpt",
+      "reference_source": "User-supplied after checkpoint 3 predictions; not independently expert verified",
+      "metadata_frames": 576,
+      "fps": 50.0,
+      "method": "current",
+      "frames": 576,
+      "assessable_frames": 469,
+      "pose_frames": 570,
+      "prediction": "unassessable",
+      "clip_assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 469,
+        "valid_fraction": 0.8142361111111112,
+        "reasons": [
+          "form_classification_not_validated"
+        ],
+        "measurements": {
+          "open_frames": 85,
+          "closed_frames": 49
+        },
+        "movement_observed": true
+      },
+      "estimated_reps": 6,
+      "processing_seconds": 11.315336657999524,
+      "processing_fps": 50.904362584103,
+      "decode_and_processing_fps": 48.19594889987402,
+      "model_initialization_seconds": 0.07820024199997988,
+      "exit_code": 0
+    }
+  ],
+  "timing_scope": "CPU pose inference, preprocessing, rules and temporal updates; excludes decoding, drawing, encoding and model initialization. Decode-plus-processing throughput logged separately.",
+  "limitations": "Held-out results cover side-view squat and push-up only. Whole-clip form labels are not frame labels. Repetition references unavailable for held-out videos. Known benchmark clips are not new held-out evidence. Single timing pass.",
+  "summary": {
+    "current": {
+      "videos": 4,
+      "frames": 1700,
+      "classification": {
+        "labelled_clips": 4,
+        "assessed_clips": 3,
+        "abstentions": 1,
+        "accuracy_all": 0.75,
+        "accuracy_assessed": 1.0,
+        "classification_coverage": 0.75,
+        "macro_f1": null,
+        "per_class": {
+          "correct": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.75,
+            "f1": 0.8571428571428571
+          },
+          "incorrect": {
+            "support": 0,
+            "precision": null,
+            "recall": null,
+            "f1": null
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 3,
+            "incorrect": 0,
+            "unassessable": 1
+          },
+          "incorrect": {
+            "correct": 0,
+            "incorrect": 0,
+            "unassessable": 0
+          }
+        }
+      },
+      "feature_coverage": 0.7911764705882353,
+      "processing_fps": 50.971893330892875,
+      "processing_ms_per_frame": 19.618655197057855,
+      "count_labelled_clips": 4,
+      "count_mae": 1.75,
+      "count_exact_matches": 1
+    }
+  },
+  "by_exercise": {
+    "current": {
+      "jumping_jack": {
+        "videos": 1,
+        "frames": 576,
+        "classification": {
+          "labelled_clips": 1,
+          "assessed_clips": 0,
+          "abstentions": 1,
+          "accuracy_all": 0.0,
+          "accuracy_assessed": null,
+          "classification_coverage": 0.0,
+          "macro_f1": null,
+          "per_class": {
+            "correct": {
+              "support": 1,
+              "precision": null,
+              "recall": 0.0,
+              "f1": 0.0
+            },
+            "incorrect": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "confusion_matrix": {
+            "correct": {
+              "correct": 0,
+              "incorrect": 0,
+              "unassessable": 1
+            },
+            "incorrect": {
+              "correct": 0,
+              "incorrect": 0,
+              "unassessable": 0
+            }
+          }
+        },
+        "feature_coverage": 0.8142361111111112,
+        "processing_fps": 50.904362584103,
+        "processing_ms_per_frame": 19.64468169791584,
+        "count_labelled_clips": 1,
+        "count_mae": 4.0,
+        "count_exact_matches": 0
+      },
+      "lunge": {
+        "videos": 1,
+        "frames": 278,
+        "classification": {
+          "labelled_clips": 1,
+          "assessed_clips": 1,
+          "abstentions": 0,
+          "accuracy_all": 1.0,
+          "accuracy_assessed": 1.0,
+          "classification_coverage": 1.0,
+          "macro_f1": null,
+          "per_class": {
+            "correct": {
+              "support": 1,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "incorrect": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "confusion_matrix": {
+            "correct": {
+              "correct": 1,
+              "incorrect": 0,
+              "unassessable": 0
+            },
+            "incorrect": {
+              "correct": 0,
+              "incorrect": 0,
+              "unassessable": 0
+            }
+          }
+        },
+        "feature_coverage": 0.6690647482014388,
+        "processing_fps": 49.67419891013448,
+        "processing_ms_per_frame": 20.131175176253947,
+        "count_labelled_clips": 1,
+        "count_mae": 1.0,
+        "count_exact_matches": 0
+      },
+      "pushup": {
+        "videos": 1,
+        "frames": 363,
+        "classification": {
+          "labelled_clips": 1,
+          "assessed_clips": 1,
+          "abstentions": 0,
+          "accuracy_all": 1.0,
+          "accuracy_assessed": 1.0,
+          "classification_coverage": 1.0,
+          "macro_f1": null,
+          "per_class": {
+            "correct": {
+              "support": 1,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "incorrect": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "confusion_matrix": {
+            "correct": {
+              "correct": 1,
+              "incorrect": 0,
+              "unassessable": 0
+            },
+            "incorrect": {
+              "correct": 0,
+              "incorrect": 0,
+              "unassessable": 0
+            }
+          }
+        },
+        "feature_coverage": 0.5702479338842975,
+        "processing_fps": 50.977079709004926,
+        "processing_ms_per_frame": 19.616659206615036,
+        "count_labelled_clips": 1,
+        "count_mae": 2.0,
+        "count_exact_matches": 0
+      },
+      "squat": {
+        "videos": 1,
+        "frames": 483,
+        "classification": {
+          "labelled_clips": 1,
+          "assessed_clips": 1,
+          "abstentions": 0,
+          "accuracy_all": 1.0,
+          "accuracy_assessed": 1.0,
+          "classification_coverage": 1.0,
+          "macro_f1": null,
+          "per_class": {
+            "correct": {
+              "support": 1,
+              "precision": 1.0,
+              "recall": 1.0,
+              "f1": 1.0
+            },
+            "incorrect": {
+              "support": 0,
+              "precision": null,
+              "recall": null,
+              "f1": null
+            }
+          },
+          "confusion_matrix": {
+            "correct": {
+              "correct": 1,
+              "incorrect": 0,
+              "unassessable": 0
+            },
+            "incorrect": {
+              "correct": 0,
+              "incorrect": 0,
+              "unassessable": 0
+            }
+          }
+        },
+        "feature_coverage": 1.0,
+        "processing_fps": 51.82924403020067,
+        "processing_ms_per_frame": 19.294126679086894,
+        "count_labelled_clips": 1,
+        "count_mae": 0.0,
+        "count_exact_matches": 1
+      }
+    }
+  },
+  "completed_at_utc": "2026-11-18T13:33:07.287878+00:00"
+}

@@ -1,0 +1,325 @@
+{
+  "cases": [
+    {
+      "id": "H01",
+      "input": "mendeley/Dataset Subject-wise/subject_018/push_up/bad/side/subject_018_push_up_bad_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "incorrect",
+      "actual": "incorrect",
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H02",
+      "input": "mendeley/Dataset Subject-wise/subject_018/push_up/good/side/subject_018_push_up_good_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "correct",
+      "actual": "correct",
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H03",
+      "input": "mendeley/Dataset Subject-wise/subject_018/squat/bad/side/subject_018_squat_bad_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "incorrect",
+      "actual": "correct",
+      "status": "FAIL",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H04",
+      "input": "mendeley/Dataset Subject-wise/subject_018/squat/good/side/subject_018_squat_good_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "correct",
+      "actual": "correct",
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H05",
+      "input": "mendeley/Dataset Subject-wise/subject_020/push_up/bad/side/subject_020_push_up_bad_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "incorrect",
+      "actual": "correct",
+      "status": "FAIL",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H06",
+      "input": "mendeley/Dataset Subject-wise/subject_020/push_up/good/side/subject_020_push_up_good_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "correct",
+      "actual": "incorrect",
+      "status": "FAIL",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H07",
+      "input": "mendeley/Dataset Subject-wise/subject_020/squat/bad/side/subject_020_squat_bad_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "incorrect",
+      "actual": "correct",
+      "status": "FAIL",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H08",
+      "input": "mendeley/Dataset Subject-wise/subject_020/squat/good/side/subject_020_squat_good_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "correct",
+      "actual": "incorrect",
+      "status": "FAIL",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H09",
+      "input": "mendeley/Dataset Subject-wise/subject_022/push_up/bad/side/subject_022_push_up_bad_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "incorrect",
+      "actual": "incorrect",
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H10",
+      "input": "mendeley/Dataset Subject-wise/subject_022/push_up/good/side/subject_022_push_up_good_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "correct",
+      "actual": "incorrect",
+      "status": "FAIL",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H11",
+      "input": "mendeley/Dataset Subject-wise/subject_022/squat/bad/side/subject_022_squat_bad_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "incorrect",
+      "actual": "correct",
+      "status": "FAIL",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "H12",
+      "input": "mendeley/Dataset Subject-wise/subject_022/squat/good/side/subject_022_squat_good_side.mp4",
+      "condition": "source side view; full original video",
+      "expected": "correct",
+      "actual": "correct",
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "real held-out clip classification; source label"
+    },
+    {
+      "id": "F01",
+      "input": "squat endpoint trace",
+      "condition": "Observed ready \u2192 lowered/open \u2192 ready, 12 frames each at 30 FPS",
+      "expected": {
+        "reps": 1
+      },
+      "actual": {
+        "reps": 1
+      },
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "synthetic movement trace"
+    },
+    {
+      "id": "F02",
+      "input": "pushup endpoint trace",
+      "condition": "Observed ready \u2192 lowered/open \u2192 ready, 12 frames each at 30 FPS",
+      "expected": {
+        "reps": 1
+      },
+      "actual": {
+        "reps": 1
+      },
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "synthetic movement trace"
+    },
+    {
+      "id": "F03",
+      "input": "lunge endpoint trace",
+      "condition": "Observed ready \u2192 lowered/open \u2192 ready, 12 frames each at 30 FPS",
+      "expected": {
+        "reps": 1
+      },
+      "actual": {
+        "reps": 1
+      },
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "synthetic movement trace"
+    },
+    {
+      "id": "F04",
+      "input": "jumping_jack endpoint trace",
+      "condition": "Observed ready \u2192 lowered/open \u2192 ready, 12 frames each at 30 FPS",
+      "expected": {
+        "reps": 1
+      },
+      "actual": {
+        "reps": 1
+      },
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "synthetic movement trace"
+    },
+    {
+      "id": "F05",
+      "input": "squat starting at bottom",
+      "condition": "Partial starting repetition must not count",
+      "expected": {
+        "reps": 0
+      },
+      "actual": {
+        "reps": 0
+      },
+      "status": "PASS",
+      "hard_or_edge": true,
+      "kind": "synthetic movement trace"
+    },
+    {
+      "id": "F06",
+      "input": "push-up trace with 0.8-second gap",
+      "condition": "Discard partial cycle across missing data",
+      "expected": {
+        "reps": 0
+      },
+      "actual": {
+        "reps": 0
+      },
+      "status": "PASS",
+      "hard_or_edge": true,
+      "kind": "synthetic movement trace"
+    },
+    {
+      "id": "F07",
+      "input": "known push-up landmarks; wrist presence 0.1",
+      "condition": "Occluded required wrist must cause abstention",
+      "expected": {
+        "status": "unassessable",
+        "features": null
+      },
+      "actual": {
+        "status": "unassessable",
+        "features": null
+      },
+      "status": "PASS",
+      "hard_or_edge": true,
+      "kind": "synthetic landmarks through frame pipeline"
+    },
+    {
+      "id": "F08",
+      "input": "camera-open failure stub",
+      "condition": "Show camera error and release capture",
+      "expected": {
+        "message_type": "error",
+        "capture_released": true
+      },
+      "actual": {
+        "message_type": "error",
+        "capture_released": true
+      },
+      "status": "PASS",
+      "hard_or_edge": true,
+      "kind": "camera resource integration with mocked unavailable device"
+    },
+    {
+      "id": "F09",
+      "input": "nonexistent missing.mp4",
+      "condition": "Reject missing input without writing an output",
+      "expected": {
+        "error": "FileNotFoundError",
+        "output_exists": false
+      },
+      "actual": {
+        "error": "FileNotFoundError",
+        "output_exists": false
+      },
+      "status": "PASS",
+      "hard_or_edge": true,
+      "kind": "file pipeline"
+    },
+    {
+      "id": "F10",
+      "input": "uniform black 240\u00d7160 PNG",
+      "condition": "No person; annotated output and JSON, no form pass or invented count",
+      "expected": {
+        "decoded": true,
+        "frames": 1,
+        "status": "unassessable",
+        "reps": null
+      },
+      "actual": {
+        "decoded": true,
+        "frames": 1,
+        "status": "unassessable",
+        "reps": null
+      },
+      "status": "PASS",
+      "hard_or_edge": true,
+      "kind": "actual MediaPipe image inference and codec"
+    },
+    {
+      "id": "F11",
+      "input": "three-frame black MP4 at 15 FPS",
+      "condition": "Tracked main method preserves output frames and does not invent a person/rep",
+      "expected": {
+        "decoded_frames": 3,
+        "reps": 0,
+        "all_unassessable": true
+      },
+      "actual": {
+        "decoded_frames": 3,
+        "reps": 0,
+        "all_unassessable": true
+      },
+      "status": "PASS",
+      "hard_or_edge": true,
+      "kind": "actual MediaPipe VIDEO inference and codec"
+    },
+    {
+      "id": "F12",
+      "input": "same PNG as input and output",
+      "condition": "Protect source file against overwrite",
+      "expected": {
+        "error": "ValueError",
+        "input_unchanged": true
+      },
+      "actual": {
+        "error": "ValueError",
+        "input_unchanged": true
+      },
+      "status": "PASS",
+      "hard_or_edge": true,
+      "kind": "file pipeline"
+    },
+    {
+      "id": "UI01",
+      "input": "Training push-up video (rejected-view screenshot); previously inspected squat excerpt at frame 90 (accepted-preview screenshot)",
+      "condition": "Virtual desktop; two recorded videos substituted for webcam capture; actual pose inference and GUI thread used. Known squat clip used for UI display, not new accuracy evidence.",
+      "expected": "Home and live preview render; stopping releases capture and re-enables start; quit closes window.",
+      "actual": "Home, accepted live preview and rejected-view screenshots saved; capture released; start re-enabled; both windows closed.",
+      "status": "PASS",
+      "hard_or_edge": false,
+      "kind": "actual GUI/pose integration; video substituted for camera"
+    }
+  ],
+  "total": 25,
+  "passed": 18,
+  "failed": 7,
+  "hard_or_edge": 8,
+  "interpretation": "Real clip classification failures are distinct from functional software failures. Synthetic and mocked cases do not measure posture accuracy."
+}

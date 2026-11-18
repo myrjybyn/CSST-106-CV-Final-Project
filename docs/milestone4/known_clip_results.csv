@@ -1,0 +1,5 @@
+id,method,exercise,reference_form,prediction,frames,assessable_frames,estimated_reps,reference_reps,processing_fps
+pushup,current,pushup,correct,correct,363,207,2,4,50.977079709004926
+squat,current,squat,correct,correct,483,483,4,4,51.82924403020067
+lunge,current,lunge,correct,correct,278,186,2,3,49.67419891013448
+jumping_jack,current,jumping_jack,correct,unassessable,576,469,6,10,50.904362584103

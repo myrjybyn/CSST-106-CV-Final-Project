@@ -1,0 +1,1825 @@
+{
+  "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+  "clips": [
+    {
+      "id": "subject_001_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_001/push_up/bad/side/subject_001_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_1",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "d41d899c9c89c5cc99bb8e3c3602f284aa774371632c79900bb918b1b80e1976",
+      "input_sha256": "d41d899c9c89c5cc99bb8e3c3602f284aa774371632c79900bb918b1b80e1976",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 378,
+      "summary": {
+        "frames": 378,
+        "valid_frames": 357,
+        "valid_fraction": 0.9444444444444444,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 107.7536112215277,
+          "elbow_p50": 151.66972818417653,
+          "elbow_p90": 169.0944383760908,
+          "elbow_range": 61.3408271545631,
+          "alignment_p10": 150.91885285922945,
+          "alignment_p50": 176.26049633586177,
+          "inclination_p10": 74.9817983598632,
+          "inclination_p50": 77.9708096131069,
+          "inclination_p90": 88.24759148322964,
+          "bent_fraction": 0.05042016806722689,
+          "misalignment_fraction": 0.1092436974789916
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 357,
+        "valid_fraction": 0.9444444444444444,
+        "reasons": [
+          "limited_projected_elbow_flexion",
+          "projected_body_misalignment"
+        ],
+        "measurements": {
+          "elbow_p10": 107.7536112215277,
+          "elbow_p90": 169.0944383760908,
+          "body_alignment_p10": 150.91885285922945
+        }
+      },
+      "estimated_reps": 11,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:26:40.182675+00:00"
+    },
+    {
+      "id": "subject_001_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_001/push_up/good/side/subject_001_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_1",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "f437f915e8d1cb8dd651bbf3f63a80527bac74200429075bd1d3d6ec7c6a6a0d",
+      "input_sha256": "f437f915e8d1cb8dd651bbf3f63a80527bac74200429075bd1d3d6ec7c6a6a0d",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 434,
+      "summary": {
+        "frames": 434,
+        "valid_frames": 371,
+        "valid_fraction": 0.8548387096774194,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 106.93686626355827,
+          "elbow_p50": 145.8218208941033,
+          "elbow_p90": 162.90342657953283,
+          "elbow_range": 55.96656031597456,
+          "alignment_p10": 167.41126990727864,
+          "alignment_p50": 176.02412974536173,
+          "inclination_p10": 73.26274359729707,
+          "inclination_p50": 81.13338808581923,
+          "inclination_p90": 91.79158225300749,
+          "bent_fraction": 0.0646900269541779,
+          "misalignment_fraction": 0.07277628032345014
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 371,
+        "valid_fraction": 0.8548387096774194,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 106.93686626355827,
+          "elbow_p90": 162.90342657953283,
+          "body_alignment_p10": 167.41126990727864
+        }
+      },
+      "estimated_reps": 4,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:26:50.588560+00:00"
+    },
+    {
+      "id": "subject_002_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_002/push_up/bad/side/subject_002_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_2",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "57dff08c1777529b2f4cf0b58d6efd1e48a214d690ac81dc95cc17c4a39e36ea",
+      "input_sha256": "57dff08c1777529b2f4cf0b58d6efd1e48a214d690ac81dc95cc17c4a39e36ea",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 476,
+      "summary": {
+        "frames": 476,
+        "valid_frames": 436,
+        "valid_fraction": 0.9159663865546218,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 84.85038144651169,
+          "elbow_p50": 124.7161213524542,
+          "elbow_p90": 161.2372300534355,
+          "elbow_range": 76.3868486069238,
+          "alignment_p10": 166.10952805322185,
+          "alignment_p50": 171.4011734724576,
+          "inclination_p10": 68.13183219996401,
+          "inclination_p50": 72.4911232942141,
+          "inclination_p90": 83.61774860924123,
+          "bent_fraction": 0.30963302752293576,
+          "misalignment_fraction": 0.006880733944954129
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 436,
+        "valid_fraction": 0.9159663865546218,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 84.85038144651169,
+          "elbow_p90": 161.2372300534355,
+          "body_alignment_p10": 166.10952805322185
+        }
+      },
+      "estimated_reps": 12,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:27:01.556586+00:00"
+    },
+    {
+      "id": "subject_002_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_002/push_up/good/side/subject_002_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_2",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "2f4780fbbe7c628051043d3cbc36b0b13c1ab29996d7c69fd9f90180c66181fa",
+      "input_sha256": "2f4780fbbe7c628051043d3cbc36b0b13c1ab29996d7c69fd9f90180c66181fa",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 468,
+      "summary": {
+        "frames": 468,
+        "valid_frames": 409,
+        "valid_fraction": 0.8739316239316239,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 78.53768987077979,
+          "elbow_p50": 103.03703995889312,
+          "elbow_p90": 160.41504018215397,
+          "elbow_range": 81.87735031137419,
+          "alignment_p10": 176.10052197833903,
+          "alignment_p50": 178.18577106049779,
+          "inclination_p10": 74.85827836974012,
+          "inclination_p50": 84.52656436021272,
+          "inclination_p90": 91.52990674653249,
+          "bent_fraction": 0.48655256723716384,
+          "misalignment_fraction": 0.0
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 409,
+        "valid_fraction": 0.8739316239316239,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 78.53768987077979,
+          "elbow_p90": 160.41504018215397,
+          "body_alignment_p10": 176.10052197833903
+        }
+      },
+      "estimated_reps": 10,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:27:12.775605+00:00"
+    },
+    {
+      "id": "subject_003_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_003/push_up/bad/side/subject_003_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_3",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "eeb395ab7b346b83abdec791e60472241765f20d4dbc439f2dc77bb75c92f2de",
+      "input_sha256": "eeb395ab7b346b83abdec791e60472241765f20d4dbc439f2dc77bb75c92f2de",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 458,
+      "summary": {
+        "frames": 458,
+        "valid_frames": 456,
+        "valid_fraction": 0.9956331877729258,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 90.67661414234937,
+          "elbow_p50": 159.64465223014992,
+          "elbow_p90": 170.19688122801557,
+          "elbow_range": 79.5202670856662,
+          "alignment_p10": 158.59821699598643,
+          "alignment_p50": 165.94441948512053,
+          "inclination_p10": 61.648427005958865,
+          "inclination_p50": 70.21172031956309,
+          "inclination_p90": 77.8501998114749,
+          "bent_fraction": 0.1206140350877193,
+          "misalignment_fraction": 0.05043859649122807
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 456,
+        "valid_fraction": 0.9956331877729258,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 90.67661414234937,
+          "elbow_p90": 170.19688122801557,
+          "body_alignment_p10": 158.59821699598643
+        }
+      },
+      "estimated_reps": 11,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:27:23.097838+00:00"
+    },
+    {
+      "id": "subject_003_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_003/push_up/good/side/subject_003_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_3",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "5ed980e307afadb9a80e6655fde8818b0cfd62b108b7d97a140a9a43e4b9fba6",
+      "input_sha256": "5ed980e307afadb9a80e6655fde8818b0cfd62b108b7d97a140a9a43e4b9fba6",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 450,
+      "summary": {
+        "frames": 450,
+        "valid_frames": 448,
+        "valid_fraction": 0.9955555555555555,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 96.25876646658497,
+          "elbow_p50": 149.87724952863897,
+          "elbow_p90": 167.63841131888415,
+          "elbow_range": 71.37964485229918,
+          "alignment_p10": 171.036808176595,
+          "alignment_p50": 174.43904756044066,
+          "inclination_p10": 68.06749854508686,
+          "inclination_p50": 73.67498301291941,
+          "inclination_p90": 80.76447545938605,
+          "bent_fraction": 0.11607142857142858,
+          "misalignment_fraction": 0.022321428571428572
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 448,
+        "valid_fraction": 0.9955555555555555,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 96.25876646658497,
+          "elbow_p90": 167.63841131888415,
+          "body_alignment_p10": 171.036808176595
+        }
+      },
+      "estimated_reps": 16,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:27:33.907217+00:00"
+    },
+    {
+      "id": "subject_005_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_005/push_up/bad/side/subject_005_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_5",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "d05c5fc35f7b0761acee5115b1bfdc50288308b2c4fd2b7fba2d6a838139c9ac",
+      "input_sha256": "d05c5fc35f7b0761acee5115b1bfdc50288308b2c4fd2b7fba2d6a838139c9ac",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 299,
+      "summary": {
+        "frames": 299,
+        "valid_frames": 211,
+        "valid_fraction": 0.705685618729097,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 52.26622593179577,
+          "elbow_p50": 98.27710170391165,
+          "elbow_p90": 154.74832109684291,
+          "elbow_range": 102.48209516504714,
+          "alignment_p10": 130.6569789644827,
+          "alignment_p50": 138.9521250215692,
+          "inclination_p10": 97.9019697330716,
+          "inclination_p50": 104.9406463028778,
+          "inclination_p90": 110.39099179177708,
+          "bent_fraction": 0.5165876777251185,
+          "misalignment_fraction": 0.8388625592417062
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 211,
+        "valid_fraction": 0.705685618729097,
+        "reasons": [
+          "projected_body_misalignment"
+        ],
+        "measurements": {
+          "elbow_p10": 52.26622593179577,
+          "elbow_p90": 154.74832109684291,
+          "body_alignment_p10": 130.6569789644827
+        }
+      },
+      "estimated_reps": 2,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:27:41.026620+00:00"
+    },
+    {
+      "id": "subject_005_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_005/push_up/good/side/subject_005_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_5",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "0ac8ad70d6ba1d75b5ae2ba5d50113e94af02fab6e762a229ad4e37c19202b1e",
+      "input_sha256": "0ac8ad70d6ba1d75b5ae2ba5d50113e94af02fab6e762a229ad4e37c19202b1e",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 292,
+      "summary": {
+        "frames": 292,
+        "valid_frames": 270,
+        "valid_fraction": 0.9246575342465754,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 64.87149887299252,
+          "elbow_p50": 125.90828418087597,
+          "elbow_p90": 162.71463372872506,
+          "elbow_range": 97.84313485573254,
+          "alignment_p10": 159.28941861743576,
+          "alignment_p50": 167.34978917470605,
+          "inclination_p10": 79.2309082477496,
+          "inclination_p50": 86.90326057690635,
+          "inclination_p90": 91.0216455029014,
+          "bent_fraction": 0.32222222222222224,
+          "misalignment_fraction": 0.06666666666666667
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 270,
+        "valid_fraction": 0.9246575342465754,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 64.87149887299252,
+          "elbow_p90": 162.71463372872506,
+          "body_alignment_p10": 159.28941861743576
+        }
+      },
+      "estimated_reps": 7,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:27:48.000067+00:00"
+    },
+    {
+      "id": "subject_007_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_007/push_up/bad/side/subject_007_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_7",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "c98febc5355ef0b4ae8e3225acd7c660afa38b722cde40abde85ec8241275e5d",
+      "input_sha256": "c98febc5355ef0b4ae8e3225acd7c660afa38b722cde40abde85ec8241275e5d",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 281,
+      "summary": {
+        "frames": 281,
+        "valid_frames": 273,
+        "valid_fraction": 0.9715302491103203,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 67.94686133396398,
+          "elbow_p50": 149.5388940459443,
+          "elbow_p90": 171.56114537158493,
+          "elbow_range": 103.61428403762095,
+          "alignment_p10": 157.58199667271893,
+          "alignment_p50": 168.1922027428534,
+          "inclination_p10": 81.72914382986431,
+          "inclination_p50": 88.25692330221986,
+          "inclination_p90": 93.7140068735703,
+          "bent_fraction": 0.2600732600732601,
+          "misalignment_fraction": 0.04395604395604396
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 273,
+        "valid_fraction": 0.9715302491103203,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 67.94686133396398,
+          "elbow_p90": 171.56114537158493,
+          "body_alignment_p10": 157.58199667271893
+        }
+      },
+      "estimated_reps": 8,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:27:54.848341+00:00"
+    },
+    {
+      "id": "subject_007_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_007/push_up/good/side/subject_007_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_7",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "4831d10ff136d7a90dc18399ccb2512acddfd999015409c9ed7f19cc2e930a2c",
+      "input_sha256": "4831d10ff136d7a90dc18399ccb2512acddfd999015409c9ed7f19cc2e930a2c",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 376,
+      "summary": {
+        "frames": 376,
+        "valid_frames": 358,
+        "valid_fraction": 0.9521276595744681,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 68.04174679655833,
+          "elbow_p50": 129.40063661641858,
+          "elbow_p90": 161.53980554759016,
+          "elbow_range": 93.49805875103183,
+          "alignment_p10": 171.28345093888245,
+          "alignment_p50": 174.92441799285717,
+          "inclination_p10": 77.65176055563029,
+          "inclination_p50": 83.61734132623859,
+          "inclination_p90": 88.1378331014778,
+          "bent_fraction": 0.29329608938547486,
+          "misalignment_fraction": 0.027932960893854747
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 358,
+        "valid_fraction": 0.9521276595744681,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 68.04174679655833,
+          "elbow_p90": 161.53980554759016,
+          "body_alignment_p10": 171.28345093888245
+        }
+      },
+      "estimated_reps": 17,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:28:03.783452+00:00"
+    },
+    {
+      "id": "subject_008_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_008/push_up/bad/side/subject_008_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_8",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "97ebfb45e0f4785f21472ec73b99c7fe4cf2d2a70fd61bc81bfb0711e29c4fa1",
+      "input_sha256": "97ebfb45e0f4785f21472ec73b99c7fe4cf2d2a70fd61bc81bfb0711e29c4fa1",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 256,
+      "summary": {
+        "frames": 256,
+        "valid_frames": 256,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 107.56827646559978,
+          "elbow_p50": 141.60067350209854,
+          "elbow_p90": 163.97993030345015,
+          "elbow_range": 56.411653837850366,
+          "alignment_p10": 167.47098807096876,
+          "alignment_p50": 174.92577631233485,
+          "inclination_p10": 73.67647809532289,
+          "inclination_p50": 81.95184468513474,
+          "inclination_p90": 94.28876373139704,
+          "bent_fraction": 0.0546875,
+          "misalignment_fraction": 0.0
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 256,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 107.56827646559978,
+          "elbow_p90": 163.97993030345015,
+          "body_alignment_p10": 167.47098807096876
+        }
+      },
+      "estimated_reps": 2,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:28:10.398811+00:00"
+    },
+    {
+      "id": "subject_008_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_008/push_up/good/side/subject_008_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_8",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "7ff82fef86d8a8d40c6fc2ef3c1f3e650414276273a7a21705f9bee53a5218f2",
+      "input_sha256": "7ff82fef86d8a8d40c6fc2ef3c1f3e650414276273a7a21705f9bee53a5218f2",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 295,
+      "summary": {
+        "frames": 295,
+        "valid_frames": 289,
+        "valid_fraction": 0.9796610169491525,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 96.98190954260701,
+          "elbow_p50": 133.70404276964842,
+          "elbow_p90": 166.58371354027756,
+          "elbow_range": 69.60180399767054,
+          "alignment_p10": 170.73731460609085,
+          "alignment_p50": 174.77613153967917,
+          "inclination_p10": 69.58603742953365,
+          "inclination_p50": 79.56921095288159,
+          "inclination_p90": 89.83035368959236,
+          "bent_fraction": 0.13494809688581316,
+          "misalignment_fraction": 0.05536332179930796
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 289,
+        "valid_fraction": 0.9796610169491525,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 96.98190954260701,
+          "elbow_p90": 166.58371354027756,
+          "body_alignment_p10": 170.73731460609085
+        }
+      },
+      "estimated_reps": 8,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:28:17.840329+00:00"
+    },
+    {
+      "id": "subject_009_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_009/push_up/bad/side/subject_009_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_9",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "4598b188ab3911196f0381e612e206d24341a70b48f330b32defba7af5f0ac31",
+      "input_sha256": "4598b188ab3911196f0381e612e206d24341a70b48f330b32defba7af5f0ac31",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 238,
+      "summary": {
+        "frames": 238,
+        "valid_frames": 234,
+        "valid_fraction": 0.9831932773109243,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 128.5140784377728,
+          "elbow_p50": 150.71681770677458,
+          "elbow_p90": 166.47762453903763,
+          "elbow_range": 37.963546101264825,
+          "alignment_p10": 149.58557582295262,
+          "alignment_p50": 167.74838812435553,
+          "inclination_p10": 74.11164049683131,
+          "inclination_p50": 82.95444269077451,
+          "inclination_p90": 92.05776960001556,
+          "bent_fraction": 0.0,
+          "misalignment_fraction": 0.1282051282051282
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 234,
+        "valid_fraction": 0.9831932773109243,
+        "reasons": [
+          "limited_projected_elbow_flexion",
+          "projected_body_misalignment"
+        ],
+        "measurements": {
+          "elbow_p10": 128.5140784377728,
+          "elbow_p90": 166.47762453903763,
+          "body_alignment_p10": 149.58557582295262
+        }
+      },
+      "estimated_reps": 2,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:28:23.858429+00:00"
+    },
+    {
+      "id": "subject_009_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_009/push_up/good/side/subject_009_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_9",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "2578af147671405398173221edb97283c363998ab7aec5dc1ff597ba178378db",
+      "input_sha256": "2578af147671405398173221edb97283c363998ab7aec5dc1ff597ba178378db",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 234,
+      "summary": {
+        "frames": 234,
+        "valid_frames": 233,
+        "valid_fraction": 0.9957264957264957,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 93.9938056661871,
+          "elbow_p50": 138.9383162816926,
+          "elbow_p90": 158.26781548232714,
+          "elbow_range": 64.27400981614004,
+          "alignment_p10": 169.96520936890687,
+          "alignment_p50": 176.84208200700436,
+          "inclination_p10": 70.42665695339169,
+          "inclination_p50": 79.3971567185272,
+          "inclination_p90": 89.5644620845174,
+          "bent_fraction": 0.13733905579399142,
+          "misalignment_fraction": 0.06866952789699571
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 233,
+        "valid_fraction": 0.9957264957264957,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 93.9938056661871,
+          "elbow_p90": 158.26781548232714,
+          "body_alignment_p10": 169.96520936890687
+        }
+      },
+      "estimated_reps": 6,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:28:30.899721+00:00"
+    },
+    {
+      "id": "subject_010_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_010/push_up/bad/side/subject_010_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_10",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "f78a2c406d3ca4c079282717b64f7ee37c3ff99e5dda3d25c9fa7f70fe3a26a0",
+      "input_sha256": "f78a2c406d3ca4c079282717b64f7ee37c3ff99e5dda3d25c9fa7f70fe3a26a0",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 322,
+      "summary": {
+        "frames": 322,
+        "valid_frames": 322,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 79.14932540807203,
+          "elbow_p50": 138.54654382911176,
+          "elbow_p90": 170.97343182353242,
+          "elbow_range": 91.82410641546039,
+          "alignment_p10": 163.19106016753557,
+          "alignment_p50": 168.1033916241891,
+          "inclination_p10": 64.45773272789974,
+          "inclination_p50": 71.41999736480778,
+          "inclination_p90": 84.52630965446068,
+          "bent_fraction": 0.2267080745341615,
+          "misalignment_fraction": 0.012422360248447204
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 322,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 79.14932540807203,
+          "elbow_p90": 170.97343182353242,
+          "body_alignment_p10": 163.19106016753557
+        }
+      },
+      "estimated_reps": 8,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:28:38.812645+00:00"
+    },
+    {
+      "id": "subject_010_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_010/push_up/good/side/subject_010_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_10",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "1ab199de6c8d66d5907e12ad981d4c6c80d3771b692dde6b542ef757c36a45d2",
+      "input_sha256": "1ab199de6c8d66d5907e12ad981d4c6c80d3771b692dde6b542ef757c36a45d2",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 468,
+      "summary": {
+        "frames": 468,
+        "valid_frames": 468,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 98.10326077405686,
+          "elbow_p50": 131.40859649951562,
+          "elbow_p90": 157.44372171325034,
+          "elbow_range": 59.34046093919348,
+          "alignment_p10": 172.60723473959968,
+          "alignment_p50": 174.04684182292485,
+          "inclination_p10": 72.1974251938242,
+          "inclination_p50": 77.74985958837777,
+          "inclination_p90": 84.71044730978741,
+          "bent_fraction": 0.1282051282051282,
+          "misalignment_fraction": 0.0
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 468,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 98.10326077405686,
+          "elbow_p90": 157.44372171325034,
+          "body_alignment_p10": 172.60723473959968
+        }
+      },
+      "estimated_reps": 20,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:28:49.467078+00:00"
+    },
+    {
+      "id": "subject_012_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_012/push_up/bad/side/subject_012_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_12",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "7cfb934b31b4a3a13baec389ff435cedb037f87b67aa8608b7c55562633f27e0",
+      "input_sha256": "7cfb934b31b4a3a13baec389ff435cedb037f87b67aa8608b7c55562633f27e0",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 374,
+      "summary": {
+        "frames": 374,
+        "valid_frames": 321,
+        "valid_fraction": 0.8582887700534759,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 81.48372942473908,
+          "elbow_p50": 134.03231720112638,
+          "elbow_p90": 159.82041319200326,
+          "elbow_range": 78.33668376726418,
+          "alignment_p10": 145.7160428595671,
+          "alignment_p50": 168.54128333966412,
+          "inclination_p10": 79.17792153548044,
+          "inclination_p50": 88.78720388412945,
+          "inclination_p90": 96.75260552339824,
+          "bent_fraction": 0.19937694704049844,
+          "misalignment_fraction": 0.17133956386292834
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 321,
+        "valid_fraction": 0.8582887700534759,
+        "reasons": [
+          "projected_body_misalignment"
+        ],
+        "measurements": {
+          "elbow_p10": 81.48372942473908,
+          "elbow_p90": 159.82041319200326,
+          "body_alignment_p10": 145.7160428595671
+        }
+      },
+      "estimated_reps": 8,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:28:57.296694+00:00"
+    },
+    {
+      "id": "subject_012_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_012/push_up/good/side/subject_012_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_12",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "53ffc16c2090adcab6ecf680c1561e80e3aaa387c3f20e2165d2943b851dea25",
+      "input_sha256": "53ffc16c2090adcab6ecf680c1561e80e3aaa387c3f20e2165d2943b851dea25",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 352,
+      "summary": {
+        "frames": 352,
+        "valid_frames": 352,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 82.75470757155362,
+          "elbow_p50": 124.41573975518298,
+          "elbow_p90": 145.78245993840207,
+          "elbow_range": 63.027752366848446,
+          "alignment_p10": 170.57197080987157,
+          "alignment_p50": 176.88927419355986,
+          "inclination_p10": 77.00694028834792,
+          "inclination_p50": 81.95062037790224,
+          "inclination_p90": 87.3708758762811,
+          "bent_fraction": 0.2784090909090909,
+          "misalignment_fraction": 0.019886363636363636
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 352,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "limited_projected_elbow_extension"
+        ],
+        "measurements": {
+          "elbow_p10": 82.75470757155362,
+          "elbow_p90": 145.78245993840207,
+          "body_alignment_p10": 170.57197080987157
+        }
+      },
+      "estimated_reps": 4,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:29:04.779107+00:00"
+    },
+    {
+      "id": "subject_013_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_013/push_up/bad/side/subject_013_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_13",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "cf263986f688bad9535a8675cee4f037b6369b02935d8fd0f81c7b4e0ee6059a",
+      "input_sha256": "cf263986f688bad9535a8675cee4f037b6369b02935d8fd0f81c7b4e0ee6059a",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 458,
+      "summary": {
+        "frames": 458,
+        "valid_frames": 458,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 104.13239379603884,
+          "elbow_p50": 139.37334893765893,
+          "elbow_p90": 155.82282408789698,
+          "elbow_range": 51.690430291858135,
+          "alignment_p10": 175.44177859076913,
+          "alignment_p50": 177.56876032374896,
+          "inclination_p10": 73.2386454059869,
+          "inclination_p50": 77.83984572713163,
+          "inclination_p90": 85.18192958696545,
+          "bent_fraction": 0.06986899563318777,
+          "misalignment_fraction": 0.004366812227074236
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 458,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 104.13239379603884,
+          "elbow_p90": 155.82282408789698,
+          "body_alignment_p10": 175.44177859076913
+        }
+      },
+      "estimated_reps": 7,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:29:15.475564+00:00"
+    },
+    {
+      "id": "subject_013_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_013/push_up/good/side/subject_013_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_13",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "1ab199de6c8d66d5907e12ad981d4c6c80d3771b692dde6b542ef757c36a45d2",
+      "input_sha256": "1ab199de6c8d66d5907e12ad981d4c6c80d3771b692dde6b542ef757c36a45d2",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 468,
+      "summary": {
+        "frames": 468,
+        "valid_frames": 468,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 98.10326077405686,
+          "elbow_p50": 131.40859649951562,
+          "elbow_p90": 157.44372171325034,
+          "elbow_range": 59.34046093919348,
+          "alignment_p10": 172.60723473959968,
+          "alignment_p50": 174.04684182292485,
+          "inclination_p10": 72.1974251938242,
+          "inclination_p50": 77.74985958837777,
+          "inclination_p90": 84.71044730978741,
+          "bent_fraction": 0.1282051282051282,
+          "misalignment_fraction": 0.0
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 468,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 98.10326077405686,
+          "elbow_p90": 157.44372171325034,
+          "body_alignment_p10": 172.60723473959968
+        }
+      },
+      "estimated_reps": 20,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:29:26.620758+00:00"
+    },
+    {
+      "id": "subject_014_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_014/push_up/bad/side/subject_014_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_14",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "3bc26e4710eef32ac59984b2c1f3efae90aa800d8ab4bb7322fae6af0ee07ffd",
+      "input_sha256": "3bc26e4710eef32ac59984b2c1f3efae90aa800d8ab4bb7322fae6af0ee07ffd",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 253,
+      "summary": {
+        "frames": 253,
+        "valid_frames": 253,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 82.34573203868898,
+          "elbow_p50": 139.88832542583157,
+          "elbow_p90": 169.10166230212832,
+          "elbow_range": 86.75593026343934,
+          "alignment_p10": 167.7618101354626,
+          "alignment_p50": 174.67055985465453,
+          "inclination_p10": 84.02845458802021,
+          "inclination_p50": 87.27123625213119,
+          "inclination_p90": 91.05952567995045,
+          "bent_fraction": 0.21739130434782608,
+          "misalignment_fraction": 0.007905138339920948
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 253,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 82.34573203868898,
+          "elbow_p90": 169.10166230212832,
+          "body_alignment_p10": 167.7618101354626
+        }
+      },
+      "estimated_reps": 15,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:29:33.293703+00:00"
+    },
+    {
+      "id": "subject_014_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_014/push_up/good/side/subject_014_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_14",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "d2fee53ef63e70d906be2f3c50978d0d9534f73b7e32d5412a13166425cf0c28",
+      "input_sha256": "d2fee53ef63e70d906be2f3c50978d0d9534f73b7e32d5412a13166425cf0c28",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 330,
+      "summary": {
+        "frames": 330,
+        "valid_frames": 330,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 78.46751121063465,
+          "elbow_p50": 118.74149446105633,
+          "elbow_p90": 157.7438620996862,
+          "elbow_range": 79.27635088905154,
+          "alignment_p10": 166.519740337963,
+          "alignment_p50": 170.85100923966152,
+          "inclination_p10": 83.38215103047007,
+          "inclination_p50": 90.0849974853885,
+          "inclination_p90": 97.03282221817592,
+          "bent_fraction": 0.36363636363636365,
+          "misalignment_fraction": 0.03939393939393939
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 330,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 78.46751121063465,
+          "elbow_p90": 157.7438620996862,
+          "body_alignment_p10": 166.519740337963
+        }
+      },
+      "estimated_reps": 16,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:29:41.569350+00:00"
+    },
+    {
+      "id": "subject_015_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_015/push_up/bad/side/subject_015_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_15",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "5886a6fcdc0a14c43cc23b093ec12bde568a40f8f9a70ca811a6dc5c1e29c8df",
+      "input_sha256": "5886a6fcdc0a14c43cc23b093ec12bde568a40f8f9a70ca811a6dc5c1e29c8df",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 205,
+      "summary": {
+        "frames": 205,
+        "valid_frames": 201,
+        "valid_fraction": 0.9804878048780488,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 71.52136784718878,
+          "elbow_p50": 161.55232782869552,
+          "elbow_p90": 173.2571883530511,
+          "elbow_range": 101.73582050586232,
+          "alignment_p10": 156.47521335048376,
+          "alignment_p50": 166.07463931460396,
+          "inclination_p10": 83.38809343245329,
+          "inclination_p50": 87.12501852379766,
+          "inclination_p90": 95.54063958830261,
+          "bent_fraction": 0.208955223880597,
+          "misalignment_fraction": 0.08955223880597014
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 201,
+        "valid_fraction": 0.9804878048780488,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 71.52136784718878,
+          "elbow_p90": 173.2571883530511,
+          "body_alignment_p10": 156.47521335048376
+        }
+      },
+      "estimated_reps": 4,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:29:46.273399+00:00"
+    },
+    {
+      "id": "subject_015_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_015/push_up/good/side/subject_015_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_15",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "882e6a18b8a0b3c7692b99d7f78c5cfc08bb28f9644632cace9b5e9cd5272f28",
+      "input_sha256": "882e6a18b8a0b3c7692b99d7f78c5cfc08bb28f9644632cace9b5e9cd5272f28",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 460,
+      "summary": {
+        "frames": 460,
+        "valid_frames": 460,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 68.95482144464049,
+          "elbow_p50": 111.44938810807321,
+          "elbow_p90": 164.23952264408334,
+          "elbow_range": 95.28470119944285,
+          "alignment_p10": 168.51012838760232,
+          "alignment_p50": 172.39569002431423,
+          "inclination_p10": 75.70069058275126,
+          "inclination_p50": 83.52811383646008,
+          "inclination_p90": 93.23224437321738,
+          "bent_fraction": 0.4282608695652174,
+          "misalignment_fraction": 0.0
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 460,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 68.95482144464049,
+          "elbow_p90": 164.23952264408334,
+          "body_alignment_p10": 168.51012838760232
+        }
+      },
+      "estimated_reps": 12,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:29:56.853167+00:00"
+    },
+    {
+      "id": "subject_016_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_016/push_up/bad/side/subject_016_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_16",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "3c2d66e9f8ae3960916e7532dcd72074b2caa0e34f5bcce094b68abfbc6f1e13",
+      "input_sha256": "3c2d66e9f8ae3960916e7532dcd72074b2caa0e34f5bcce094b68abfbc6f1e13",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 405,
+      "summary": {
+        "frames": 405,
+        "valid_frames": 405,
+        "valid_fraction": 1.0,
+        "eligible": false,
+        "reason": "insufficient_observed_movement",
+        "features": null
+      },
+      "uncalibrated_assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 405,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "insufficient_observed_movement"
+        ],
+        "measurements": {
+          "elbow_p10": 165.54629887455278,
+          "elbow_p90": 175.8786907482429,
+          "body_alignment_p10": 171.3370845536637
+        }
+      },
+      "estimated_reps": 0,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:30:06.040360+00:00"
+    },
+    {
+      "id": "subject_016_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_016/push_up/good/side/subject_016_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_16",
+      "original_split": "train",
+      "partition": "fit",
+      "sha256": "67e3fef9fbf3b51696882f73df22e01aea6adb422f26d642dedcddc9f9c6bae5",
+      "input_sha256": "67e3fef9fbf3b51696882f73df22e01aea6adb422f26d642dedcddc9f9c6bae5",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 382,
+      "summary": {
+        "frames": 382,
+        "valid_frames": 382,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 91.91926079551347,
+          "elbow_p50": 151.09054396302142,
+          "elbow_p90": 170.61324112014864,
+          "elbow_range": 78.69398032463518,
+          "alignment_p10": 172.6514940443325,
+          "alignment_p50": 176.71836009464403,
+          "inclination_p10": 79.33089586433204,
+          "inclination_p50": 83.1492649470129,
+          "inclination_p90": 87.5898661271328,
+          "bent_fraction": 0.1806282722513089,
+          "misalignment_fraction": 0.007853403141361256
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 382,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 91.91926079551347,
+          "elbow_p90": 170.61324112014864,
+          "body_alignment_p10": 172.6514940443325
+        }
+      },
+      "estimated_reps": 17,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:30:14.620527+00:00"
+    },
+    {
+      "id": "subject_004_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_004/push_up/bad/side/subject_004_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_4",
+      "original_split": "val",
+      "partition": "validation",
+      "sha256": "f5f774636562a11c212edbfd89597a966005df512608cf3740fea788219838fa",
+      "input_sha256": "f5f774636562a11c212edbfd89597a966005df512608cf3740fea788219838fa",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 412,
+      "summary": {
+        "frames": 412,
+        "valid_frames": 396,
+        "valid_fraction": 0.9611650485436893,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 126.02171971393543,
+          "elbow_p50": 161.44169094147531,
+          "elbow_p90": 171.71742918649835,
+          "elbow_range": 45.695709472562925,
+          "alignment_p10": 167.64786245535646,
+          "alignment_p50": 172.0939949731948,
+          "inclination_p10": 69.10655816210854,
+          "inclination_p50": 72.54269044801987,
+          "inclination_p90": 77.33032443268714,
+          "bent_fraction": 0.0,
+          "misalignment_fraction": 0.020202020202020204
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 396,
+        "valid_fraction": 0.9611650485436893,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 126.02171971393543,
+          "elbow_p90": 171.71742918649835,
+          "body_alignment_p10": 167.64786245535646
+        }
+      },
+      "estimated_reps": 0,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:30:24.016825+00:00"
+    },
+    {
+      "id": "subject_004_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_004/push_up/good/side/subject_004_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_4",
+      "original_split": "val",
+      "partition": "validation",
+      "sha256": "818bdfa65d3c233a5df5a7cd4ba16cc6adae25a8fd081893b0eda9df1bebb1cb",
+      "input_sha256": "818bdfa65d3c233a5df5a7cd4ba16cc6adae25a8fd081893b0eda9df1bebb1cb",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 306,
+      "summary": {
+        "frames": 306,
+        "valid_frames": 306,
+        "valid_fraction": 1.0,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 111.72143977152717,
+          "elbow_p50": 143.90601664800556,
+          "elbow_p90": 170.45064973034343,
+          "elbow_range": 58.729209958816256,
+          "alignment_p10": 164.32409217937794,
+          "alignment_p50": 172.02902404041734,
+          "inclination_p10": 70.01763314959948,
+          "inclination_p50": 72.93896734547643,
+          "inclination_p90": 76.41426374713365,
+          "bent_fraction": 0.0,
+          "misalignment_fraction": 0.06862745098039216
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 306,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 111.72143977152717,
+          "elbow_p90": 170.45064973034343,
+          "body_alignment_p10": 164.32409217937794
+        }
+      },
+      "estimated_reps": 0,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:30:31.698918+00:00"
+    },
+    {
+      "id": "subject_006_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_006/push_up/bad/side/subject_006_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_6",
+      "original_split": "val",
+      "partition": "validation",
+      "sha256": "3a9431f8f5f0c91a84be3c69ca778484a398b5ecedaaa99377f56782a0fb2fb6",
+      "input_sha256": "3a9431f8f5f0c91a84be3c69ca778484a398b5ecedaaa99377f56782a0fb2fb6",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 272,
+      "summary": {
+        "frames": 272,
+        "valid_frames": 269,
+        "valid_fraction": 0.9889705882352942,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 91.48402420134965,
+          "elbow_p50": 118.59638079449398,
+          "elbow_p90": 157.573817029823,
+          "elbow_range": 66.08979282847335,
+          "alignment_p10": 136.4941473177276,
+          "alignment_p50": 143.9107304725017,
+          "inclination_p10": 96.3665933723574,
+          "inclination_p50": 104.78569000546337,
+          "inclination_p90": 114.50396840308267,
+          "bent_fraction": 0.275092936802974,
+          "misalignment_fraction": 0.9925650557620818
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 269,
+        "valid_fraction": 0.9889705882352942,
+        "reasons": [
+          "projected_body_misalignment"
+        ],
+        "measurements": {
+          "elbow_p10": 91.48402420134965,
+          "elbow_p90": 157.573817029823,
+          "body_alignment_p10": 136.4941473177276
+        }
+      },
+      "estimated_reps": 7,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:30:38.438381+00:00"
+    },
+    {
+      "id": "subject_006_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_006/push_up/good/side/subject_006_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_6",
+      "original_split": "val",
+      "partition": "validation",
+      "sha256": "8940613690fd0d031650f2a606f370642edc043d5dd9042c070b998e1144c702",
+      "input_sha256": "8940613690fd0d031650f2a606f370642edc043d5dd9042c070b998e1144c702",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 328,
+      "summary": {
+        "frames": 328,
+        "valid_frames": 326,
+        "valid_fraction": 0.9939024390243902,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 104.72156039812067,
+          "elbow_p50": 125.46589472823051,
+          "elbow_p90": 152.5273652276536,
+          "elbow_range": 47.80580482953293,
+          "alignment_p10": 172.52966649149093,
+          "alignment_p50": 176.52336089830828,
+          "inclination_p10": 79.26853398077353,
+          "inclination_p50": 84.8409929904928,
+          "inclination_p90": 89.83852480370706,
+          "bent_fraction": 0.024539877300613498,
+          "misalignment_fraction": 0.0
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 326,
+        "valid_fraction": 0.9939024390243902,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 104.72156039812067,
+          "elbow_p90": 152.5273652276536,
+          "body_alignment_p10": 172.52966649149093
+        }
+      },
+      "estimated_reps": 5,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:30:46.571375+00:00"
+    },
+    {
+      "id": "subject_011_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_011/push_up/bad/side/subject_011_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_11",
+      "original_split": "val",
+      "partition": "validation",
+      "sha256": "8e9c090ad14b0bcbbf9dc7222ccee4180dd6a2426803aff634882d1698ad8bb8",
+      "input_sha256": "8e9c090ad14b0bcbbf9dc7222ccee4180dd6a2426803aff634882d1698ad8bb8",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 299,
+      "summary": {
+        "frames": 299,
+        "valid_frames": 274,
+        "valid_fraction": 0.9163879598662207,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 74.06190909720146,
+          "elbow_p50": 157.375474789908,
+          "elbow_p90": 170.08684286545713,
+          "elbow_range": 96.02493376825566,
+          "alignment_p10": 169.05976854865835,
+          "alignment_p50": 173.91864247979777,
+          "inclination_p10": 75.38754581484676,
+          "inclination_p50": 81.3463510169766,
+          "inclination_p90": 89.2382506258619,
+          "bent_fraction": 0.291970802919708,
+          "misalignment_fraction": 0.014598540145985401
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 274,
+        "valid_fraction": 0.9163879598662207,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 74.06190909720146,
+          "elbow_p90": 170.08684286545713,
+          "body_alignment_p10": 169.05976854865835
+        }
+      },
+      "estimated_reps": 5,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:30:53.045033+00:00"
+    },
+    {
+      "id": "subject_011_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_011/push_up/good/side/subject_011_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_11",
+      "original_split": "val",
+      "partition": "validation",
+      "sha256": "134d6c9a86b79f06265acec02aeb00037f7977ab4713afc192c3aad2a5d7955a",
+      "input_sha256": "134d6c9a86b79f06265acec02aeb00037f7977ab4713afc192c3aad2a5d7955a",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 184,
+      "summary": {
+        "frames": 184,
+        "valid_frames": 148,
+        "valid_fraction": 0.8043478260869565,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 76.15490875707303,
+          "elbow_p50": 120.02557895510711,
+          "elbow_p90": 152.58705978315012,
+          "elbow_range": 76.4321510260771,
+          "alignment_p10": 169.28075703167966,
+          "alignment_p50": 173.05641921492267,
+          "inclination_p10": 69.37842023423008,
+          "inclination_p50": 74.59423096441489,
+          "inclination_p90": 82.99026242639012,
+          "bent_fraction": 0.33783783783783783,
+          "misalignment_fraction": 0.0
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 148,
+        "valid_fraction": 0.8043478260869565,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 76.15490875707303,
+          "elbow_p90": 152.58705978315012,
+          "body_alignment_p10": 169.28075703167966
+        }
+      },
+      "estimated_reps": 4,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:30:57.053928+00:00"
+    },
+    {
+      "id": "subject_024_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_024/push_up/bad/side/subject_024_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_24",
+      "original_split": "val",
+      "partition": "validation",
+      "sha256": "72b3f3a73db648855c29af40392deb9a3313065bdf48ac01177ad91e61c8f02a",
+      "input_sha256": "72b3f3a73db648855c29af40392deb9a3313065bdf48ac01177ad91e61c8f02a",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 319,
+      "summary": {
+        "frames": 319,
+        "valid_frames": 254,
+        "valid_fraction": 0.7962382445141066,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 112.15462540150723,
+          "elbow_p50": 132.91784368863938,
+          "elbow_p90": 152.64205222136306,
+          "elbow_range": 40.48742681985583,
+          "alignment_p10": 170.2828016362576,
+          "alignment_p50": 175.19499081020302,
+          "inclination_p10": 72.79277782512017,
+          "inclination_p50": 77.785732689929,
+          "inclination_p90": 89.49684000191353,
+          "bent_fraction": 0.07086614173228346,
+          "misalignment_fraction": 0.03937007874015748
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 254,
+        "valid_fraction": 0.7962382445141066,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 112.15462540150723,
+          "elbow_p90": 152.64205222136306,
+          "body_alignment_p10": 170.2828016362576
+        }
+      },
+      "estimated_reps": 1,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:31:03.230471+00:00"
+    },
+    {
+      "id": "subject_024_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_024/push_up/good/side/subject_024_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_24",
+      "original_split": "val",
+      "partition": "validation",
+      "sha256": "df08b3820df7c7fc9d3c4d55094d6605c7c54c965bd91b5dec017e6e22ba6e09",
+      "input_sha256": "df08b3820df7c7fc9d3c4d55094d6605c7c54c965bd91b5dec017e6e22ba6e09",
+      "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+      "pipeline_fingerprint": "8cdd1cd0b8d12b83dcd7d63f6d706af1f2681c5c0d3d54ff8da5ea982f66006a",
+      "fps": 15.0,
+      "frames": 290,
+      "summary": {
+        "frames": 290,
+        "valid_frames": 276,
+        "valid_fraction": 0.9517241379310345,
+        "eligible": true,
+        "reason": null,
+        "features": {
+          "elbow_p10": 88.05091767664729,
+          "elbow_p50": 122.60744569316671,
+          "elbow_p90": 160.81104138889552,
+          "elbow_range": 72.76012371224823,
+          "alignment_p10": 172.14951638271657,
+          "alignment_p50": 176.01297880462556,
+          "inclination_p10": 71.18886981655075,
+          "inclination_p50": 78.68468362472143,
+          "inclination_p90": 92.46659217210771,
+          "bent_fraction": 0.21014492753623187,
+          "misalignment_fraction": 0.057971014492753624
+        }
+      },
+      "uncalibrated_assessment": {
+        "prediction": "correct",
+        "valid_frames": 276,
+        "valid_fraction": 0.9517241379310345,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 88.05091767664729,
+          "elbow_p90": 160.81104138889552,
+          "body_alignment_p10": 172.14951638271657
+        }
+      },
+      "estimated_reps": 7,
+      "columns": [
+        "elbow_angle",
+        "body_alignment",
+        "body_inclination"
+      ],
+      "measured_at_utc": "2026-11-18T14:31:08.957370+00:00"
+    }
+  ]
+}

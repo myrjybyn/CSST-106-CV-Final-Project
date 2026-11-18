@@ -1,0 +1,35 @@
+POSTURE CHECK — CHECKPOINT 4 LAPTOP SPEED CHECK
+
+This is a benchmark-only code package. It does not include videos, model weights,
+or the interface logo. Extract into a separate folder before running it.
+
+1. From your existing project, copy models/pose_landmarker_lite.task into this
+   folder's models/ directory (create the directory if needed).
+2. Copy your ORIGINAL four videos into data/raw/phase3_user/:
+   push_up.mp4, squat.mp4, lunge.mp4, jumping_jacks.mp4.
+   Do not re-encode or rename them. Checksums must match checkpoint 3.
+3. Plug in the same laptop, close heavy applications, and use the same power mode
+   as before (the earlier log recorded Balanced). Use the Python environment
+   that successfully ran the earlier benchmark. From this extracted folder run:
+
+   python src/evaluate.py --suite benchmark --runtime-label laptop --output docs/milestone4/laptop_benchmark.json
+
+   If your working Python is in another project's .venv, replace python with its
+   full executable path. PowerShell example (replace the example path):
+   & "C:\path\to\existing-project\.venv\Scripts\python.exe" src/evaluate.py --suite benchmark --runtime-label laptop --output docs/milestone4/laptop_benchmark.json
+
+4. WAIT for all four current-method runs and the final Completed message. Upload
+   docs/milestone4/laptop_benchmark.json. That file must include completed_at_utc.
+   If the script errors, send the terminal error. Results are never overwritten;
+   choose a new output filename if rerunning.
+
+The package verifies code, model, split-manifest and input checksums. Do not edit
+src/ or the freeze file before the run. It records Python/dependency versions,
+CPU/OS and (when available) Windows RAM and active power mode. If hardware capture
+fails, provide CPU/RAM/power mode separately.
+
+This benchmark measures inference + preprocessing + rules + counting. It excludes
+preview rendering and video encoding, matching the processing-FPS scope used at
+checkpoint 3. These four previously inspected clips are a speed/regression set,
+not fresh held-out accuracy evidence. The 12-video held-out test is separate.
+No checkpoint-3 git snapshot or Mendeley videos are needed for this speed run.

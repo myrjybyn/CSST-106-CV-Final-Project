@@ -1,0 +1,151 @@
+{
+  "purpose": "Previously inspected regression set; not independent held-out accuracy; no threshold tuning on these outputs.",
+  "started_at_utc": "2026-11-16T08:41:13.436346+00:00",
+  "source_sha256": {
+    "src/posture_check/__init__.py": "b0b321613c14ed5dccb7a11b09244385a184192ed54b16f55cbb0b16e1b1ff4c",
+    "src/posture_check/__main__.py": "ca14589e6ebec05a8d62adb19a112f2179731d7e1f9a4bb046c594b431e0710d",
+    "src/posture_check/baseline.py": "dc85f8ed5786199264535a8c701e6d5bde54e8ea0ea9cb2b99017eae7221f0ac",
+    "src/posture_check/clip.py": "9f4eeab1048188686e03414480fa471ea260d18365baa75d2699b84674a39da8",
+    "src/posture_check/counting.py": "4b30a846a60127148285e10c5db869d70944b0c76816835c8d04ddb4939bfb1b",
+    "src/posture_check/exercises.py": "ddc01b07c5f9253307776ddf3fe700060d3d7e3beef3f51b3e275e3ca17d5ca9",
+    "src/posture_check/features.py": "874c35447dacb84337270af5c86ea8296ee31bd78d4d33171d43e990e133b2f5",
+    "src/posture_check/gui.py": "043c3101fcc4e773fe378af9921f0c8132db6afd3a850e017ea07d9e840581ae",
+    "src/posture_check/pose.py": "2b527e78dc265798eb7a919c68cd6f37f3fb291ef3c4b8dfb4561f8785fa3443",
+    "src/posture_check/preprocessing.py": "c9248fc7716259e0a2cd72ebb9df4ca45202487cd0d707aa9f892d8246af782b",
+    "src/posture_check/quality.py": "cba910cb6ddcac02b20ad3c9b5d60e9b4357172d81cd0027d16a6fc215c2d5cd",
+    "src/posture_check/temporal.py": "c9fcd3942c5f928112157ff088da5eaf07bd478d00156efaa4b192946090049f"
+  },
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "cpu": "",
+    "logical_cpus": 5
+  },
+  "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "reference_origin": "User-supplied manual labels and counts in chat",
+  "reference_limitations": "Supplied after predictions were reported; not independently expert-verified.",
+  "runs": [
+    {
+      "clip_id": "pushup",
+      "input_sha256": "07dba628e8fe49d3e62e75948b592cb72e73fa25f8077d7a63c36be074bd13d0",
+      "frames": 363,
+      "processing_seconds": 8.27128817699736,
+      "processing_fps": 43.88675527102432,
+      "decode_and_processing_fps": 40.764790352012234,
+      "timing_scope": "CPU inference, preprocessing, rules and counting; no drawing or encoding",
+      "reference_reps": 4,
+      "reference_form": "correct",
+      "previous_reps": 2,
+      "estimated_reps": 2,
+      "previous_assessable_frames": 208,
+      "assessable_frames": 207,
+      "padding_removed_frames": 0,
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 207,
+        "valid_fraction": 0.5702479338842975,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 72.14044280869291,
+          "elbow_p90": 166.33203049739691,
+          "body_alignment_p10": 168.84237298823172
+        }
+      },
+      "previous_clip_prediction": "correct"
+    },
+    {
+      "clip_id": "squat",
+      "input_sha256": "2008316db030ac03f8a8c436a2af6e4ebe2a8ad08f2dd52ce3d5b3fea3511d14",
+      "frames": 483,
+      "processing_seconds": 11.973349654999993,
+      "processing_fps": 40.339588662918764,
+      "decode_and_processing_fps": 37.65105680578846,
+      "timing_scope": "CPU inference, preprocessing, rules and counting; no drawing or encoding",
+      "reference_reps": 4,
+      "reference_form": "correct",
+      "previous_reps": 4,
+      "estimated_reps": 4,
+      "previous_assessable_frames": 483,
+      "assessable_frames": 483,
+      "padding_removed_frames": 483,
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 483,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 76.68160189121643,
+          "knee_p90": 175.8493789021635,
+          "active_trunk_lean_p90": 35.356236544369594
+        }
+      },
+      "previous_clip_prediction": "correct"
+    },
+    {
+      "clip_id": "lunge",
+      "input_sha256": "65bf2eb6ec7c57f64f10fddfeab3b09013d35f86f04c47c99a0eeb2637090e8d",
+      "frames": 278,
+      "processing_seconds": 6.554753374000711,
+      "processing_fps": 42.41196947282274,
+      "decode_and_processing_fps": 39.38719551437344,
+      "timing_scope": "CPU inference, preprocessing, rules and counting; no drawing or encoding",
+      "reference_reps": 3,
+      "reference_form": "correct",
+      "previous_reps": 0,
+      "estimated_reps": 2,
+      "previous_assessable_frames": 173,
+      "assessable_frames": 186,
+      "padding_removed_frames": 0,
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 186,
+        "valid_fraction": 0.6690647482014388,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 81.78045871726195,
+          "knee_p90": 154.6191403122239,
+          "active_trunk_lean_p90": 16.625574738393535
+        }
+      },
+      "previous_clip_prediction": "correct"
+    },
+    {
+      "clip_id": "jumping_jack",
+      "input_sha256": "e172c3b523d6428d99f5b6eb1d3511f4f3ed68fc5c7eb852c3694d72a3ce6f31",
+      "frames": 576,
+      "processing_seconds": 13.75031416900174,
+      "processing_fps": 41.88995196186249,
+      "decode_and_processing_fps": 38.889902437466,
+      "timing_scope": "CPU inference, preprocessing, rules and counting; no drawing or encoding",
+      "reference_reps": 10,
+      "reference_form": "correct",
+      "previous_reps": 1,
+      "estimated_reps": 6,
+      "previous_assessable_frames": 478,
+      "assessable_frames": 469,
+      "padding_removed_frames": 0,
+      "clip_assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 469,
+        "valid_fraction": 0.8142361111111112,
+        "reasons": [
+          "form_classification_not_validated"
+        ],
+        "measurements": {
+          "open_frames": 85,
+          "closed_frames": 49
+        },
+        "movement_observed": true
+      },
+      "previous_clip_prediction": "unassessable"
+    }
+  ],
+  "summary": {
+    "processing_fps": 41.92385577844678,
+    "previous_count_mae": 3.5,
+    "candidate_count_mae": 1.75,
+    "previous_form_agreement": 0.75,
+    "candidate_form_agreement": 0.75
+  },
+  "completed_at_utc": "2026-11-16T08:41:57.930049+00:00"
+}

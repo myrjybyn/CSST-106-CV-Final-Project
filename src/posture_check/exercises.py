@@ -174,13 +174,24 @@ NEW_RULES = {
 }
 
 
-def rules_for_exercise(exercise):
+def rules_for_exercise(exercise, *, calibrated=False):
     if exercise not in SUPPORTED_EXERCISES:
         raise ValueError(f'Unsupported exercise: {exercise}')
+    if calibrated:
+        from .calibrated import load_profile
+        profile = load_profile()
+        config = profile['exercises'].get(exercise) if profile else None
+        if config and config['enabled']:
+            return {'calibration_id': profile['calibration_id'], 'tree': config['tree'], 'feature_names': config['feature_names']}
     return SQUAT_RULES if exercise == 'squat' else NEW_RULES[exercise]
 
 
-def summarize_for_exercise(records, exercise='squat'):
+def summarize_for_exercise(records, exercise='squat', *, calibrated=False):
+    if calibrated:
+        from .calibrated import assess_clip
+        result = assess_clip(records, exercise)
+        if result is not None:
+            return result
     if exercise == 'squat':
         return summarize_squat(records)
     rules = rules_for_exercise(exercise)

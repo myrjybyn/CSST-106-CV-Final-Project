@@ -1,0 +1,10 @@
+{
+  "input_id": "subject_011_squat_bad_side",
+  "partition": "validation",
+  "frames": 435,
+  "expected_prediction_from_cached_validation_features": "incorrect",
+  "actual_prediction": "incorrect",
+  "calibration_id": "form-rules-v1",
+  "status": "PASS",
+  "note": "Native inference/annotation/codec integration, not an additional held-out accuracy measurement."
+}

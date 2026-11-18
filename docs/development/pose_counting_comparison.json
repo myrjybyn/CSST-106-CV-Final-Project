@@ -1,0 +1,365 @@
+{
+  "started_at_utc": "2026-11-16T08:35:17.349543+00:00",
+  "purpose": "Development engineering comparison; not held-out accuracy. Selection fixed before observing new outputs. No phase3_user clips used.",
+  "manifest_sha256": "ed94a6620c3ab1c3fae166a7100f06a6244db240f915fece92228ca635f039de",
+  "reference_commit": "d4cca1aedf5128a1ede74089c218362c55bb8f99",
+  "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "source_sha256": {
+    "src/posture_check/__init__.py": "b0b321613c14ed5dccb7a11b09244385a184192ed54b16f55cbb0b16e1b1ff4c",
+    "src/posture_check/__main__.py": "ca14589e6ebec05a8d62adb19a112f2179731d7e1f9a4bb046c594b431e0710d",
+    "src/posture_check/baseline.py": "dc85f8ed5786199264535a8c701e6d5bde54e8ea0ea9cb2b99017eae7221f0ac",
+    "src/posture_check/clip.py": "9f4eeab1048188686e03414480fa471ea260d18365baa75d2699b84674a39da8",
+    "src/posture_check/counting.py": "4b30a846a60127148285e10c5db869d70944b0c76816835c8d04ddb4939bfb1b",
+    "src/posture_check/exercises.py": "ddc01b07c5f9253307776ddf3fe700060d3d7e3beef3f51b3e275e3ca17d5ca9",
+    "src/posture_check/features.py": "874c35447dacb84337270af5c86ea8296ee31bd78d4d33171d43e990e133b2f5",
+    "src/posture_check/gui.py": "043c3101fcc4e773fe378af9921f0c8132db6afd3a850e017ea07d9e840581ae",
+    "src/posture_check/pose.py": "2b527e78dc265798eb7a919c68cd6f37f3fb291ef3c4b8dfb4561f8785fa3443",
+    "src/posture_check/preprocessing.py": "c9248fc7716259e0a2cd72ebb9df4ca45202487cd0d707aa9f892d8246af782b",
+    "src/posture_check/quality.py": "cba910cb6ddcac02b20ad3c9b5d60e9b4357172d81cd0027d16a6fc215c2d5cd",
+    "src/posture_check/temporal.py": "c9fcd3942c5f928112157ff088da5eaf07bd478d00156efaa4b192946090049f"
+  },
+  "inputs": [
+    {
+      "id": "pushup_correct",
+      "file": "mendeley/Dataset Subject-wise/subject_001/push_up/good/side/subject_001_push_up_good_side.mp4",
+      "dataset": "mendeley",
+      "split": "train",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "participant": "mendeley_1",
+      "sha256": "f437f915e8d1cb8dd651bbf3f63a80527bac74200429075bd1d3d6ec7c6a6a0d"
+    },
+    {
+      "id": "pushup_incorrect",
+      "file": "mendeley/Dataset Subject-wise/subject_001/push_up/bad/side/subject_001_push_up_bad_side.mp4",
+      "dataset": "mendeley",
+      "split": "train",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "participant": "mendeley_1",
+      "sha256": "d41d899c9c89c5cc99bb8e3c3602f284aa774371632c79900bb918b1b80e1976"
+    },
+    {
+      "id": "squat_correct",
+      "file": "mendeley/Dataset Subject-wise/subject_001/squat/good/side/subject_001_squat_good_side.mp4",
+      "dataset": "mendeley",
+      "split": "train",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "participant": "mendeley_1",
+      "sha256": "71408510449717414d614e1e1a0a7ca498b7d8463f81d3375ea9da87fc18e7af"
+    },
+    {
+      "id": "squat_incorrect",
+      "file": "mendeley/Dataset Subject-wise/subject_001/squat/bad/side/subject_001_squat_bad_side.mp4",
+      "dataset": "mendeley",
+      "split": "train",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "participant": "mendeley_1",
+      "sha256": "68e23ba81449591d793cb71c93bff36083d2c3c552ac984309b8ddb834f12c04"
+    },
+    {
+      "id": "lunge_half_profile",
+      "file": "rehab24/videos/Ex5/PM_021-Camera17-30fps.mp4",
+      "dataset": "rehab24",
+      "split": "train",
+      "exercise": "lunge",
+      "reference_form": null,
+      "reference_reps": null,
+      "source_annotated_repetitions": 20,
+      "participant": "2",
+      "note": "Mixed correct/incorrect source reps, half-profile view; no whole-clip form reference. Source annotation count is context only: full-cycle counting convention not independently reconciled.",
+      "sha256": "eb06c4c88e6b140853b4f8958f3e91e51ba164f057a87549abcf241209170b7f"
+    }
+  ],
+  "limitations": "No independent repetition references for these full videos. No separate jumping-jack development video is available. Do not tune using the Phase 3 user test clips.",
+  "runs": [
+    {
+      "clip_id": "pushup_correct",
+      "exercise": "pushup",
+      "version": "reference",
+      "frames": 434,
+      "assessable_frames": 214,
+      "pose_frames": 366,
+      "estimated_reps": 2,
+      "reference_form": "correct",
+      "clip_assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 214,
+        "valid_fraction": 0.4930875576036866,
+        "reasons": [
+          "insufficient_pose_coverage"
+        ],
+        "measurements": null
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "not_recorded": 434
+      },
+      "processing_fps": 34.246051255846034,
+      "decode_and_processing_fps": 32.787855971532814
+    },
+    {
+      "clip_id": "pushup_correct",
+      "exercise": "pushup",
+      "version": "candidate",
+      "frames": 434,
+      "assessable_frames": 371,
+      "pose_frames": 429,
+      "estimated_reps": 4,
+      "reference_form": "correct",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 371,
+        "valid_fraction": 0.8548387096774194,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 106.93686626355827,
+          "elbow_p90": 162.90342657953283,
+          "body_alignment_p10": 167.41126990727864
+        }
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "assessable": 371,
+        "unsupported_geometry_or_scale": 16,
+        "no_pose": 5,
+        "outside_frame": 41,
+        "required_joints_not_visible": 1
+      },
+      "processing_fps": 40.98675531058813,
+      "decode_and_processing_fps": 38.77632481760938
+    },
+    {
+      "clip_id": "pushup_incorrect",
+      "exercise": "pushup",
+      "version": "reference",
+      "frames": 378,
+      "assessable_frames": 340,
+      "pose_frames": 372,
+      "estimated_reps": 1,
+      "reference_form": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 340,
+        "valid_fraction": 0.8994708994708994,
+        "reasons": [
+          "limited_projected_elbow_flexion",
+          "projected_body_misalignment"
+        ],
+        "measurements": {
+          "elbow_p10": 119.85325252909949,
+          "elbow_p90": 168.9300010874087,
+          "body_alignment_p10": 150.15047958155986
+        }
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "not_recorded": 378
+      },
+      "processing_fps": 28.901846257039136,
+      "decode_and_processing_fps": 27.551257646179206
+    },
+    {
+      "clip_id": "pushup_incorrect",
+      "exercise": "pushup",
+      "version": "candidate",
+      "frames": 378,
+      "assessable_frames": 357,
+      "pose_frames": 378,
+      "estimated_reps": 11,
+      "reference_form": "incorrect",
+      "clip_assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 357,
+        "valid_fraction": 0.9444444444444444,
+        "reasons": [
+          "limited_projected_elbow_flexion",
+          "projected_body_misalignment"
+        ],
+        "measurements": {
+          "elbow_p10": 107.7536112215277,
+          "elbow_p90": 169.0944383760908,
+          "body_alignment_p10": 150.91885285922945
+        }
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "unsupported_geometry_or_scale": 21,
+        "assessable": 357
+      },
+      "processing_fps": 45.252980836437175,
+      "decode_and_processing_fps": 42.62444488281165
+    },
+    {
+      "clip_id": "squat_correct",
+      "exercise": "squat",
+      "version": "reference",
+      "frames": 479,
+      "assessable_frames": 89,
+      "pose_frames": 287,
+      "estimated_reps": 0,
+      "reference_form": "correct",
+      "clip_assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 89,
+        "valid_fraction": 0.18580375782881003,
+        "reasons": [
+          "insufficient_pose_coverage"
+        ],
+        "measurements": null
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "not_recorded": 479
+      },
+      "processing_fps": 32.051374854603935,
+      "decode_and_processing_fps": 30.62863064378276
+    },
+    {
+      "clip_id": "squat_correct",
+      "exercise": "squat",
+      "version": "candidate",
+      "frames": 479,
+      "assessable_frames": 79,
+      "pose_frames": 344,
+      "estimated_reps": 0,
+      "reference_form": "correct",
+      "clip_assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 79,
+        "valid_fraction": 0.1649269311064718,
+        "reasons": [
+          "insufficient_pose_coverage"
+        ],
+        "measurements": null
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "unsupported_geometry_or_scale": 192,
+        "no_pose": 135,
+        "assessable": 79,
+        "required_joints_not_visible": 73
+      },
+      "processing_fps": 40.64769866859292,
+      "decode_and_processing_fps": 38.54628770576672
+    },
+    {
+      "clip_id": "squat_incorrect",
+      "exercise": "squat",
+      "version": "reference",
+      "frames": 485,
+      "assessable_frames": 190,
+      "pose_frames": 327,
+      "estimated_reps": 0,
+      "reference_form": "incorrect",
+      "clip_assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 190,
+        "valid_fraction": 0.3917525773195876,
+        "reasons": [
+          "insufficient_pose_coverage"
+        ],
+        "measurements": null
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "not_recorded": 485
+      },
+      "processing_fps": 32.88467971051831,
+      "decode_and_processing_fps": 31.366861042428724
+    },
+    {
+      "clip_id": "squat_incorrect",
+      "exercise": "squat",
+      "version": "candidate",
+      "frames": 485,
+      "assessable_frames": 231,
+      "pose_frames": 391,
+      "estimated_reps": 3,
+      "reference_form": "incorrect",
+      "clip_assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 231,
+        "valid_fraction": 0.4762886597938144,
+        "reasons": [
+          "insufficient_pose_coverage"
+        ],
+        "measurements": null
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "no_pose": 94,
+        "unsupported_geometry_or_scale": 150,
+        "assessable": 231,
+        "required_joints_not_visible": 10
+      },
+      "processing_fps": 39.073598579363576,
+      "decode_and_processing_fps": 36.859149517881136
+    },
+    {
+      "clip_id": "lunge_half_profile",
+      "exercise": "lunge",
+      "version": "reference",
+      "frames": 2846,
+      "assessable_frames": 1664,
+      "pose_frames": 2023,
+      "estimated_reps": 9,
+      "reference_form": null,
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 1664,
+        "valid_fraction": 0.5846802529866479,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 102.8604210089478,
+          "knee_p90": 174.9162045385875,
+          "active_trunk_lean_p90": 9.986119004503133
+        }
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "not_recorded": 2846
+      },
+      "processing_fps": 36.2009779574153,
+      "decode_and_processing_fps": 26.13787361224667
+    },
+    {
+      "clip_id": "lunge_half_profile",
+      "exercise": "lunge",
+      "version": "candidate",
+      "frames": 2846,
+      "assessable_frames": 2735,
+      "pose_frames": 2846,
+      "estimated_reps": 15,
+      "reference_form": null,
+      "clip_assessment": {
+        "prediction": "correct",
+        "valid_frames": 2735,
+        "valid_fraction": 0.9609978917779339,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 101.30759923901249,
+          "knee_p90": 175.20134682842175,
+          "active_trunk_lean_p90": 11.063869971775814
+        }
+      },
+      "padding_removed_frames": 0,
+      "assessability_reasons": {
+        "required_joints_not_visible": 86,
+        "assessable": 2735,
+        "unsupported_geometry_or_scale": 25
+      },
+      "processing_fps": 40.68502193422626,
+      "decode_and_processing_fps": 28.595450009979245
+    }
+  ],
+  "completed_at_utc": "2026-11-16T08:40:31.812791+00:00"
+}

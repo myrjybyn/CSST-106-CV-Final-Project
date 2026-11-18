@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "completed_at_utc": "2026-11-18T14:44:16.731649+00:00",
+  "input_id": "subject_011_squat_bad_side",
+  "partition": "validation",
+  "condition": "Virtual desktop; validation video substituted for webcam; actual pose inference and new session classifier.",
+  "actual_session_label": "Session form estimate: review technique",
+  "capture_released": true,
+  "window_closed": true,
+  "scope": "Software integration only; not physical laptop testing or live-prefix accuracy."
+}

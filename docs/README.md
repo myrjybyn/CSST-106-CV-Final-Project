@@ -43,3 +43,29 @@ former `reports/phase3/` location. Current files and new generator outputs use
 
 Generated download ZIPs are stored locally in `docs/` and excluded from Git;
 the underlying report, scripts, metrics and evidence are versioned here.
+
+## Milestone 4
+
+- [Hand-in status and commands](milestone4/README.md)
+- [Editable application/testing report](milestone4/Checkpoint4_Application_Testing_Report.docx)
+- [Held-out test results](milestone4/heldout_results.json) and [CSV](milestone4/heldout_results.csv)
+- [All 25 test cases](milestone4/test_cases.csv)
+- [Laptop benchmark instructions](milestone4/LAPTOP_BENCHMARK.txt)
+- [Interface captures and GUI test log](milestone4/evidence/)
+
+## Ongoing development
+
+- [Pose coverage and repetition-counting review](development/POSE_COUNTING_REVIEW.md)
+- [Fixed training-only comparison manifest](development/pose_counting_manifest.json)
+- [Development measurements](development/pose_counting_comparison.json)
+- [Known-clip regression check](development/phase3_regression.json) — previously inspected clips, not a fresh held-out test.
+
+## Current form calibration
+
+- [Calibration protocol and current status](calibration/README.md)
+- [Editable calibration results](calibration/Calibrated_Form_Results.docx)
+- [Fitting and validation decisions](calibration/fitting_results.json)
+- [Prospective test results](calibration/prospective_results.json) and [CSV](calibration/prospective_results.csv)
+- [Calibrated-version laptop instructions](calibration/LAPTOP_BENCHMARK.txt)
+
+The earlier checkpoint-four report describes v2. Calibration is a separate, versioned supplement; its new test set is not the same set used in the earlier 41.7% result.

@@ -14,6 +14,8 @@ from PIL import Image, ImageTk, ImageOps
 from .__main__ import process, CONNECTIONS
 from .pose import PoseEstimator
 from .temporal import TemporalAnalyzer
+from .form_features import SessionAngles, COLUMNS
+from .calibrated import assess_summary, require_compatible_model
 
 ROOT = Path(__file__).resolve().parents[2]
 LOGO = ROOT / 'assets' / 'posture_check_logo.png'
@@ -45,18 +47,29 @@ def camera_worker(mailbox, stop, model, exercise, camera, mirror, skeleton):
         capture.set(cv2.CAP_PROP_FRAME_WIDTH, 960)
         capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 540)
         capture.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-        estimator = PoseEstimator(model)
+        require_compatible_model(model, exercise)
+        estimator = PoseEstimator(model, video=True)
         analyzer = TemporalAnalyzer(exercise, 30)
+        session = SessionAngles(exercise) if exercise in COLUMNS else None
+        session_result = None
+        since_summary = 1.0
         previous = time.perf_counter()
         while not stop.is_set():
             ok, frame = capture.read()
             if not ok:
                 raise RuntimeError('The camera stopped sending frames. Reconnect it and try again.')
-            landmarks, raw = process(frame, estimator, exercise)
+            landmarks, raw = process(frame, estimator, exercise, enhanced=True)
             now = time.perf_counter()
             dt = max(now - previous, .001)
             previous = now
             result = analyzer.update(raw, dt_seconds=dt)
+            if session is not None:
+                session.update(result)
+                since_summary += dt
+                if since_summary >= 1.0:
+                    session_result = assess_summary(exercise, session.summary())
+                    since_summary = 0.0
+            result['session_form'] = session_result
             if skeleton and landmarks and result['features'] is not None:
                 h, w = frame.shape[:2]
                 for a, b in CONNECTIONS:
@@ -212,6 +225,9 @@ class PostureApp:
         self.label(stats, '  ESTIMATED REPS', 10, MUTED).pack(side='left', padx=(0,25))
         self.phase = self.label(stats, 'Waiting for movement', 12, TEXT);self.phase.pack(side='left')
         self.fps = self.label(stats, '— FPS', 10, MUTED);self.fps.pack(side='right')
+        self.session_form = self.label(self.workspace, 'Session form: gathering movement', 11, MUTED)
+        self.session_form.configure(wraplength=550, justify='left')
+        self.session_form.pack(anchor='w', pady=(10, 0))
         self.feedback = self.label(self.workspace, 'Ready when you are.', 13, TEXT)
         self.feedback.configure(wraplength=550, justify='left');self.feedback.pack(anchor='w', pady=(16,4))
         self.guidance = self.label(self.workspace, '', 10, MUTED);self.guidance.pack(anchor='w')
@@ -229,6 +245,8 @@ class PostureApp:
 
     def update_mode(self):
         self.mode_label.configure(text='Selected  /  '+self.exercise.get())
+        if hasattr(self, 'session_form') and not self.active:
+            self.session_form.configure(text='Session form: gathering movement', fg=MUTED)
 
     def set_logo_width(self, width):
         logo_image = self.logo_source.copy()
@@ -269,6 +287,7 @@ class PostureApp:
         self.mailbox = queue.Queue(maxsize=1)
         self.active = True
         self.reps.configure(text='0');self.phase.configure(text='Waiting for movement')
+        self.session_form.configure(text='Session form: gathering movement', fg=MUTED)
         self.feedback.configure(text='Opening camera…', fg=TEXT)
         self.camera_state.configure(text='Connecting…');self.start_button.set_text('Stop Camera')
         self.worker = threading.Thread(target=camera_worker, args=(self.mailbox,self.stop,self.model,
@@ -346,8 +365,15 @@ class PostureApp:
                 self.preview.configure(image=photo,text='');self.preview.image=photo
                 self.camera_state.configure(text='Camera on')
                 self.reps.configure(text=str(result['repetition_count']))
-                self.phase.configure(text=result['phase'].replace('_',' ').capitalize())
+                self.phase.configure(text=result.get('movement_phase', result['phase']).replace('_',' ').capitalize())
                 self.fps.configure(text=f'{fps:.1f} FPS')
+                session=result.get('session_form')
+                if session is None:
+                    self.session_form.configure(text='Session form: estimate unavailable', fg=MUTED)
+                else:
+                    label=session['prediction']
+                    words={'correct':'no configured issue detected', 'incorrect':'review technique', 'unassessable':'gathering usable movement'}
+                    self.session_form.configure(text='Session form estimate: '+words[label], fg=CORAL if label=='incorrect' else ACCENT if label=='correct' else MUTED)
                 status=result['status']
                 title={'rule_pass':'No rule issue detected', 'rule_flag':'Check your movement',
                        'pending':'Checking movement', 'unassessable':'Adjust your position'}.get(status,status)

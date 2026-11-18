@@ -7,3 +7,13 @@ outputs/
 data/raw/
 /docs/Phase3_Testing_Package.zip
 /docs/PostureCheck_Laptop_Benchmark.zip
+
+/docs/milestone4/PostureCheck_CP4_Benchmark_Code.zip
+
+/.venv
+
+/data/raw
+
+/models
+
+/docs/calibration/PostureCheck_Calibrated_Benchmark_Code.zip

@@ -1,0 +1,60 @@
+{
+  "purpose": "Development engineering comparison; not held-out accuracy. Selection fixed before observing new outputs. No phase3_user clips used.",
+  "selection": "First reviewed side-view training clip for each squat/pushup form class; first REHAB training lunge video with half-profile Camera17 orientation and a clean annotation.",
+  "reference_ref": "d4cca1a",
+  "clips": [
+    {
+      "id": "pushup_correct",
+      "file": "mendeley/Dataset Subject-wise/subject_001/push_up/good/side/subject_001_push_up_good_side.mp4",
+      "dataset": "mendeley",
+      "split": "train",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "participant": "mendeley_1"
+    },
+    {
+      "id": "pushup_incorrect",
+      "file": "mendeley/Dataset Subject-wise/subject_001/push_up/bad/side/subject_001_push_up_bad_side.mp4",
+      "dataset": "mendeley",
+      "split": "train",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "participant": "mendeley_1"
+    },
+    {
+      "id": "squat_correct",
+      "file": "mendeley/Dataset Subject-wise/subject_001/squat/good/side/subject_001_squat_good_side.mp4",
+      "dataset": "mendeley",
+      "split": "train",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "reference_reps": null,
+      "participant": "mendeley_1"
+    },
+    {
+      "id": "squat_incorrect",
+      "file": "mendeley/Dataset Subject-wise/subject_001/squat/bad/side/subject_001_squat_bad_side.mp4",
+      "dataset": "mendeley",
+      "split": "train",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "reference_reps": null,
+      "participant": "mendeley_1"
+    },
+    {
+      "id": "lunge_half_profile",
+      "file": "rehab24/videos/Ex5/PM_021-Camera17-30fps.mp4",
+      "dataset": "rehab24",
+      "split": "train",
+      "exercise": "lunge",
+      "reference_form": null,
+      "reference_reps": null,
+      "source_annotated_repetitions": 20,
+      "participant": "2",
+      "note": "Mixed correct/incorrect source reps, half-profile view; no whole-clip form reference. Source annotation count is context only: full-cycle counting convention not independently reconciled."
+    }
+  ],
+  "limitations": "No independent repetition references for these full videos. No separate jumping-jack development video is available. Do not tune using the Phase 3 user test clips."
+}

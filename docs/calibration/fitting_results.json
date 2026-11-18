@@ -1,0 +1,2905 @@
+{
+  "plan_sha256": "6ad1d48daf19384ae342cb77fd1f076bc9de9a4003f39f0cd09f3c6a81793eb7",
+  "exercises": {
+    "squat": {
+      "enabled": true,
+      "uncalibrated_fit": {
+        "labelled_clips": 28,
+        "assessed_clips": 24,
+        "abstentions": 4,
+        "accuracy_all": 0.42857142857142855,
+        "accuracy_assessed": 0.5,
+        "classification_coverage": 0.8571428571428571,
+        "macro_f1": 0.43125,
+        "per_class": {
+          "correct": {
+            "support": 14,
+            "precision": 0.5,
+            "recall": 0.6428571428571429,
+            "f1": 0.5625
+          },
+          "incorrect": {
+            "support": 14,
+            "precision": 0.5,
+            "recall": 0.21428571428571427,
+            "f1": 0.3
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 9,
+            "incorrect": 3,
+            "unassessable": 2
+          },
+          "incorrect": {
+            "correct": 9,
+            "incorrect": 3,
+            "unassessable": 2
+          }
+        }
+      },
+      "selected_fit_oof": {
+        "labelled_clips": 28,
+        "assessed_clips": 24,
+        "abstentions": 4,
+        "accuracy_all": 0.6071428571428571,
+        "accuracy_assessed": 0.7083333333333334,
+        "classification_coverage": 0.8571428571428571,
+        "macro_f1": 0.6405529953917051,
+        "per_class": {
+          "correct": {
+            "support": 14,
+            "precision": 0.6470588235294118,
+            "recall": 0.7857142857142857,
+            "f1": 0.7096774193548387
+          },
+          "incorrect": {
+            "support": 14,
+            "precision": 0.8571428571428571,
+            "recall": 0.42857142857142855,
+            "f1": 0.5714285714285714
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 11,
+            "incorrect": 1,
+            "unassessable": 2
+          },
+          "incorrect": {
+            "correct": 6,
+            "incorrect": 6,
+            "unassessable": 2
+          }
+        }
+      },
+      "uncalibrated_validation": {
+        "labelled_clips": 8,
+        "assessed_clips": 8,
+        "abstentions": 0,
+        "accuracy_all": 0.5,
+        "accuracy_assessed": 0.5,
+        "classification_coverage": 1.0,
+        "macro_f1": 0.3333333333333333,
+        "per_class": {
+          "correct": {
+            "support": 4,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          },
+          "incorrect": {
+            "support": 4,
+            "precision": null,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 4,
+            "incorrect": 0,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 4,
+            "incorrect": 0,
+            "unassessable": 0
+          }
+        }
+      },
+      "calibrated_validation": {
+        "labelled_clips": 8,
+        "assessed_clips": 8,
+        "abstentions": 0,
+        "accuracy_all": 0.5,
+        "accuracy_assessed": 0.5,
+        "classification_coverage": 1.0,
+        "macro_f1": 0.5,
+        "per_class": {
+          "correct": {
+            "support": 4,
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5
+          },
+          "incorrect": {
+            "support": 4,
+            "precision": 0.5,
+            "recall": 0.5,
+            "f1": 0.5
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 2,
+            "incorrect": 2,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 2,
+            "incorrect": 2,
+            "unassessable": 0
+          }
+        }
+      },
+      "search": [
+        {
+          "max_depth": 1,
+          "min_leaf": 4,
+          "oof_metrics": {
+            "labelled_clips": 28,
+            "assessed_clips": 24,
+            "abstentions": 4,
+            "accuracy_all": 0.6071428571428571,
+            "accuracy_assessed": 0.7083333333333334,
+            "classification_coverage": 0.8571428571428571,
+            "macro_f1": 0.6405529953917051,
+            "per_class": {
+              "correct": {
+                "support": 14,
+                "precision": 0.6470588235294118,
+                "recall": 0.7857142857142857,
+                "f1": 0.7096774193548387
+              },
+              "incorrect": {
+                "support": 14,
+                "precision": 0.8571428571428571,
+                "recall": 0.42857142857142855,
+                "f1": 0.5714285714285714
+              }
+            },
+            "confusion_matrix": {
+              "correct": {
+                "correct": 11,
+                "incorrect": 1,
+                "unassessable": 2
+              },
+              "incorrect": {
+                "correct": 6,
+                "incorrect": 6,
+                "unassessable": 2
+              }
+            }
+          },
+          "folds": [
+            {
+              "held_out_participant": "mendeley_1",
+              "fit_participants": [
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_10",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_12",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_13",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_14",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_15",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_16",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_2",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_26",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_3",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_5",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_7",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_8",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_9",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8"
+              ]
+            }
+          ],
+          "oof_predictions": {
+            "subject_001_squat_bad_side": "unassessable",
+            "subject_001_squat_good_side": "unassessable",
+            "subject_010_squat_bad_side": "correct",
+            "subject_010_squat_good_side": "correct",
+            "subject_012_squat_bad_side": "incorrect",
+            "subject_012_squat_good_side": "incorrect",
+            "subject_013_squat_bad_side": "incorrect",
+            "subject_013_squat_good_side": "correct",
+            "subject_014_squat_bad_side": "incorrect",
+            "subject_014_squat_good_side": "correct",
+            "subject_015_squat_bad_side": "correct",
+            "subject_015_squat_good_side": "correct",
+            "subject_016_squat_bad_side": "incorrect",
+            "subject_016_squat_good_side": "correct",
+            "subject_002_squat_bad_side": "unassessable",
+            "subject_002_squat_good_side": "correct",
+            "subject_026_squat_bad_side": "correct",
+            "subject_026_squat_good_side": "unassessable",
+            "subject_003_squat_bad_side": "correct",
+            "subject_003_squat_good_side": "correct",
+            "subject_005_squat_bad_side": "correct",
+            "subject_005_squat_good_side": "correct",
+            "subject_007_squat_bad_side": "correct",
+            "subject_007_squat_good_side": "correct",
+            "subject_008_squat_bad_side": "incorrect",
+            "subject_008_squat_good_side": "correct",
+            "subject_009_squat_bad_side": "incorrect",
+            "subject_009_squat_good_side": "correct"
+          }
+        },
+        {
+          "max_depth": 1,
+          "min_leaf": 6,
+          "oof_metrics": {
+            "labelled_clips": 28,
+            "assessed_clips": 24,
+            "abstentions": 4,
+            "accuracy_all": 0.6071428571428571,
+            "accuracy_assessed": 0.7083333333333334,
+            "classification_coverage": 0.8571428571428571,
+            "macro_f1": 0.6405529953917051,
+            "per_class": {
+              "correct": {
+                "support": 14,
+                "precision": 0.6470588235294118,
+                "recall": 0.7857142857142857,
+                "f1": 0.7096774193548387
+              },
+              "incorrect": {
+                "support": 14,
+                "precision": 0.8571428571428571,
+                "recall": 0.42857142857142855,
+                "f1": 0.5714285714285714
+              }
+            },
+            "confusion_matrix": {
+              "correct": {
+                "correct": 11,
+                "incorrect": 1,
+                "unassessable": 2
+              },
+              "incorrect": {
+                "correct": 6,
+                "incorrect": 6,
+                "unassessable": 2
+              }
+            }
+          },
+          "folds": [
+            {
+              "held_out_participant": "mendeley_1",
+              "fit_participants": [
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_10",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_12",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_13",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_14",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_15",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_16",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_2",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_26",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_3",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_5",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_7",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_8",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_9",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8"
+              ]
+            }
+          ],
+          "oof_predictions": {
+            "subject_001_squat_bad_side": "unassessable",
+            "subject_001_squat_good_side": "unassessable",
+            "subject_010_squat_bad_side": "correct",
+            "subject_010_squat_good_side": "correct",
+            "subject_012_squat_bad_side": "incorrect",
+            "subject_012_squat_good_side": "incorrect",
+            "subject_013_squat_bad_side": "incorrect",
+            "subject_013_squat_good_side": "correct",
+            "subject_014_squat_bad_side": "incorrect",
+            "subject_014_squat_good_side": "correct",
+            "subject_015_squat_bad_side": "correct",
+            "subject_015_squat_good_side": "correct",
+            "subject_016_squat_bad_side": "incorrect",
+            "subject_016_squat_good_side": "correct",
+            "subject_002_squat_bad_side": "unassessable",
+            "subject_002_squat_good_side": "correct",
+            "subject_026_squat_bad_side": "correct",
+            "subject_026_squat_good_side": "unassessable",
+            "subject_003_squat_bad_side": "correct",
+            "subject_003_squat_good_side": "correct",
+            "subject_005_squat_bad_side": "correct",
+            "subject_005_squat_good_side": "correct",
+            "subject_007_squat_bad_side": "correct",
+            "subject_007_squat_good_side": "correct",
+            "subject_008_squat_bad_side": "incorrect",
+            "subject_008_squat_good_side": "correct",
+            "subject_009_squat_bad_side": "incorrect",
+            "subject_009_squat_good_side": "correct"
+          }
+        },
+        {
+          "max_depth": 2,
+          "min_leaf": 4,
+          "oof_metrics": {
+            "labelled_clips": 28,
+            "assessed_clips": 24,
+            "abstentions": 4,
+            "accuracy_all": 0.4642857142857143,
+            "accuracy_assessed": 0.5416666666666666,
+            "classification_coverage": 0.8571428571428571,
+            "macro_f1": 0.49925925925925924,
+            "per_class": {
+              "correct": {
+                "support": 14,
+                "precision": 0.5384615384615384,
+                "recall": 0.5,
+                "f1": 0.5185185185185185
+              },
+              "incorrect": {
+                "support": 14,
+                "precision": 0.5454545454545454,
+                "recall": 0.42857142857142855,
+                "f1": 0.48
+              }
+            },
+            "confusion_matrix": {
+              "correct": {
+                "correct": 7,
+                "incorrect": 5,
+                "unassessable": 2
+              },
+              "incorrect": {
+                "correct": 6,
+                "incorrect": 6,
+                "unassessable": 2
+              }
+            }
+          },
+          "folds": [
+            {
+              "held_out_participant": "mendeley_1",
+              "fit_participants": [
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_10",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_12",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_13",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_14",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_15",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_16",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_2",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_26",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_3",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_5",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_7",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_8",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_9",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8"
+              ]
+            }
+          ],
+          "oof_predictions": {
+            "subject_001_squat_bad_side": "unassessable",
+            "subject_001_squat_good_side": "unassessable",
+            "subject_010_squat_bad_side": "correct",
+            "subject_010_squat_good_side": "correct",
+            "subject_012_squat_bad_side": "incorrect",
+            "subject_012_squat_good_side": "incorrect",
+            "subject_013_squat_bad_side": "incorrect",
+            "subject_013_squat_good_side": "incorrect",
+            "subject_014_squat_bad_side": "incorrect",
+            "subject_014_squat_good_side": "incorrect",
+            "subject_015_squat_bad_side": "correct",
+            "subject_015_squat_good_side": "correct",
+            "subject_016_squat_bad_side": "incorrect",
+            "subject_016_squat_good_side": "incorrect",
+            "subject_002_squat_bad_side": "unassessable",
+            "subject_002_squat_good_side": "correct",
+            "subject_026_squat_bad_side": "correct",
+            "subject_026_squat_good_side": "unassessable",
+            "subject_003_squat_bad_side": "correct",
+            "subject_003_squat_good_side": "incorrect",
+            "subject_005_squat_bad_side": "correct",
+            "subject_005_squat_good_side": "correct",
+            "subject_007_squat_bad_side": "correct",
+            "subject_007_squat_good_side": "correct",
+            "subject_008_squat_bad_side": "incorrect",
+            "subject_008_squat_good_side": "correct",
+            "subject_009_squat_bad_side": "incorrect",
+            "subject_009_squat_good_side": "correct"
+          }
+        },
+        {
+          "max_depth": 2,
+          "min_leaf": 6,
+          "oof_metrics": {
+            "labelled_clips": 28,
+            "assessed_clips": 24,
+            "abstentions": 4,
+            "accuracy_all": 0.4642857142857143,
+            "accuracy_assessed": 0.5416666666666666,
+            "classification_coverage": 0.8571428571428571,
+            "macro_f1": 0.49925925925925924,
+            "per_class": {
+              "correct": {
+                "support": 14,
+                "precision": 0.5384615384615384,
+                "recall": 0.5,
+                "f1": 0.5185185185185185
+              },
+              "incorrect": {
+                "support": 14,
+                "precision": 0.5454545454545454,
+                "recall": 0.42857142857142855,
+                "f1": 0.48
+              }
+            },
+            "confusion_matrix": {
+              "correct": {
+                "correct": 7,
+                "incorrect": 5,
+                "unassessable": 2
+              },
+              "incorrect": {
+                "correct": 6,
+                "incorrect": 6,
+                "unassessable": 2
+              }
+            }
+          },
+          "folds": [
+            {
+              "held_out_participant": "mendeley_1",
+              "fit_participants": [
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_10",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_12",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_13",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_14",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_15",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_16",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_2",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_26",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_3",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_5",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_7",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_8",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_9",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_26",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8"
+              ]
+            }
+          ],
+          "oof_predictions": {
+            "subject_001_squat_bad_side": "unassessable",
+            "subject_001_squat_good_side": "unassessable",
+            "subject_010_squat_bad_side": "correct",
+            "subject_010_squat_good_side": "correct",
+            "subject_012_squat_bad_side": "incorrect",
+            "subject_012_squat_good_side": "incorrect",
+            "subject_013_squat_bad_side": "incorrect",
+            "subject_013_squat_good_side": "incorrect",
+            "subject_014_squat_bad_side": "incorrect",
+            "subject_014_squat_good_side": "incorrect",
+            "subject_015_squat_bad_side": "correct",
+            "subject_015_squat_good_side": "correct",
+            "subject_016_squat_bad_side": "incorrect",
+            "subject_016_squat_good_side": "incorrect",
+            "subject_002_squat_bad_side": "unassessable",
+            "subject_002_squat_good_side": "correct",
+            "subject_026_squat_bad_side": "correct",
+            "subject_026_squat_good_side": "unassessable",
+            "subject_003_squat_bad_side": "correct",
+            "subject_003_squat_good_side": "incorrect",
+            "subject_005_squat_bad_side": "correct",
+            "subject_005_squat_good_side": "correct",
+            "subject_007_squat_bad_side": "correct",
+            "subject_007_squat_good_side": "correct",
+            "subject_008_squat_bad_side": "incorrect",
+            "subject_008_squat_good_side": "correct",
+            "subject_009_squat_bad_side": "incorrect",
+            "subject_009_squat_good_side": "correct"
+          }
+        }
+      ],
+      "tree": {
+        "feature": "hip_p10",
+        "threshold": 71.1473675034938,
+        "left": {
+          "prediction": "correct",
+          "class_counts": {
+            "correct": 11,
+            "incorrect": 4
+          },
+          "training_subjects": 12
+        },
+        "right": {
+          "prediction": "incorrect",
+          "class_counts": {
+            "correct": 1,
+            "incorrect": 8
+          },
+          "training_subjects": 8
+        }
+      },
+      "validation_predictions": [
+        {
+          "id": "subject_004_squat_bad_side",
+          "participant": "mendeley_4",
+          "reference_form": "incorrect",
+          "uncalibrated": "correct",
+          "calibrated": "incorrect"
+        },
+        {
+          "id": "subject_004_squat_good_side",
+          "participant": "mendeley_4",
+          "reference_form": "correct",
+          "uncalibrated": "correct",
+          "calibrated": "incorrect"
+        },
+        {
+          "id": "subject_006_squat_bad_side",
+          "participant": "mendeley_6",
+          "reference_form": "incorrect",
+          "uncalibrated": "correct",
+          "calibrated": "correct"
+        },
+        {
+          "id": "subject_006_squat_good_side",
+          "participant": "mendeley_6",
+          "reference_form": "correct",
+          "uncalibrated": "correct",
+          "calibrated": "correct"
+        },
+        {
+          "id": "subject_011_squat_bad_side",
+          "participant": "mendeley_11",
+          "reference_form": "incorrect",
+          "uncalibrated": "correct",
+          "calibrated": "incorrect"
+        },
+        {
+          "id": "subject_011_squat_good_side",
+          "participant": "mendeley_11",
+          "reference_form": "correct",
+          "uncalibrated": "correct",
+          "calibrated": "incorrect"
+        },
+        {
+          "id": "subject_024_squat_bad_side",
+          "participant": "mendeley_24",
+          "reference_form": "incorrect",
+          "uncalibrated": "correct",
+          "calibrated": "correct"
+        },
+        {
+          "id": "subject_024_squat_good_side",
+          "participant": "mendeley_24",
+          "reference_form": "correct",
+          "uncalibrated": "correct",
+          "calibrated": "correct"
+        }
+      ]
+    },
+    "pushup": {
+      "enabled": false,
+      "uncalibrated_fit": {
+        "labelled_clips": 26,
+        "assessed_clips": 25,
+        "abstentions": 1,
+        "accuracy_all": 0.6538461538461539,
+        "accuracy_assessed": 0.68,
+        "classification_coverage": 0.9615384615384616,
+        "macro_f1": 0.6523809523809523,
+        "per_class": {
+          "correct": {
+            "support": 13,
+            "precision": 0.6470588235294118,
+            "recall": 0.8461538461538461,
+            "f1": 0.7333333333333333
+          },
+          "incorrect": {
+            "support": 13,
+            "precision": 0.75,
+            "recall": 0.46153846153846156,
+            "f1": 0.5714285714285714
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 11,
+            "incorrect": 2,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 6,
+            "incorrect": 6,
+            "unassessable": 1
+          }
+        }
+      },
+      "selected_fit_oof": {
+        "labelled_clips": 26,
+        "assessed_clips": 25,
+        "abstentions": 1,
+        "accuracy_all": 0.6538461538461539,
+        "accuracy_assessed": 0.68,
+        "classification_coverage": 0.9615384615384616,
+        "macro_f1": 0.6661538461538461,
+        "per_class": {
+          "correct": {
+            "support": 13,
+            "precision": 0.6923076923076923,
+            "recall": 0.6923076923076923,
+            "f1": 0.6923076923076923
+          },
+          "incorrect": {
+            "support": 13,
+            "precision": 0.6666666666666666,
+            "recall": 0.6153846153846154,
+            "f1": 0.64
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 9,
+            "incorrect": 4,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 4,
+            "incorrect": 8,
+            "unassessable": 1
+          }
+        }
+      },
+      "uncalibrated_validation": {
+        "labelled_clips": 8,
+        "assessed_clips": 8,
+        "abstentions": 0,
+        "accuracy_all": 0.625,
+        "accuracy_assessed": 0.625,
+        "classification_coverage": 1.0,
+        "macro_f1": 0.6190476190476191,
+        "per_class": {
+          "correct": {
+            "support": 4,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "f1": 0.5714285714285714
+          },
+          "incorrect": {
+            "support": 4,
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666666
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 2,
+            "incorrect": 2,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 1,
+            "incorrect": 3,
+            "unassessable": 0
+          }
+        }
+      },
+      "calibrated_validation": {
+        "labelled_clips": 8,
+        "assessed_clips": 8,
+        "abstentions": 0,
+        "accuracy_all": 0.625,
+        "accuracy_assessed": 0.625,
+        "classification_coverage": 1.0,
+        "macro_f1": 0.6190476190476191,
+        "per_class": {
+          "correct": {
+            "support": 4,
+            "precision": 0.6,
+            "recall": 0.75,
+            "f1": 0.6666666666666666
+          },
+          "incorrect": {
+            "support": 4,
+            "precision": 0.6666666666666666,
+            "recall": 0.5,
+            "f1": 0.5714285714285714
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 3,
+            "incorrect": 1,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 2,
+            "incorrect": 2,
+            "unassessable": 0
+          }
+        }
+      },
+      "search": [
+        {
+          "max_depth": 1,
+          "min_leaf": 4,
+          "oof_metrics": {
+            "labelled_clips": 26,
+            "assessed_clips": 25,
+            "abstentions": 1,
+            "accuracy_all": 0.6538461538461539,
+            "accuracy_assessed": 0.68,
+            "classification_coverage": 0.9615384615384616,
+            "macro_f1": 0.6661538461538461,
+            "per_class": {
+              "correct": {
+                "support": 13,
+                "precision": 0.6923076923076923,
+                "recall": 0.6923076923076923,
+                "f1": 0.6923076923076923
+              },
+              "incorrect": {
+                "support": 13,
+                "precision": 0.6666666666666666,
+                "recall": 0.6153846153846154,
+                "f1": 0.64
+              }
+            },
+            "confusion_matrix": {
+              "correct": {
+                "correct": 9,
+                "incorrect": 4,
+                "unassessable": 0
+              },
+              "incorrect": {
+                "correct": 4,
+                "incorrect": 8,
+                "unassessable": 1
+              }
+            }
+          },
+          "folds": [
+            {
+              "held_out_participant": "mendeley_1",
+              "fit_participants": [
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_10",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_12",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_13",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_14",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_15",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_16",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_2",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_3",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_5",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_7",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_8",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_9",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8"
+              ]
+            }
+          ],
+          "oof_predictions": {
+            "subject_001_push_up_bad_side": "incorrect",
+            "subject_001_push_up_good_side": "incorrect",
+            "subject_010_push_up_bad_side": "correct",
+            "subject_010_push_up_good_side": "correct",
+            "subject_012_push_up_bad_side": "incorrect",
+            "subject_012_push_up_good_side": "correct",
+            "subject_013_push_up_bad_side": "correct",
+            "subject_013_push_up_good_side": "correct",
+            "subject_014_push_up_bad_side": "incorrect",
+            "subject_014_push_up_good_side": "incorrect",
+            "subject_015_push_up_bad_side": "incorrect",
+            "subject_015_push_up_good_side": "incorrect",
+            "subject_016_push_up_bad_side": "unassessable",
+            "subject_016_push_up_good_side": "correct",
+            "subject_002_push_up_bad_side": "correct",
+            "subject_002_push_up_good_side": "correct",
+            "subject_003_push_up_bad_side": "incorrect",
+            "subject_003_push_up_good_side": "correct",
+            "subject_005_push_up_bad_side": "incorrect",
+            "subject_005_push_up_good_side": "incorrect",
+            "subject_007_push_up_bad_side": "incorrect",
+            "subject_007_push_up_good_side": "correct",
+            "subject_008_push_up_bad_side": "correct",
+            "subject_008_push_up_good_side": "correct",
+            "subject_009_push_up_bad_side": "incorrect",
+            "subject_009_push_up_good_side": "correct"
+          }
+        },
+        {
+          "max_depth": 1,
+          "min_leaf": 6,
+          "oof_metrics": {
+            "labelled_clips": 26,
+            "assessed_clips": 25,
+            "abstentions": 1,
+            "accuracy_all": 0.6538461538461539,
+            "accuracy_assessed": 0.68,
+            "classification_coverage": 0.9615384615384616,
+            "macro_f1": 0.6661538461538461,
+            "per_class": {
+              "correct": {
+                "support": 13,
+                "precision": 0.6923076923076923,
+                "recall": 0.6923076923076923,
+                "f1": 0.6923076923076923
+              },
+              "incorrect": {
+                "support": 13,
+                "precision": 0.6666666666666666,
+                "recall": 0.6153846153846154,
+                "f1": 0.64
+              }
+            },
+            "confusion_matrix": {
+              "correct": {
+                "correct": 9,
+                "incorrect": 4,
+                "unassessable": 0
+              },
+              "incorrect": {
+                "correct": 4,
+                "incorrect": 8,
+                "unassessable": 1
+              }
+            }
+          },
+          "folds": [
+            {
+              "held_out_participant": "mendeley_1",
+              "fit_participants": [
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_10",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_12",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_13",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_14",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_15",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_16",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_2",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_3",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_5",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_7",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_8",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_9",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8"
+              ]
+            }
+          ],
+          "oof_predictions": {
+            "subject_001_push_up_bad_side": "incorrect",
+            "subject_001_push_up_good_side": "incorrect",
+            "subject_010_push_up_bad_side": "correct",
+            "subject_010_push_up_good_side": "correct",
+            "subject_012_push_up_bad_side": "incorrect",
+            "subject_012_push_up_good_side": "correct",
+            "subject_013_push_up_bad_side": "correct",
+            "subject_013_push_up_good_side": "correct",
+            "subject_014_push_up_bad_side": "incorrect",
+            "subject_014_push_up_good_side": "incorrect",
+            "subject_015_push_up_bad_side": "incorrect",
+            "subject_015_push_up_good_side": "incorrect",
+            "subject_016_push_up_bad_side": "unassessable",
+            "subject_016_push_up_good_side": "correct",
+            "subject_002_push_up_bad_side": "correct",
+            "subject_002_push_up_good_side": "correct",
+            "subject_003_push_up_bad_side": "incorrect",
+            "subject_003_push_up_good_side": "correct",
+            "subject_005_push_up_bad_side": "incorrect",
+            "subject_005_push_up_good_side": "incorrect",
+            "subject_007_push_up_bad_side": "incorrect",
+            "subject_007_push_up_good_side": "correct",
+            "subject_008_push_up_bad_side": "correct",
+            "subject_008_push_up_good_side": "correct",
+            "subject_009_push_up_bad_side": "incorrect",
+            "subject_009_push_up_good_side": "correct"
+          }
+        },
+        {
+          "max_depth": 2,
+          "min_leaf": 4,
+          "oof_metrics": {
+            "labelled_clips": 26,
+            "assessed_clips": 25,
+            "abstentions": 1,
+            "accuracy_all": 0.5769230769230769,
+            "accuracy_assessed": 0.6,
+            "classification_coverage": 0.9615384615384616,
+            "macro_f1": 0.587962962962963,
+            "per_class": {
+              "correct": {
+                "support": 13,
+                "precision": 0.6363636363636364,
+                "recall": 0.5384615384615384,
+                "f1": 0.5833333333333334
+              },
+              "incorrect": {
+                "support": 13,
+                "precision": 0.5714285714285714,
+                "recall": 0.6153846153846154,
+                "f1": 0.5925925925925926
+              }
+            },
+            "confusion_matrix": {
+              "correct": {
+                "correct": 7,
+                "incorrect": 6,
+                "unassessable": 0
+              },
+              "incorrect": {
+                "correct": 4,
+                "incorrect": 8,
+                "unassessable": 1
+              }
+            }
+          },
+          "folds": [
+            {
+              "held_out_participant": "mendeley_1",
+              "fit_participants": [
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_10",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_12",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_13",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_14",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_15",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_16",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_2",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_3",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_5",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_7",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_8",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_9",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8"
+              ]
+            }
+          ],
+          "oof_predictions": {
+            "subject_001_push_up_bad_side": "incorrect",
+            "subject_001_push_up_good_side": "incorrect",
+            "subject_010_push_up_bad_side": "incorrect",
+            "subject_010_push_up_good_side": "incorrect",
+            "subject_012_push_up_bad_side": "correct",
+            "subject_012_push_up_good_side": "correct",
+            "subject_013_push_up_bad_side": "correct",
+            "subject_013_push_up_good_side": "correct",
+            "subject_014_push_up_bad_side": "incorrect",
+            "subject_014_push_up_good_side": "incorrect",
+            "subject_015_push_up_bad_side": "incorrect",
+            "subject_015_push_up_good_side": "incorrect",
+            "subject_016_push_up_bad_side": "unassessable",
+            "subject_016_push_up_good_side": "incorrect",
+            "subject_002_push_up_bad_side": "correct",
+            "subject_002_push_up_good_side": "correct",
+            "subject_003_push_up_bad_side": "incorrect",
+            "subject_003_push_up_good_side": "correct",
+            "subject_005_push_up_bad_side": "incorrect",
+            "subject_005_push_up_good_side": "incorrect",
+            "subject_007_push_up_bad_side": "incorrect",
+            "subject_007_push_up_good_side": "correct",
+            "subject_008_push_up_bad_side": "correct",
+            "subject_008_push_up_good_side": "correct",
+            "subject_009_push_up_bad_side": "incorrect",
+            "subject_009_push_up_good_side": "correct"
+          }
+        },
+        {
+          "max_depth": 2,
+          "min_leaf": 6,
+          "oof_metrics": {
+            "labelled_clips": 26,
+            "assessed_clips": 25,
+            "abstentions": 1,
+            "accuracy_all": 0.6153846153846154,
+            "accuracy_assessed": 0.64,
+            "classification_coverage": 0.9615384615384616,
+            "macro_f1": 0.6257763975155279,
+            "per_class": {
+              "correct": {
+                "support": 13,
+                "precision": 0.7,
+                "recall": 0.5384615384615384,
+                "f1": 0.6086956521739131
+              },
+              "incorrect": {
+                "support": 13,
+                "precision": 0.6,
+                "recall": 0.6923076923076923,
+                "f1": 0.6428571428571429
+              }
+            },
+            "confusion_matrix": {
+              "correct": {
+                "correct": 7,
+                "incorrect": 6,
+                "unassessable": 0
+              },
+              "incorrect": {
+                "correct": 3,
+                "incorrect": 9,
+                "unassessable": 1
+              }
+            }
+          },
+          "folds": [
+            {
+              "held_out_participant": "mendeley_1",
+              "fit_participants": [
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_10",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_12",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_13",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_14",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_15",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_16",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_2",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_3",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_5",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_7",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_7",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_8",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_8",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_9"
+              ]
+            },
+            {
+              "held_out_participant": "mendeley_9",
+              "fit_participants": [
+                "mendeley_1",
+                "mendeley_10",
+                "mendeley_12",
+                "mendeley_13",
+                "mendeley_14",
+                "mendeley_15",
+                "mendeley_16",
+                "mendeley_2",
+                "mendeley_3",
+                "mendeley_5",
+                "mendeley_7",
+                "mendeley_8"
+              ]
+            }
+          ],
+          "oof_predictions": {
+            "subject_001_push_up_bad_side": "incorrect",
+            "subject_001_push_up_good_side": "incorrect",
+            "subject_010_push_up_bad_side": "incorrect",
+            "subject_010_push_up_good_side": "incorrect",
+            "subject_012_push_up_bad_side": "incorrect",
+            "subject_012_push_up_good_side": "correct",
+            "subject_013_push_up_bad_side": "correct",
+            "subject_013_push_up_good_side": "correct",
+            "subject_014_push_up_bad_side": "incorrect",
+            "subject_014_push_up_good_side": "incorrect",
+            "subject_015_push_up_bad_side": "incorrect",
+            "subject_015_push_up_good_side": "incorrect",
+            "subject_016_push_up_bad_side": "unassessable",
+            "subject_016_push_up_good_side": "incorrect",
+            "subject_002_push_up_bad_side": "correct",
+            "subject_002_push_up_good_side": "correct",
+            "subject_003_push_up_bad_side": "incorrect",
+            "subject_003_push_up_good_side": "correct",
+            "subject_005_push_up_bad_side": "incorrect",
+            "subject_005_push_up_good_side": "incorrect",
+            "subject_007_push_up_bad_side": "incorrect",
+            "subject_007_push_up_good_side": "correct",
+            "subject_008_push_up_bad_side": "correct",
+            "subject_008_push_up_good_side": "correct",
+            "subject_009_push_up_bad_side": "incorrect",
+            "subject_009_push_up_good_side": "correct"
+          }
+        }
+      ],
+      "tree": {
+        "feature": "alignment_p10",
+        "threshold": 168.13596926153247,
+        "left": {
+          "prediction": "incorrect",
+          "class_counts": {
+            "correct": 3,
+            "incorrect": 11
+          },
+          "training_subjects": 11
+        },
+        "right": {
+          "prediction": "correct",
+          "class_counts": {
+            "correct": 10,
+            "incorrect": 1
+          },
+          "training_subjects": 10
+        }
+      },
+      "validation_predictions": [
+        {
+          "id": "subject_004_push_up_bad_side",
+          "participant": "mendeley_4",
+          "reference_form": "incorrect",
+          "uncalibrated": "incorrect",
+          "calibrated": "incorrect"
+        },
+        {
+          "id": "subject_004_push_up_good_side",
+          "participant": "mendeley_4",
+          "reference_form": "correct",
+          "uncalibrated": "incorrect",
+          "calibrated": "incorrect"
+        },
+        {
+          "id": "subject_006_push_up_bad_side",
+          "participant": "mendeley_6",
+          "reference_form": "incorrect",
+          "uncalibrated": "incorrect",
+          "calibrated": "incorrect"
+        },
+        {
+          "id": "subject_006_push_up_good_side",
+          "participant": "mendeley_6",
+          "reference_form": "correct",
+          "uncalibrated": "incorrect",
+          "calibrated": "correct"
+        },
+        {
+          "id": "subject_011_push_up_bad_side",
+          "participant": "mendeley_11",
+          "reference_form": "incorrect",
+          "uncalibrated": "correct",
+          "calibrated": "correct"
+        },
+        {
+          "id": "subject_011_push_up_good_side",
+          "participant": "mendeley_11",
+          "reference_form": "correct",
+          "uncalibrated": "correct",
+          "calibrated": "correct"
+        },
+        {
+          "id": "subject_024_push_up_bad_side",
+          "participant": "mendeley_24",
+          "reference_form": "incorrect",
+          "uncalibrated": "incorrect",
+          "calibrated": "correct"
+        },
+        {
+          "id": "subject_024_push_up_good_side",
+          "participant": "mendeley_24",
+          "reference_form": "correct",
+          "uncalibrated": "correct",
+          "calibrated": "correct"
+        }
+      ]
+    }
+  },
+  "profile_sha256": "5ff104d38553b86ae231fcaea23be4f24db67e425b5ad2c672be5963e5919bc8",
+  "completed_at_utc": "2026-11-18T14:33:12.253585+00:00"
+}

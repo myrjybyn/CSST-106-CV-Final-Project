@@ -39,6 +39,36 @@ The system is being developed as a Computer Vision Final Project for CSST 106 at
 | Geometric calculations | Joint-angle, relative-distance, and body-alignment measurements |
 | Rule-based classification | Evaluation of exercise posture against predefined criteria |
 
+## Current calibrated form rules
+
+The current main method is `temporal-geometric-v3`. The approved squat clip/session
+rule is fitted from labelled training clips and enabled only after validation
+promotion checks. The push-up candidate did not pass those checks, so its existing
+rules remain active; lunge and jumping-jack form rules remain provisional.
+MediaPipe pose weights and movement counting are unchanged.
+
+[Calibration report and protocol](docs/calibration/README.md) explains the revised
+participant split, fitting and validation, prospective results and limitations.
+The 16 reserved test clips give **43.8% → 50.0%** accuracy on the same set. This is
+not directly comparable with 41.7% on the earlier, different 12-clip test set.
+The calibrated squat score is 62.5%; push-up remains 37.5%. Accuracy is still limited.
+
+```bash
+python app.py
+python src/evaluate.py --output outputs/calibration/prospective_repeat.json
+```
+
+The learned artifact is `config/form_rules.json`. The new evaluator defaults to
+the frozen prospective split, verifies the artifact/code/input hashes, and compares
+the original and deployed decisions on shared tracked features. The desktop shows
+a provisional cumulative session estimate; it does not claim frame-level calibrated
+accuracy. Start/Stop resets the estimate. No camera images are stored by it.
+
+For a new demo-laptop run, use the calibrated-version instructions under
+[docs/calibration/LAPTOP_BENCHMARK.txt](docs/calibration/LAPTOP_BENCHMARK.txt).
+The older checkpoint-4 package/report remain historical v2 evidence, preserved in
+`docs/calibration/reference/uncalibrated_v2_code.zip` and the preceding checkout.
+
 ## Desktop interface: how to run
 
 After installing the pinned root requirements and downloading the pose model
@@ -70,6 +100,78 @@ partial repetitions. Counts estimate movement; a rule pass is not a verified
 correct-form label. Camera testing on the target laptop is still required.
 The historical Phase 3 frozen-code benchmark remains tied to its original commit;
 new source changes intentionally fail its checksum guard.
+
+## Pose coverage and movement-counting update
+
+The current main video/camera pipeline uses MediaPipe **VIDEO tracking** with
+media timestamps for files and elapsed timestamps for cameras. It removes only
+paired, nearly uniform black margins before pose inference, maps landmarks back
+to the original preview, and keeps the existing confidence/in-frame/size gates.
+Rejected poses now provide framing, visibility or lighting guidance.
+
+Movement counts use a separate endpoint state machine with dwell and hysteresis,
+so form-feedback smoothing does not erase short movement endpoints. Lunges latch
+the bending leg and wait for that leg to extend; the other knee can remain bent.
+Missing data, camera stalls and selected-side switches discard partial cycles.
+The pre-calibration main JSON version was `temporal-geometric-v2`; v3 retains separate `movement_phase`,
+`active_leg`, preprocessing/counting parameters and pose running mode. The
+baseline remains image-mode; still images also use image-mode inference.
+
+See [development review and measured limits](docs/development/POSE_COUNTING_REVIEW.md).
+The comparison script uses an explicitly selected **training-only** manifest:
+
+```bash
+python scripts/compare_development.py --media-root data/raw
+```
+
+Known Phase 3 clips may be checked separately as a **regression set**, not as new
+held-out accuracy evidence. This writes a separate file and never replaces the
+original report or frozen results:
+
+```bash
+python scripts/check_regression_clips.py
+```
+
+These changes do not retrain pose weights or establish general form accuracy.
+Fresh, independently counted development recordings and an untouched test set
+are needed for subsequent calibration and evaluation.
+
+## Historical checkpoint 4: pre-calibration application and test hand-in
+
+The editable report, held-out measurements, checkpoint comparison, UI evidence
+and 25 detailed test cases are indexed in [docs/milestone4/README.md](docs/milestone4/README.md).
+The report preserves failed classification cases and distinguishes current cloud
+measurements from the pending current-version demo-laptop speed measurement.
+
+The required evaluation entry point is `src/evaluate.py`. These historical commands refer to the archived v2 source; use the calibrated commands above for the current version. With the downloaded
+model and Mendeley media in their usual locations, reproduce the frozen supported
+held-out subset with:
+
+```bash
+python src/evaluate.py --data-root data/raw --output outputs/milestone4/heldout_repeat.json
+```
+
+When run with the archived v2 source, this uses `cp3-core` and the v2 method on the
+same 12 side-view test clips. It verifies input/model/source/split hashes and
+records accuracy, per-class precision/recall/F1, confusion matrices, abstentions,
+usable-frame coverage and CPU throughput. No held-out repetition accuracy is
+claimed without count references. Use a new output filename for each run.
+
+For a new version, create a new freeze filename with `--prepare --freeze ...`
+before evaluation; do not overwrite the historical freeze or tune on its test
+outputs. Run software checks with `PYTHONPATH=src python -m unittest discover -s tests -v`.
+
+The same four original checkpoint-3 clips can be used for a separate laptop speed
+check (not new held-out accuracy):
+
+```bash
+python src/evaluate.py --suite benchmark --runtime-label laptop --output docs/milestone4/laptop_benchmark.json
+```
+
+See [laptop instructions](docs/milestone4/LAPTOP_BENCHMARK.txt) and the small
+code-only benchmark package generated by `python scripts/milestone4/package_benchmark.py`.
+Rebuild the editable report with a Python environment containing python-docx:
+`python scripts/milestone4/build_report.py`.
 
 ## Milestone 2: how to run
 
