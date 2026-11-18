@@ -1,0 +1,18 @@
+{
+  "observed_at_utc": "2026-11-18T15:57:15.254016+00:00",
+  "scope": "Post-run hardware verification on this workstation; not a benchmark-time capture. Raw benchmark log remains unchanged.",
+  "cpu": "AMD Athlon Silver 3050U with Radeon Graphics",
+  "ram_gib": 5.94,
+  "methods": {
+    "cpu": "Windows registry HARDWARE/DESCRIPTION/System/CentralProcessor/0 ProcessorNameString",
+    "ram": "kernel32 GlobalMemoryStatusEx ullTotalPhys"
+  },
+  "raw_log_hardware_status": "incomplete; supply CPU/RAM manually",
+  "power_scheme_at_benchmark": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)",
+  "dependencies": {
+    "mediapipe": "1.2.0",
+    "numpy": "2.2.3",
+    "opencv-contrib-python": "4.11.0.86",
+    "pillow": "11.1.0"
+  }
+}

@@ -1,0 +1,2 @@
+# Preserve the measured raw log bytes used by laptop_benchmark_validation.json.
+/docs/calibration/laptop_benchmark.json -text

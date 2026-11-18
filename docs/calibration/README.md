@@ -1,6 +1,10 @@
 # Current form calibration — form-rules-v1 / main v3
 
-[Editable results report](Calibrated_Form_Results.docx) | [Prospective test JSON](prospective_results.json) | [CSV](prospective_results.csv)
+[Prospective test JSON](prospective_results.json) | [CSV](prospective_results.csv)
+
+**Single current documentation draft (hand-in item 6):** [Technical documentation DOCX](../milestone4/Checkpoint4_Technical_Documentation_Draft.docx) ([review preview](../milestone4/Checkpoint4_Technical_Documentation_Draft.md)). It writes up the completed work in introduction, data, method and experiments sections, including calibration, results and laptop speed. The former separate calibration supplement is superseded and preserved in [history/](history/).
+
+**Measured laptop:** [complete log](laptop_benchmark.json), [CSV](laptop_benchmark.csv), [97-check validation audit](laptop_benchmark_validation.json) and [hardware/comparison summary](LAPTOP_BENCHMARK_STATUS.md). Aggregate **23.67 processing FPS / 42.25 ms per frame**, versus historical checkpoint-3 main **12.83 FPS / 77.93 ms** on the same four known clips. CPU/RAM capture in the raw log is incomplete; [post-run verification](laptop_environment_verification.json) records AMD Athlon Silver 3050U / 5.94 GiB. Physical webcam acceptance remains **PENDING**.
 
 The current application deploys **calibrated squat clip/session rules**. The push-up candidate did not improve validation macro F1 and lowered incorrect-form recall, so it is **not promoted**. Lunge/jack form rules remain provisional. Pose weights, raw geometry cues and movement counting are unchanged.
 
@@ -43,7 +47,7 @@ Tree depth (1 or 2) and minimum leaf size (4 or 6 clips, at least two subjects) 
 
 The GUI keeps the custom layout and adds a **session form estimate** about once per second from cumulative numeric angles. It does not save camera frames. Frame-level geometry cues stay separate: whole-clip validation does not establish live-prefix or per-frame accuracy. Start/Stop begins a new session. The model remains a selected-exercise system, not automatic exercise recognition.
 
-63 automated software tests pass. [Native calibrated video/codec integration](validation_smoke.json) and [actual GUI session-estimate integration](gui_smoke.json) use validation media only. The GUI smoke test substitutes a video for webcam input; physical laptop-camera acceptance and current laptop FPS remain pending.
+The recorded calibration run reports 63 automated software tests passing. [Native calibrated video/codec integration](validation_smoke.json) and [actual GUI session-estimate integration](gui_smoke.json) use validation media only. The GUI smoke test substitutes a video for webcam input; physical laptop-camera acceptance remains pending. Current laptop file-processing throughput is measured separately above and does not establish displayed webcam FPS.
 
 ## Reproduce
 
@@ -84,15 +88,15 @@ Copy the existing Lite model and four original clips as described in [LAPTOP_BEN
 python src/evaluate.py --suite benchmark --runtime-label laptop --output docs/calibration/laptop_benchmark.json
 ```
 
-No new laptop speed result is invented or borrowed from the older implementation. The four known clips are only a speed/regression workload, not the new prospective test.
+The completed calibrated-version laptop log is linked above. The four known clips are only a speed/regression workload, not the new prospective test. Preserve that log and use a new output filename for reruns. On Windows, the measured run restored exact frozen LF bytes and normalized only source-hash dictionary path separators in a runner; no hash checks were bypassed. See the validation audit for provenance.
 
 ## Artifacts and limits
 
 - [Plan](plan.json), [fit/validation search and outcomes](fitting_results.json), [squat feature summaries](squat_features.json), [push-up feature summaries](pushup_features.json).
 - [Deployed rules](../../config/form_rules.json), [source/profile/input freeze](evaluation_freeze.json), [final results](prospective_results.json) and CSV.
-- [Editable report](Calibrated_Form_Results.docx); [GUI/CLI integration records](gui_smoke.json) / [video smoke result](validation_smoke.json); `evidence/` holds an actual session-estimate screenshot.
+- [Single current draft](../milestone4/Checkpoint4_Technical_Documentation_Draft.docx); [GUI/CLI integration records](gui_smoke.json) / [video smoke result](validation_smoke.json); `evidence/` holds an actual session-estimate screenshot.
 - Underlying per-frame numeric angle caches and annotated smoke video stay under ignored `outputs/calibration/`; no per-frame form truth is assigned.
 
 Only four test participants and two exercise modes are covered. Source labels combine fault types that projected 2D angles may not distinguish. Push-up performance is still weak; no calibrated lunge/jack classifier is claimed. No new repetition-reference dataset, live-prefix accuracy or physical-camera benchmark is provided. The prospective set is now exposed: future parameter changes need another independent test.
 
-Checkpoint-four submission snapshot: `cp4-80`. Original reports/checkpoint tags are preserved. Current calibrated-version laptop speed and physical webcam acceptance remain pending.
+Checkpoint-four submission snapshot: commit `c5196f6` (message names `cp4-80`); the existing tag was fetched from origin, verified at this commit and preserved. Original measurements and report bodies are preserved. Current calibrated-version laptop file-processing speed is measured; physical webcam acceptance remains pending. Rebuild the single item-6 documentation draft with `python scripts/milestone4/update_current_report.py` (report-only `python-docx` dependency).

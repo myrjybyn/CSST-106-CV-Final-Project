@@ -46,8 +46,10 @@ the underlying report, scripts, metrics and evidence are versioned here.
 
 ## Milestone 4
 
+- [Single draft technical documentation, item 6 (DOCX)](milestone4/Checkpoint4_Technical_Documentation_Draft.docx) and [review preview](milestone4/Checkpoint4_Technical_Documentation_Draft.md): introduction, data, method and experiments, using the completed work for items 1-5.
+- [Validated calibrated laptop benchmark and CP3 comparison](calibration/LAPTOP_BENCHMARK_STATUS.md): **23.67 FPS / 42.25 ms per frame**, separately from cloud results. Physical webcam acceptance remains **PENDING**.
 - [Hand-in status and commands](milestone4/README.md)
-- [Editable application/testing report](milestone4/Checkpoint4_Application_Testing_Report.docx)
+- [Historical reports archive](milestone4/history/): superseded versions, not additional submission documents.
 - [Held-out test results](milestone4/heldout_results.json) and [CSV](milestone4/heldout_results.csv)
 - [All 25 test cases](milestone4/test_cases.csv)
 - [Laptop benchmark instructions](milestone4/LAPTOP_BENCHMARK.txt)
@@ -63,9 +65,11 @@ the underlying report, scripts, metrics and evidence are versioned here.
 ## Current form calibration
 
 - [Calibration protocol and current status](calibration/README.md)
-- [Editable calibration results](calibration/Calibrated_Form_Results.docx)
+- [Historical calibration report archive](calibration/history/): calibration is now written into the single item-6 draft above.
 - [Fitting and validation decisions](calibration/fitting_results.json)
 - [Prospective test results](calibration/prospective_results.json) and [CSV](calibration/prospective_results.csv)
 - [Calibrated-version laptop instructions](calibration/LAPTOP_BENCHMARK.txt)
 
-The earlier checkpoint-four report describes v2. Calibration is a separate, versioned supplement; its new test set is not the same set used in the earlier 41.7% result.
+The application/testing report, calibration supplement and provisional combined report are archived under `history/`. Only the item-6 technical documentation draft above is current. It has introduction, data, method and experiments sections. The original 12-clip test (41.7% pre-calibration v2) and new 16-clip prospective test (43.8% uncalibrated versus 50.0% calibrated) remain distinct.
+
+Version verification matches the calibrated frozen artifacts to submission commit `c5196f6b2778c892d4d459090780f6d0bc6685fb`, whose message names `cp4-80`. The existing `cp4-80` tag was fetched from origin and verified at that commit; its target is unchanged. See the [validation audit](calibration/laptop_benchmark_validation.json).
