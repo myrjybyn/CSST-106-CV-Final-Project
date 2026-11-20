@@ -1,0 +1,8 @@
+The long annotation-comparison run was stopped at the user's request when the
+project scope changed to a simple guided exercise session demonstration.
+22 completed per-video caches were retained under ignored outputs/. No complete
+97-video score or new form-accuracy claim was produced from this interrupted run.
+The supplied annotations and intake audit remain preserved.
+
+The current guided-session flow is documented in docs/GUIDED_SESSION.md.
+It uses fixed exercise rules; the supplied annotations were not used to fit them.

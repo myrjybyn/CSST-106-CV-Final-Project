@@ -1,10 +1,13 @@
 """Desktop interface for the selected-exercise live posture pipeline."""
 import argparse
+from datetime import datetime, timezone
+import json
 import math
 from pathlib import Path
 import queue
 import threading
 import time
+import uuid
 import tkinter as tk
 from tkinter import ttk, messagebox
 
@@ -14,15 +17,17 @@ from PIL import Image, ImageTk, ImageOps
 from .__main__ import process, CONNECTIONS
 from .pose import PoseEstimator
 from .temporal import TemporalAnalyzer
-from .form_features import SessionAngles, COLUMNS
-from .calibrated import assess_summary, require_compatible_model
+from .session import ExerciseSession, SessionRecorder, GuidedRepetitionCounter
 
 ROOT = Path(__file__).resolve().parents[2]
 LOGO = ROOT / 'assets' / 'posture_check_logo.png'
 EXERCISES = {'Squat': 'squat', 'Push-up': 'pushup', 'Lunge': 'lunge',
              'Jumping jack': 'jumping_jack'}
-BG, PANEL, TEXT, MUTED, ACCENT = '#160805', '#2b100b', '#fff0d5', '#d2a38c', '#ffb454'
-CORAL, BUTTON, BUTTON_HOVER = '#ff705f', '#482019', '#642b20'
+BG, PANEL, TEXT, MUTED, ACCENT = '#fff0e8', '#ffe0cf', '#3d241d', '#735046', '#8b3d23'
+CORAL, BUTTON, BUTTON_HOVER = '#a63f30', '#f3bfa5', '#e9ac8c'
+CONTROL, BORDER, DISABLED = '#fffaf6', '#c08b73', '#efd4c4'
+SHADOW = '#ebc9b5'
+PIXEL_FONT = 'Consolas'
 
 
 def publish_latest(mailbox, item):
@@ -37,23 +42,29 @@ def publish_latest(mailbox, item):
         mailbox.put_nowait(item)
 
 
-def camera_worker(mailbox, stop, model, exercise, camera, mirror, skeleton):
+def camera_worker(mailbox, stop, model, exercise, camera, mirror, skeleton,
+                  target=5, output_root=None, countdown_seconds=3, max_seconds=600):
     """Own all native resources here; never access Tk from this thread."""
-    capture = estimator = None
+    capture = estimator = recorder = None
+    session_path = None
     try:
+        if isinstance(target, bool) or not isinstance(target, int) or not 1 <= target <= 100:
+            raise ValueError('Choose a target between 1 and 100 repetitions.')
         capture = cv2.VideoCapture(camera)
         if not capture.isOpened():
             raise RuntimeError('Cannot open this camera. Check camera permissions, close other camera apps, or choose another camera index in Settings.')
         capture.set(cv2.CAP_PROP_FRAME_WIDTH, 960)
         capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 540)
         capture.set(cv2.CAP_PROP_BUFFERSIZE, 1)
-        require_compatible_model(model, exercise)
         estimator = PoseEstimator(model, video=True)
         analyzer = TemporalAnalyzer(exercise, 30)
-        session = SessionAngles(exercise) if exercise in COLUMNS else None
-        session_result = None
-        since_summary = 1.0
+        analyzer.counter = GuidedRepetitionCounter(exercise)
+        session = ExerciseSession(exercise)
+        ready_at = time.perf_counter() + countdown_seconds
         previous = time.perf_counter()
+        began = None
+        end_reason = 'stopped_early'
+        elapsed = 0.0
         while not stop.is_set():
             ok, frame = capture.read()
             if not ok:
@@ -62,14 +73,27 @@ def camera_worker(mailbox, stop, model, exercise, camera, mirror, skeleton):
             now = time.perf_counter()
             dt = max(now - previous, .001)
             previous = now
-            result = analyzer.update(raw, dt_seconds=dt)
-            if session is not None:
-                session.update(result)
-                since_summary += dt
-                if since_summary >= 1.0:
-                    session_result = assess_summary(exercise, session.summary())
-                    since_summary = 0.0
-            result['session_form'] = session_result
+            preparing = now < ready_at
+            if preparing:
+                result = dict(raw, repetition_count=0, movement_phase='get_ready',
+                              feedback='Get into position. Recording begins after the countdown.',
+                              countdown=max(1, math.ceil(ready_at - now)), recording=False)
+            else:
+                if began is None:
+                    began = now
+                    output = Path(output_root) if output_root is not None else ROOT / 'outputs/sessions'
+                    name = datetime.now(timezone.utc).strftime('session_%Y%m%d_%H%M%SUTC_') + uuid.uuid4().hex[:6]
+                    session_path = output / name
+                    session_path.mkdir(parents=True, exist_ok=False)
+                    recorder = SessionRecorder(session_path / 'recording.mp4', frame)
+                    # Setup time must not contribute to a repetition's dwell.
+                    dt = 1 / 30
+                elapsed = now - began
+                result = analyzer.update(raw, dt_seconds=dt)
+                session.add(result)
+                result.update(recording=True, countdown=0)
+                # Record the original orientation before adding display overlays.
+                recorder.write(frame, elapsed)
             if skeleton and landmarks and result['features'] is not None:
                 h, w = frame.shape[:2]
                 for a, b in CONNECTIONS:
@@ -82,25 +106,95 @@ def camera_worker(mailbox, stop, model, exercise, camera, mirror, skeleton):
             if mirror:
                 frame = cv2.flip(frame, 1)
             publish_latest(mailbox, ('frame', cv2.cvtColor(frame, cv2.COLOR_BGR2RGB), result, 1/dt))
+            if not preparing and analyzer.count >= target:
+                end_reason = 'target_reached'
+                break
+            if began is not None and elapsed >= max_seconds:
+                end_reason = 'time_limit'
+                break
+        if recorder is not None:
+            recorder.close()
+            recorder = None
+        summary = dict(exercise=exercise, target_reps=target, completed_reps=analyzer.count,
+                       end_reason=end_reason if began is not None else 'cancelled_before_recording',
+                       duration_seconds=round(elapsed, 2), assessment=session.assess(),
+                       video_path=str(session_path / 'recording.mp4') if session_path else None,
+                       report_path=str(session_path / 'summary.json') if session_path else None,
+                       recorded_at_utc=datetime.now(timezone.utc).isoformat())
+        if session_path:
+            (session_path / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n', encoding='utf-8')
+        publish_latest(mailbox, ('complete', summary))
     except Exception as error:
-        publish_latest(mailbox, ('error', str(error)))
+        detail = str(error)
+        if session_path:
+            detail += f'\nAny partial recording is in {session_path}'
+        publish_latest(mailbox, ('error', detail))
     finally:
+        if recorder is not None:
+            recorder.close()
         if capture is not None:
             capture.release()
         if estimator is not None:
             estimator.close()
 
 
+class CloudPanel(tk.Frame):
+    """A stepped, scalloped cloud border around an ordinary Tk content frame."""
+    def __init__(self, parent, fill=PANEL, inset=22, **kwargs):
+        super().__init__(parent, bg=parent.cget('bg'), **kwargs)
+        self.inset = inset
+        self.canvas = tk.Canvas(self, bg=self.cget('bg'), highlightthickness=0, bd=0)
+        self.canvas.place(x=0, y=0, relwidth=1, relheight=1)
+        self.body = tk.Frame(self, bg=fill)
+        self.body.place(x=inset, y=inset, relwidth=1, relheight=1,
+                        width=-2 * inset, height=-2 * inset)
+        self.fill = fill
+        self.bind('<Configure>', self._draw)
+
+    def fit_content(self):
+        self.update_idletasks()
+        self.configure(width=self.body.winfo_reqwidth() + 2 * self.inset,
+                       height=self.body.winfo_reqheight() + 2 * self.inset)
+
+    def _draw(self, event):
+        width, height = event.width - 4, event.height - 5
+        if min(width, height) < 36:
+            return
+        # Repeated flat-topped lobes, drawn with right-angle pixel steps.
+        def edge(length):
+            count = max(2, round((length - 32) / 52))
+            span = (length - 32) / count
+            points = []
+            for number in range(count):
+                x = 16 + number * span
+                for fraction, y in ((0, 16), (.12, 16), (.12, 10), (.28, 10),
+                                    (.28, 5), (.72, 5), (.72, 10), (.88, 10),
+                                    (.88, 16), (1, 16)):
+                    points.append((round(x + fraction * span), y))
+            return points
+        top = edge(width)
+        right = [(width - y, x) for x, y in edge(height)]
+        bottom = [(width - x, height - y) for x, y in top]
+        left = [(y, height - x) for x, y in edge(height)]
+        points = top + right + bottom + left
+        self.canvas.delete('cloud')
+        self.canvas.create_polygon([v for x, y in points for v in (x + 3, y + 4)],
+                                   fill=SHADOW, outline='', tags='cloud')
+        self.canvas.create_polygon([v for point in points for v in point], fill=self.fill,
+                                   outline=BORDER, width=2, joinstyle='miter', tags='cloud')
+
+
 class RoundedButton(tk.Canvas):
-    """Canvas button with a crisp rounded shape and native Tk interaction."""
+    """Stepped pixel button with keyboard access and a small pressed offset."""
     def __init__(self, parent, text, command, primary=False):
-        super().__init__(parent, height=50, bg=parent.cget('bg'),
+        super().__init__(parent, height=44, bg=parent.cget('bg'),
                          highlightthickness=0, bd=0, cursor='hand2', takefocus=True)
         self.text, self.command, self.primary = text, command, primary
         self.enabled, self.hovered, self.pressed = True, False, False
-        self.fill = self.create_polygon(0, 0, 1, 1, smooth=False, outline='', tags='button')
-        self.caption = self.create_text(18, 25, text=text, anchor='w',
-            font=('Arial', 12, 'bold'), tags='button')
+        self.shadow = self.create_polygon(0, 0, 1, 1, fill=BORDER, outline='')
+        self.fill = self.create_polygon(0, 0, 1, 1, smooth=False, outline=BORDER, width=1, tags='button')
+        self.caption = self.create_text(18, 22, text=text, anchor='center',
+            font=(PIXEL_FONT, 12, 'bold'), tags='button')
         self.bind('<Configure>', self._draw)
         self.bind('<Enter>', self._enter)
         self.bind('<Leave>', self._leave)
@@ -108,30 +202,35 @@ class RoundedButton(tk.Canvas):
         self.bind('<ButtonRelease-1>', self._release)
         self.bind('<space>', self._activate)
         self.bind('<Return>', self._activate)
+        self.bind('<FocusIn>', self._draw)
+        self.bind('<FocusOut>', self._draw)
         self._draw()
 
     def _colors(self):
         if not self.enabled:
-            return '#634b42', MUTED
+            return DISABLED, MUTED
         if self.primary:
-            return (ACCENT if self.hovered or self.pressed else CORAL), BG
+            return (ACCENT if self.hovered or self.pressed else CORAL), CONTROL
         return (BUTTON_HOVER if self.hovered or self.pressed else BUTTON), TEXT
 
     def _draw(self, _event=None):
         width, height = max(1, self.winfo_width()), max(1, self.winfo_height())
-        radius = min(11, height / 2, width / 2)
-        corners = ((width-radius, radius, -90), (width-radius, height-radius, 0),
-                   (radius, height-radius, 90), (radius, radius, 180))
-        points = []
-        for cx, cy, start in corners:
-            for step in range(7):
-                angle = math.radians(start + step * 15)
-                points.extend((cx + radius * math.cos(angle), cy + radius * math.sin(angle)))
+        if width < 24 or height < 24:
+            return
+        points = [(9, 2), (width-11, 2), (width-11, 6), (width-6, 6),
+                  (width-6, 11), (width-3, 11), (width-3, height-13),
+                  (width-6, height-13), (width-6, height-8), (width-11, height-8),
+                  (width-11, height-5), (9, height-5), (9, height-8),
+                  (4, height-8), (4, height-13), (1, height-13), (1, 11),
+                  (4, 11), (4, 6), (9, 6)]
+        offset = 2 if self.pressed else 0
         fill, foreground = self._colors()
-        self.coords(self.fill, *points)
-        self.itemconfigure(self.fill, fill=fill)
+        self.coords(self.shadow, *[v for x, y in points for v in (x+2, y+3)])
+        self.coords(self.fill, *[v for x, y in points for v in (x+offset, y+offset)])
+        self.itemconfigure(self.fill, fill=fill,
+                           outline=ACCENT if self.focus_get() == self else BORDER)
         self.itemconfigure(self.caption, fill=foreground)
-        self.coords(self.caption, 18, height / 2)
+        self.coords(self.caption, width / 2 + offset, (height - 3) / 2 + offset)
 
     def _enter(self, _event):
         self.hovered = True
@@ -171,6 +270,7 @@ class PostureApp:
     def __init__(self, root, model):
         self.root, self.model = root, model
         self.exercise = tk.StringVar(value='Squat')
+        self.target_reps = tk.StringVar(value='5')
         self.camera = tk.IntVar(value=0)
         self.mirror = tk.BooleanVar(value=True)
         self.skeleton = tk.BooleanVar(value=True)
@@ -179,6 +279,7 @@ class PostureApp:
         self.worker = None
         self.active = self.closing = False
         self.dialog = None
+        self.last_summary = None
         root.title('Sparkling Pixel Posture Check')
         width = min(1200, max(1000, root.winfo_screenwidth() - 80))
         height = min(780, max(640, root.winfo_screenheight() - 100))
@@ -187,57 +288,88 @@ class PostureApp:
         root.protocol('WM_DELETE_WINDOW', self.quit)
         root.bind('<Escape>', lambda event: self.stop_camera() if self.active else None)
         style = ttk.Style(root); style.theme_use('clam')
-        style.configure('TCombobox', padding=8, fieldbackground='#fff0d5',
-                        background='#e9a04e', foreground='#32120b')
-        style.map('TCombobox', fieldbackground=[('readonly', '#fff0d5')],
-                  foreground=[('readonly', '#32120b')])
+        style.configure('TCombobox', padding=8, fieldbackground=CONTROL,
+                        background=BUTTON, foreground=TEXT, arrowcolor=TEXT,
+                        selectbackground=ACCENT, selectforeground=CONTROL)
+        style.map('TCombobox', fieldbackground=[('readonly', CONTROL)],
+                  foreground=[('readonly', TEXT)],
+                  selectbackground=[('readonly', ACCENT)],
+                  selectforeground=[('readonly', CONTROL)])
         self.shell = tk.Frame(root, bg=BG); self.shell.pack(fill='both', expand=True, padx=28, pady=28)
-        self.menu = tk.Frame(self.shell, bg=PANEL, padx=26, pady=22, width=310,
-                             highlightthickness=1, highlightbackground='#74301e')
-        self.menu.place(relx=.5, rely=.5, anchor='center', width=410, height=min(700, height - 56))
+        self.menu_card = CloudPanel(self.shell, width=310)
+        self.menu_card.place(relx=.5, rely=.5, anchor='center', width=410, height=min(700, height - 56))
+        self.menu = self.menu_card.body
+        self.menu.configure(padx=10, pady=5)
         self.logo_source = Image.open(LOGO).convert('RGBA')
         self.logo_label = tk.Label(self.menu, bg=PANEL, bd=0)
         self.logo_label.pack(pady=(0, 9))
-        self.set_logo_width(330)
+        self.set_logo_width(160)
         self.label(self.menu, 'MOVE WITH INTENTION', 10, ACCENT, bold=True).pack(anchor='w')
-        self.label(self.menu, 'Your movement. A clearer view.', 11, MUTED).pack(anchor='w', pady=(5,16))
-        self.start_button = self.button(self.menu, 'Start Camera', self.toggle_camera, primary=True)
+        self.label(self.menu, 'Your movement. A clearer view.', 10, MUTED).pack(anchor='w', pady=(4,8))
+        self.target_card = CloudPanel(self.menu, fill=CONTROL, inset=18, height=112)
+        self.target_card.pack(fill='x', pady=(0, 8))
+        target_body = self.target_card.body
+        self.label(target_body, 'YOUR REP GOAL', 9, ACCENT, True).pack()
+        target_row = tk.Frame(target_body, bg=CONTROL)
+        target_row.pack(fill='x', pady=2)
+        self.target_minus = self.button(target_row, '−', lambda: self.adjust_target(-1))
+        self.target_minus.configure(width=36, height=34)
+        self.target_minus.pack(side='left')
+        self.target_plus = self.button(target_row, '+', lambda: self.adjust_target(1))
+        self.target_plus.configure(width=36, height=34)
+        self.target_plus.pack(side='right')
+        self.target_input = tk.Entry(target_row, textvariable=self.target_reps,
+                                     width=4, font=(PIXEL_FONT, 23, 'bold'), justify='center',
+                                     bg=CONTROL, fg=ACCENT, insertbackground=TEXT,
+                                     disabledbackground=CONTROL, disabledforeground=MUTED,
+                                     selectbackground=ACCENT, selectforeground=CONTROL,
+                                     relief='flat', bd=0, highlightthickness=0)
+        self.target_input.pack(side='left', fill='x', expand=True)
+        self.label(target_body, 'reps to your finish line', 8, MUTED).pack()
+        self.start_button = self.button(self.menu, 'Start Session', self.toggle_camera, primary=True)
         self.start_button.pack(fill='x', pady=5)
         self.button(self.menu, 'Choose Exercise', self.choose_exercise).pack(fill='x', pady=5)
         self.button(self.menu, 'Settings', self.settings).pack(fill='x', pady=5)
         self.button(self.menu, 'Quit', self.quit).pack(fill='x', pady=5)
         self.mode_label = self.label(self.menu, '', 10, MUTED)
-        self.mode_label.pack(anchor='w', pady=(20,0))
+        self.mode_label.pack(anchor='w', pady=(12,0))
         self.exercise.trace_add('write', lambda *_: self.update_mode())
         self.update_mode()
         self.workspace = tk.Frame(self.shell, bg=BG)
         header = tk.Frame(self.workspace, bg=BG);header.pack(fill='x', pady=(0,14))
         self.label(header, 'LIVE SESSION', 11, ACCENT, bold=True).pack(side='left')
         self.camera_state = self.label(header, 'Camera off', 10, MUTED);self.camera_state.pack(side='right')
-        self.preview_area = tk.Frame(self.workspace, bg=BG)
-        self.preview_area.pack(fill='both', expand=True)
-        self.preview = tk.Label(self.preview_area, bg='#1b0b08', fg=MUTED,
-                                text='Your camera preview will appear here', font=('Arial',12))
+        self.preview_card = CloudPanel(self.workspace, fill=CONTROL)
+        self.preview_card.pack(fill='both', expand=True)
+        self.preview_area = self.preview_card.body
+        self.preview = tk.Label(self.preview_area, bg=CONTROL, fg=MUTED,
+                                text='Your next little win starts here.\nCamera preview', font=('Arial',12))
         self.preview.image = None
         self.preview_area.bind('<Configure>', self.resize_preview)
-        stats = tk.Frame(self.workspace, bg=PANEL, padx=20, pady=15);stats.pack(fill='x', pady=(14,0))
+        self.stats_card = CloudPanel(self.workspace, height=98, inset=20)
+        self.stats_card.pack(fill='x', pady=(10,0))
+        stats = self.stats_card.body
+        stats.configure(padx=5)
         self.reps = self.label(stats, '0', 32, ACCENT, bold=True);self.reps.pack(side='left')
-        self.label(stats, '  ESTIMATED REPS', 10, MUTED).pack(side='left', padx=(0,25))
+        self.label(stats, '  REP TRACKER', 9, MUTED, True).pack(side='left', padx=(0,16))
         self.phase = self.label(stats, 'Waiting for movement', 12, TEXT);self.phase.pack(side='left')
         self.fps = self.label(stats, '— FPS', 10, MUTED);self.fps.pack(side='right')
-        self.session_form = self.label(self.workspace, 'Session form: gathering movement', 11, MUTED)
+        self.progress_count, self.progress_goal = 0, 5
+        self.progress = tk.Canvas(self.workspace, bg=BG, height=10, highlightthickness=0)
+        self.progress.pack(fill='x', pady=(5, 0))
+        self.progress.bind('<Configure>', lambda _event: self.draw_progress())
+        self.session_form = self.label(self.workspace, 'Set a target and start your session.', 11, MUTED)
         self.session_form.configure(wraplength=550, justify='left')
         self.session_form.pack(anchor='w', pady=(10, 0))
         self.feedback = self.label(self.workspace, 'Ready when you are.', 13, TEXT)
         self.feedback.configure(wraplength=550, justify='left');self.feedback.pack(anchor='w', pady=(16,4))
         self.guidance = self.label(self.workspace, '', 10, MUTED);self.guidance.pack(anchor='w')
-        self.label(self.workspace, 'Experimental feedback | Counts estimate movement, not form quality.', 9, MUTED).pack(anchor='w', pady=(10,0))
         root.after(30, self.poll)
 
     @staticmethod
     def label(parent, text, size, color, bold=False):
         return tk.Label(parent, text=text, bg=parent.cget('bg'), fg=color,
-                        font=('Arial', size, 'bold' if bold else 'normal'), anchor='w')
+                        font=(PIXEL_FONT if bold else 'Arial', size, 'bold' if bold else 'normal'), anchor='w')
 
     @staticmethod
     def button(parent, text, command, primary=False):
@@ -246,7 +378,31 @@ class PostureApp:
     def update_mode(self):
         self.mode_label.configure(text='Selected  /  '+self.exercise.get())
         if hasattr(self, 'session_form') and not self.active:
-            self.session_form.configure(text='Session form: gathering movement', fg=MUTED)
+            self.session_form.configure(text='Set a target and start your session.', fg=MUTED)
+
+    def adjust_target(self, difference):
+        if self.active or (self.worker is not None and self.worker.is_alive()):
+            return
+        try:
+            current = int(self.target_reps.get())
+        except ValueError:
+            current = 5
+        self.target_reps.set(str(max(1, min(100, current + difference))))
+
+    def set_target_enabled(self, enabled):
+        self.target_input.configure(state='normal' if enabled else 'disabled')
+        self.target_minus.set_enabled(enabled)
+        self.target_plus.set_enabled(enabled)
+
+    def draw_progress(self):
+        width = self.progress.winfo_width()
+        self.progress.delete('all')
+        blocks = min(20, self.progress_goal)
+        span = width / max(1, blocks)
+        for number in range(blocks):
+            filled = self.progress_count / max(1, self.progress_goal) >= (number + 1) / blocks
+            self.progress.create_rectangle(number * span + 2, 2, (number + 1) * span - 2, 8,
+                                           fill=CORAL if filled else SHADOW, outline='')
 
     def set_logo_width(self, width):
         logo_image = self.logo_source.copy()
@@ -263,10 +419,10 @@ class PostureApp:
         self.preview.place(relx=.5, rely=.5, anchor='center', width=width, height=height)
 
     def show_workspace(self):
-        self.menu.place_forget()
-        self.menu.pack(side='left', fill='y', padx=(0,24));self.menu.pack_propagate(False)
-        self.menu.configure(width=300)
-        self.set_logo_width(220)
+        self.menu_card.place_forget()
+        self.menu_card.pack(side='left', fill='y', padx=(0,20));self.menu_card.pack_propagate(False)
+        self.menu_card.configure(width=300)
+        self.set_logo_width(145)
         self.workspace.pack(side='left', fill='both', expand=True)
         view = 'front' if self.exercise.get() == 'Jumping jack' else 'side'
         self.guidance.configure(text=f'{self.exercise.get()} | Use a {view} view. Keep your entire body visible.')
@@ -280,26 +436,36 @@ class PostureApp:
     def start_camera(self):
         if self.worker is not None and self.worker.is_alive():
             return
+        try:
+            target = int(self.target_reps.get())
+            if not 1 <= target <= 100:
+                raise ValueError
+        except ValueError:
+            messagebox.showerror('Invalid target', 'Enter a whole number from 1 to 100 reps.', parent=self.root)
+            return
         if self.dialog is not None:
             self.dialog.destroy();self.dialog = None
         self.show_workspace()
         self.stop = threading.Event()
         self.mailbox = queue.Queue(maxsize=1)
         self.active = True
-        self.reps.configure(text='0');self.phase.configure(text='Waiting for movement')
-        self.session_form.configure(text='Session form: gathering movement', fg=MUTED)
+        self.session_target = target
+        self.reps.configure(text=f'0 / {target}');self.phase.configure(text='Get ready')
+        self.session_form.configure(text='A 3-second countdown gives you time to get into position.', fg=MUTED)
+        self.set_target_enabled(False)
+        self.progress_count, self.progress_goal = 0, target
+        self.draw_progress()
         self.feedback.configure(text='Opening camera…', fg=TEXT)
-        self.camera_state.configure(text='Connecting…');self.start_button.set_text('Stop Camera')
+        self.camera_state.configure(text='Connecting…');self.start_button.set_text('End Session')
         self.worker = threading.Thread(target=camera_worker, args=(self.mailbox,self.stop,self.model,
-            EXERCISES[self.exercise.get()],self.camera.get(),self.mirror.get(),self.skeleton.get()),daemon=True)
+            EXERCISES[self.exercise.get()],self.camera.get(),self.mirror.get(),self.skeleton.get(),target),daemon=True)
         self.worker.start()
 
     def stop_camera(self):
         self.active = False;self.stop.set()
         self.start_button.set_text('Stopping…');self.start_button.set_enabled(False)
-        self.camera_state.configure(text='Camera off')
-        self.preview.configure(image='', text='Camera stopped');self.preview.image = None
-        self.feedback.configure(text='Session stopped. Start Camera begins a new count.', fg=TEXT)
+        self.camera_state.configure(text='Finishing session…')
+        self.feedback.configure(text='Saving the recording and checking your overall form…', fg=TEXT)
 
     def dialog_window(self, title):
         if self.worker is not None and self.worker.is_alive():
@@ -308,12 +474,16 @@ class PostureApp:
         if self.dialog is not None and self.dialog.winfo_exists():
             self.dialog.lift();return None
         window = tk.Toplevel(self.root);self.dialog=window
-        window.title(title);window.configure(bg=PANEL);window.resizable(False,False)
+        window.title(title);window.configure(bg=BG);window.resizable(False,False)
         window.transient(self.root)
         def close():
             window.destroy();self.dialog=None
         window.protocol('WM_DELETE_WINDOW',close)
-        body=tk.Frame(window,bg=PANEL,padx=28,pady=24);body.pack()
+        card = CloudPanel(window)
+        card.pack(padx=10, pady=10)
+        body = card.body
+        body.configure(padx=14, pady=12)
+        window.after_idle(card.fit_content)
         self.label(body,title,20,TEXT,True).pack(anchor='w',pady=(0,18))
         return body,close
 
@@ -323,7 +493,7 @@ class PostureApp:
         body,close=dialog
         for name in EXERCISES:
             tk.Radiobutton(body,text=name,variable=self.exercise,value=name,bg=PANEL,fg=TEXT,
-                selectcolor='#642b20',activebackground=PANEL,activeforeground=ACCENT,
+                selectcolor=CONTROL,activebackground=PANEL,activeforeground=ACCENT,
                 font=('Arial',12),padx=8,pady=8).pack(anchor='w')
         self.label(body,'Side view for squat, push-up and lunge.\nFront view for jumping jacks.',10,MUTED).pack(pady=12)
         self.button(body,'Done',close,True).pack(fill='x')
@@ -336,12 +506,60 @@ class PostureApp:
         selected=tk.StringVar(value=str(self.camera.get()))
         ttk.Combobox(body,textvariable=selected,values=[str(i) for i in range(6)],state='readonly',width=24).pack(pady=(6,16))
         for text,variable in [('Mirror preview',self.mirror),('Show pose skeleton',self.skeleton)]:
-            tk.Checkbutton(body,text=text,variable=variable,bg=PANEL,fg=TEXT,selectcolor='#642b20',
+            tk.Checkbutton(body,text=text,variable=variable,bg=PANEL,fg=TEXT,selectcolor=CONTROL,
                 activebackground=PANEL,activeforeground=TEXT,font=('Arial',11)).pack(anchor='w',pady=7)
-        self.label(body,'Video stays on this device.\nLive sessions are not recorded.',10,MUTED).pack(pady=16)
+        self.label(body,'Recordings and summaries are saved locally\nin outputs/sessions/. Sessions end at the target,\non End Session, or after 10 minutes.',10,MUTED).pack(pady=16)
         def save():
             self.camera.set(int(selected.get()));close()
         self.button(body,'Done',save,True).pack(fill='x')
+
+    def finish_session(self, summary):
+        self.active = False
+        self.last_summary = summary
+        self.camera_state.configure(text='Recording saved' if summary['video_path'] else 'Camera off')
+        self.reps.configure(text=f'{summary["completed_reps"]} / {summary["target_reps"]}')
+        self.progress_count, self.progress_goal = summary['completed_reps'], summary['target_reps']
+        self.draw_progress()
+        endings = {'target_reached': 'Target reached', 'stopped_early': 'Ended early',
+                   'time_limit': 'Time limit reached', 'cancelled_before_recording': 'Cancelled'}
+        ending = endings[summary['end_reason']]
+        self.phase.configure(text=ending)
+        assessment = summary['assessment']
+        names = {'good': 'Good', 'bad': 'Bad — needs improvement', 'unassessable': 'Unable to assess — try again'}
+        title = names[assessment['prediction']]
+        color = ACCENT if assessment['prediction'] == 'good' else CORAL
+        self.session_form.configure(text=f'Overall form: {title}', fg=color)
+        self.feedback.configure(text='\n'.join('• ' + tip for tip in assessment['tips']), fg=TEXT)
+        self.guidance.configure(text='Recording + summary saved in outputs/sessions/.' if summary['video_path']
+                                else 'Recording was cancelled before the session began.')
+        if summary['end_reason'] == 'cancelled_before_recording':
+            return
+        window = tk.Toplevel(self.root)
+        self.dialog = window
+        window.title('Session results')
+        window.configure(bg=BG)
+        window.transient(self.root)
+        card = CloudPanel(window)
+        card.pack(padx=10, pady=10)
+        body = card.body
+        body.configure(padx=14, pady=12)
+        self.label(body, 'SESSION RESULTS', 12, ACCENT, True).pack(anchor='w')
+        self.label(body, title, 22, color, True).pack(anchor='w', pady=(12, 6))
+        exercise = summary['exercise'].replace('_', ' ').title()
+        self.label(body, f'{exercise} | {summary["completed_reps"]} / {summary["target_reps"]} reps | {ending}',
+                   11, TEXT).pack(anchor='w', pady=(0, 16))
+        tips = self.label(body, '\n\n'.join('• ' + tip for tip in assessment['tips']), 12, TEXT)
+        tips.configure(wraplength=520, justify='left')
+        tips.pack(anchor='w')
+        saved = self.label(body, f'Recording: {summary["video_path"]}\nSummary: {summary["report_path"]}', 9, MUTED)
+        saved.configure(wraplength=520, justify='left')
+        saved.pack(anchor='w', pady=(16, 16))
+        def close():
+            window.destroy()
+            self.dialog = None
+        window.protocol('WM_DELETE_WINDOW', close)
+        self.button(body, 'Done', close, True).pack(fill='x')
+        window.after_idle(card.fit_content)
 
     def poll(self):
         if self.closing:
@@ -352,35 +570,38 @@ class PostureApp:
             item=self.mailbox.get_nowait()
         except queue.Empty:
             item=None
-        if self.active and item:
-            if item[0]=='error':
-                self.stop_camera()
-                self.feedback.configure(text=item[1],fg='#ffbb9c')
-                messagebox.showerror('Camera unavailable',item[1],parent=self.root)
-            else:
+        if item and item[0] == 'complete':
+            self.finish_session(item[1])
+        elif item and item[0] == 'error':
+            self.active = False
+            self.stop.set()
+            self.camera_state.configure(text='Session error')
+            self.feedback.configure(text=item[1], fg=CORAL)
+            messagebox.showerror('Session unavailable', item[1], parent=self.root)
+        elif self.active and item:
+            if item[0] == 'frame':
                 _,pixels,result,fps=item
                 image=Image.fromarray(pixels)
                 image=ImageOps.contain(image,(max(1,self.preview.winfo_width()),max(1,self.preview.winfo_height())))
                 photo=ImageTk.PhotoImage(image)
                 self.preview.configure(image=photo,text='');self.preview.image=photo
-                self.camera_state.configure(text='Camera on')
-                self.reps.configure(text=str(result['repetition_count']))
+                countdown = result.get('countdown', 0)
+                self.camera_state.configure(text=f'Starting in {countdown}…' if countdown else 'Recording')
+                self.reps.configure(text=f'{result["repetition_count"]} / {self.session_target}')
+                self.progress_count = result['repetition_count']
+                self.draw_progress()
                 self.phase.configure(text=result.get('movement_phase', result['phase']).replace('_',' ').capitalize())
                 self.fps.configure(text=f'{fps:.1f} FPS')
-                session=result.get('session_form')
-                if session is None:
-                    self.session_form.configure(text='Session form: estimate unavailable', fg=MUTED)
-                else:
-                    label=session['prediction']
-                    words={'correct':'no configured issue detected', 'incorrect':'review technique', 'unassessable':'gathering usable movement'}
-                    self.session_form.configure(text='Session form estimate: '+words[label], fg=CORAL if label=='incorrect' else ACCENT if label=='correct' else MUTED)
+                self.session_form.configure(text=f'Get ready: {countdown}' if countdown else
+                                            'Complete your target. Overall form is checked when the recording ends.', fg=MUTED)
                 status=result['status']
                 title={'rule_pass':'No rule issue detected', 'rule_flag':'Check your movement',
                        'pending':'Checking movement', 'unassessable':'Adjust your position'}.get(status,status)
                 color=ACCENT if status=='rule_pass' else CORAL if status=='rule_flag' else TEXT
                 self.feedback.configure(text=title+' | '+result['feedback'],fg=color)
         if not self.active and (self.worker is None or not self.worker.is_alive()):
-            self.start_button.set_text('Start Camera');self.start_button.set_enabled(True)
+            self.start_button.set_text('Start Session');self.start_button.set_enabled(True)
+            self.set_target_enabled(True)
         self.root.after(30,self.poll)
 
     def quit(self):

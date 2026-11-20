@@ -1,0 +1,159 @@
+REVIEWER GUIDE: SQUAT AND PUSH-UP FORM LABELS
+Version 1 | 20 November 2026
+
+PURPOSE
+Record what a human reviewer can observe in each repetition, independently of
+the app. These annotations will help evaluate rep-specific form feedback.
+The numbered review pack contains 98 side-view videos. A contact sheet is a
+preview; it does not contain enough movement to label a repetition by itself.
+
+FILES TO USE
+- outputs/form_label_review/reviewer_index.csv: video list and review progress.
+- outputs/form_label_review/review_###.mp4: full videos to watch.
+- outputs/form_label_review/review_###.jpg: quick visual previews.
+- outputs/form_label_review/reviewer_rep_annotations.csv: your labeling sheet.
+Open the CSVs in a spreadsheet program and save them back as UTF-8 CSV.
+Keep the existing column names. Use one row per observed repetition cycle.
+
+BEFORE YOU BEGIN
+1. Make a personal copy of the blank annotation sheet, named with your reviewer
+   ID, for example reviewer_rep_annotations_R01.csv. Keep the master blank.
+2. Use an anonymous, consistent reviewer ID. Record your actual qualification;
+   for example PE instructor, certified trainer, or student volunteer. A volunteer
+   review must not be presented as an expert assessment.
+3. Keep source good/bad labels, source filenames, private ID mappings and app
+   predictions hidden while reviewing. Work only from the numbered review pack.
+4. With the review lead, agree on the exercise variants, expected movement range
+   and criteria below. Write these in a separate rubric_decisions.txt before
+   labeling. An unspecified target means uncertain, not an invented threshold.
+5. Practice on a small shared development subset. Resolve differences in the
+   rubric, then freeze its version before the main review. Record any revisions.
+
+RUBRIC DECISIONS TO WRITE DOWN
+- Rubric version, date, review lead and reviewer IDs.
+- Accepted squat and push-up variants; how to handle unsupported variants.
+- What visibly meets the depth target for each supported variant.
+- What visibly meets the return/top target for each supported variant.
+- What counts as a visible trunk alignment issue for each supported variant.
+- Which categories are not applicable to a supported variant, and why.
+- Whether overall_form covers only these three faults or additional criteria.
+  If additional criteria are used, list them and describe their evidence in notes.
+Do not use the app's learned thresholds as the human reference standard.
+
+REVIEW EACH VIDEO
+1. Find its review_id and exercise in reviewer_index.csv. Mark its review_status
+   in_progress in your working copy of the index.
+2. Watch the whole video once at normal speed. Confirm the exercise and view.
+   Use slow playback or frame stepping to inspect ambiguous moments afterward.
+3. Identify each discernible movement cycle independently of the app's count:
+   Squat: top position -> descent -> lowest position -> return toward the top.
+   Push-up: top position -> lowering -> lowest position -> return toward the top.
+   A cycle can finish with incomplete extension; retain it and label that fault
+   if the agreed rubric supports it. Otherwise such errors would be excluded.
+4. Mark start_seconds immediately before descent/lowering begins. Mark
+   end_seconds at the end of the return attempt, before the next descent.
+   Use seconds from the ORIGINAL full video, never from the start of a preview
+   or cropped clip. A frame timestamp is frame_index / fps, starting at frame 0.
+   Be consistent about boundaries; consecutive cycles may share an endpoint.
+5. Add one row for each cycle, numbered rep_index 1, 2, 3, ... within that video.
+   Do not create repetitions for standing still, setup, or a contact-sheet image.
+6. Beginning/end fragments that omit part of a cycle are not complete cycle
+   references. Record their time ranges and the reason for exclusion in a
+   separate review_notes.txt, so they do not disappear without explanation.
+7. Judge the three fault categories and overall_form using the agreed rubric.
+   Record what you saw, including relevant timestamps, in evidence_notes.
+8. After all cycles are reviewed, mark review_status complete in your index.
+   If no cycle can be identified, record that video and the reason in
+   review_notes.txt, then mark it complete. Do not manufacture a placeholder rep.
+
+EXACT VALUES FOR THE ANNOTATION COLUMNS
+review_id               Copy exactly, for example review_002.
+exercise                squat or pushup; verify against the actual movement.
+rep_index               Positive integer; unique within a video and reviewer.
+start_seconds           Nonnegative number, relative to the full video.
+end_seconds             Greater than start_seconds; within the video duration.
+view                    side for supported side-view recordings. If unsuitable,
+                        describe the actual view/problem in evidence_notes.
+assessable              yes or no.
+unassessable_reason     Blank for yes. For no, explain missing visibility,
+                        obstruction, unsupported view/variant, or other reason.
+overall_form            correct, incorrect, uncertain, or unassessable.
+limited_depth           present, absent, uncertain, or not_applicable.
+incomplete_extension    present, absent, uncertain, or not_applicable.
+trunk_alignment_issue   present, absent, uncertain, or not_applicable.
+evidence_notes          Specific visible evidence and timestamps; no app scores.
+reviewer_id             Your consistent anonymous ID, for example R01.
+reviewer_qualification  Your actual role or qualification.
+reviewed_at             ISO date/time with timezone, for example
+                        2026-11-20T16:00:00+08:00 for Philippine time.
+second_reviewer_id      Blank during an independent first review.
+adjudication_status     Blank during a first review. Use agreed, resolved, or
+                        unresolved only after comparing independent reviews.
+
+HOW TO CHOOSE THE FAULT LABELS
+limited_depth:
+  present: the visible movement falls short of the agreed depth target.
+  absent: sufficient visual evidence shows that target was reached.
+  uncertain: the target is unspecified or the relevant evidence is ambiguous.
+incomplete_extension:
+  present: the return attempt visibly falls short of the agreed top target.
+  absent: sufficient visual evidence shows that target was reached.
+  uncertain: the endpoint is hidden, ambiguous, or cut off.
+trunk_alignment_issue:
+  present: a deviation defined by the agreed exercise-specific rubric is visible.
+  absent: adequate visible evidence shows no defined deviation during the cycle.
+  uncertain: the view or clothing does not support a confident judgment.
+Use not_applicable only when the written rubric makes a category inapplicable
+to an accepted variant. Missing evidence calls for uncertain, not not_applicable.
+Do not label every forward lean or every small angle difference as an error.
+
+HOW TO CHOOSE OVERALL_FORM
+- correct: the required criteria in the written rubric were assessable and met.
+- incorrect: at least one required criterion was visibly violated; describe it.
+- uncertain: some evidence is usable but the overall judgment is ambiguous.
+- unassessable: the recording does not support an overall judgment; set
+  assessable=no and fill unassessable_reason. Individual fault fields may retain
+  observable evidence; mark hidden/ambiguous faults uncertain.
+A missing pose or an app tracking failure is not evidence of incorrect form.
+Assessable=yes may still have an uncertain fault or overall label. Do not force
+an answer to fill the sheet. Leave a row's labels blank only while review is pending.
+
+ILLUSTRATIVE NOTES ONLY -- THESE ARE NOT LABELS FOR THE ACTUAL VIDEOS
+Example A: "At 4.20 s the agreed depth target is visibly not reached; the return
+target is reached at 5.10 s." This could support limited_depth=present and
+incomplete_extension=absent after viewing the entire cycle under the rubric.
+Example B: "Hip is obscured from 8.10 to 8.90 s; alignment cannot be judged."
+Use uncertain for the affected fault. Do not turn it into an incorrect label.
+
+SECOND REVIEW AND DISAGREEMENTS
+The second reviewer labels a separate sheet without seeing the first review.
+Match rows by review_id and time interval; rep_index may differ if reviewers
+identified different boundaries. Resolve cycle-count/boundary differences first.
+Preserve both original sheets. Put consensus decisions in a separate sheet.
+Record both reviewer IDs and whether each decision was agreed, resolved after
+discussion, or remains unresolved. Retain unresolved cases in the audit.
+If the rubric changes, record the change and re-review affected rows consistently.
+
+BEFORE HANDING THE SHEET BACK
+- IDs match the index; exercise names and label spellings use the values above.
+- All times are numeric and within the full video's duration.
+- No duplicate (review_id, rep_index, reviewer_id) rows or overlapping cycles
+  without an explanation in review_notes.txt.
+- Every completed row identifies its reviewer, qualification and review time.
+- Every assessable=no row has an overall_form of unassessable and a reason.
+- Every incorrect judgment identifies the violated criterion in evidence_notes.
+- All excluded fragments and videos without identifiable cycles are accounted for.
+- The CSV still has the original columns; notes containing commas are quoted
+  by the spreadsheet's CSV exporter.
+Return your annotation sheet, working index, review_notes.txt and rubric decisions.
+
+WHAT THIS REVIEW CAN ESTABLISH
+These labels can support development and evaluation of specific visible faults.
+They do not establish medical safety or every aspect of exercise technique.
+These participants have prior project exposure; relabeling them does not create
+a fresh final test. Reserve new participants before tuning and final evaluation.
+
+SOURCE
+Dataset attribution and CC BY 4.0 license details are in START_HERE.txt in the
+review pack. Organizer acquisition and split details are in REVIEW_GUIDE.txt
+under docs/calibration/label_review/; reviewers should avoid source-label mappings.

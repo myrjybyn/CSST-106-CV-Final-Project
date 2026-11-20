@@ -1,0 +1,9 @@
+{
+  "checks_passed": true,
+  "source_videos_present": 294,
+  "numbered_review_videos": 98,
+  "contact_sheets_verified": 98,
+  "review_copy_hash_spot_checks": 3,
+  "rep_worksheets_blank": true,
+  "note": "No new human form labels or model accuracy results were created."
+}

@@ -16,6 +16,11 @@ class RepetitionCounter:
         if exercise not in SUPPORTED_EXERCISES:
             raise ValueError(f'Unsupported exercise: {exercise}')
         self.exercise = exercise
+        self.top_angle, self.bottom_angle = {
+            'squat': (160, 100), 'pushup': (155, 100),
+            'lunge': (160, 110), 'jumping_jack': (40, 140),
+        }[exercise]
+        self.closed_width, self.open_width = 1.3, 1.8
         self.count = 0
         self.reset()
 
@@ -35,7 +40,7 @@ class RepetitionCounter:
         margin = PARAMETERS['angle_release_margin_degrees']
         if self.exercise in ('squat', 'pushup'):
             angle = f['knee_angle' if self.exercise == 'squat' else 'elbow_angle']
-            top, bottom = (160, 100) if self.exercise == 'squat' else (155, 100)
+            top, bottom = self.top_angle, self.bottom_angle
             if angle >= top or (self.endpoint == 'ready' and angle >= top-margin):
                 return 'ready'
             if angle <= bottom or (self.endpoint == 'bottom' and angle <= bottom+margin):
@@ -44,28 +49,28 @@ class RepetitionCounter:
             low, high = sorted((f['left_arm_angle'],f['right_arm_angle']))
             width = f['ankle_width_ratio']
             width_margin = PARAMETERS['jack_width_release_margin']
-            if ((high <= 40 and width <= 1.3) or
-                    (self.endpoint == 'ready' and high <= 40+margin and width <= 1.3+width_margin)):
+            if ((high <= self.top_angle and width <= self.closed_width) or
+                    (self.endpoint == 'ready' and high <= self.top_angle+margin and width <= self.closed_width+width_margin)):
                 return 'ready'
-            if ((low >= 140 and width >= 1.8) or
-                    (self.endpoint == 'bottom' and low >= 140-margin and width >= 1.8-width_margin)):
+            if ((low >= self.bottom_angle and width >= self.open_width) or
+                    (self.endpoint == 'bottom' and low >= self.bottom_angle-margin and width >= self.open_width-width_margin)):
                 return 'bottom'
         else:
             angles = {leg:f[f'{leg}_knee_angle'] for leg in ('left','right')}
             if self.active_leg is not None:
                 value = angles[self.active_leg]
-                if value >= 160 or (self.endpoint == 'ready' and value >= 160-margin):
+                if value >= self.top_angle or (self.endpoint == 'ready' and value >= self.top_angle-margin):
                     return 'ready'
-                if value <= 110 or (self.endpoint == 'bottom' and value <= 110+margin):
+                if value <= self.bottom_angle or (self.endpoint == 'bottom' and value <= self.bottom_angle+margin):
                     return 'bottom'
             else:
                 # Only a leg observed straight during a confirmed ready stance
                 # may initiate a rep. A rear knee already bent is not a new rep.
-                candidates = [leg for leg in self.ready_legs if angles[leg] <= 110]
+                candidates = [leg for leg in self.ready_legs if angles[leg] <= self.bottom_angle]
                 if candidates and self.stage == 'bottom':
                     leg = min(candidates,key=lambda side:(angles[side],side))
                     return 'bottom:'+leg
-                if max(angles.values()) >= 160:
+                if max(angles.values()) >= self.top_angle:
                     return 'ready'
         return None
 
@@ -117,7 +122,7 @@ class RepetitionCounter:
             self.active_leg = None
             self.ready_legs.clear()
         if self.exercise == 'lunge' and self.stage == 'bottom' and endpoint == 'ready':
-            self.ready_legs.update(leg for leg in ('left','right') if features[f'{leg}_knee_angle'] >= 160)
+            self.ready_legs.update(leg for leg in ('left','right') if features[f'{leg}_knee_angle'] >= self.top_angle)
         return self._result(completed)
 
     def _result(self, completed):

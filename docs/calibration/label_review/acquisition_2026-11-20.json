@@ -1,0 +1,17 @@
+{
+  "completed_at_utc": "2026-11-20T07:24:50.813546+00:00",
+  "source_url": "https://data.mendeley.com/datasets/kgbb3yn47p/3",
+  "archive_bytes": 3113825556,
+  "archive_sha256": "6f6bfda33f094ba13e8509b1cd9a5c1e479062fd0e7749f6b6713db7d588ef84",
+  "publisher_sha256_match": true,
+  "manifest_videos_verified": 294,
+  "prior_calibration_clip_hashes_matched": 86,
+  "review_videos_prepared": 98,
+  "contact_sheets_prepared": 98,
+  "video_decode_check": "Six sampled frames decoded per side-view video; not a full decode audit.",
+  "reviewer_index": "outputs/form_label_review/reviewer_index.csv",
+  "private_source_mapping": "data/raw/mendeley/review_id_mapping.csv",
+  "human_rep_labels_created": 0,
+  "validation_status": "Awaiting independent human rep/fault review",
+  "test_status": "Prior test exposure retained; no fresh final-test claim."
+}

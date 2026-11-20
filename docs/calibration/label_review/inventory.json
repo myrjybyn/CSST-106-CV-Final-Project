@@ -1,0 +1,17 @@
+{
+  "source_url": "https://data.mendeley.com/datasets/kgbb3yn47p/3",
+  "source_clip_count": 294,
+  "side_view_clip_count": 98,
+  "side_view_labels": {
+    "pushup:incorrect": 24,
+    "pushup:correct": 24,
+    "squat:incorrect": 25,
+    "squat:correct": 25
+  },
+  "local_media_present": 0,
+  "new_recording_slots": 48,
+  "actual_new_recordings": 0,
+  "reviewed_rep_annotations": 0,
+  "fresh_test_policy": "All existing participants conservatively excluded from a fresh final test.",
+  "status": "Source labels inventoried; per-rep fault validation pending media and human review."
+}

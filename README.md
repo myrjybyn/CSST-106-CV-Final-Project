@@ -1,258 +1,194 @@
-# Real-Time Exercise Posture Detection and Correction Using Computer Vision
+# Posture Check
 
-Milestone reports, the proposal, data cards and testing evidence are indexed in
-[docs/README.md](docs/README.md).
+A webcam app that counts exercise repetitions and gives an overall form estimate
+with improvement tips. Supports **squats, push-ups, lunges, and jumping jacks**.
+Built with Python, MediaPipe, OpenCV, and Tkinter for CSST 106.
 
-A computer vision-based system designed to analyze exercise posture through a webcam, evaluate body movements, and provide real-time feedback to help users improve their exercise form.
+## 1. Setup
 
-## Overview
+Use **Python 3.12** for the pinned dependencies in `requirements.txt`. You also need
+an internet connection for installation, a webcam, and a graphical desktop.
+No GPU or model training is needed.
 
-Performing exercises with improper posture can reduce workout effectiveness and increase the risk of injury. Beginners, in particular, may have difficulty identifying incorrect form without guidance from a trainer.
+Open a terminal in this project folder and run:
 
-This project aims to address this problem by developing a real-time exercise posture detection and correction system using computer vision. The system will detect human body landmarks, calculate relevant joint angles and body alignment measurements, and compare these measurements against predefined exercise-specific criteria.
-
-The initial scope covers four common exercises:
-
-- Squats
-- Push-ups
-- Lunges
-- Jumping jacks
-
-The system is being developed as a Computer Vision Final Project for CSST 106 at Laguna State Polytechnic University.
-
-## Objectives
-
-- Detect and track human body landmarks using a webcam.
-- Analyze body posture and movement during selected exercises.
-- Identify potentially incorrect exercise form using predefined rules.
-- Provide real-time visual feedback to users.
-- Implement repetition counting where applicable.
-- Evaluate posture classification performance and system responsiveness.
-
-## Technology Stack
-
-| Technology | Purpose |
-|---|---|
-| Python | Primary programming language |
-| MediaPipe Pose Landmarker | Human pose estimation and body landmark detection |
-| OpenCV | Webcam access, video frame processing, and visual output |
-| Geometric calculations | Joint-angle, relative-distance, and body-alignment measurements |
-| Rule-based classification | Evaluation of exercise posture against predefined criteria |
-
-## Current calibrated form rules
-
-The current main method is `temporal-geometric-v3`. The approved squat clip/session
-rule is fitted from labelled training clips and enabled only after validation
-promotion checks. The push-up candidate did not pass those checks, so its existing
-rules remain active; lunge and jumping-jack form rules remain provisional.
-MediaPipe pose weights and movement counting are unchanged.
-
-[Calibration report and protocol](docs/calibration/README.md) explains the revised
-participant split, fitting and validation, prospective results and limitations.
-The 16 reserved test clips give **43.8% → 50.0%** accuracy on the same set. This is
-not directly comparable with 41.7% on the earlier, different 12-clip test set.
-The calibrated squat score is 62.5%; push-up remains 37.5%. Accuracy is still limited.
-
-```bash
-python app.py
-python src/evaluate.py --output outputs/calibration/prospective_repeat.json
-```
-
-The learned artifact is `config/form_rules.json`. The new evaluator defaults to
-the frozen prospective split, verifies the artifact/code/input hashes, and compares
-the original and deployed decisions on shared tracked features. The desktop shows
-a provisional cumulative session estimate; it does not claim frame-level calibrated
-accuracy. Start/Stop resets the estimate. No camera images are stored by it.
-
-For a new demo-laptop run, use the calibrated-version instructions under
-[docs/calibration/LAPTOP_BENCHMARK.txt](docs/calibration/LAPTOP_BENCHMARK.txt).
-The older checkpoint-4 package/report remain historical v2 evidence, preserved in
-`docs/calibration/reference/uncalibrated_v2_code.zip` and the preceding checkout.
-
-## Desktop interface: how to run
-
-After installing the pinned root requirements and downloading the pose model
-with the setup commands below, launch the desktop app from the repository root:
+**Windows PowerShell**
 
 ```powershell
-.\.venv\Scripts\python.exe app.py
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python scripts/download_pose_model.py
 ```
 
-On Linux/macOS with the environment activated, use `python app.py`.
-The interface needs a graphical desktop and Tkinter (included in the standard
-Windows Python installer; Linux distributions commonly provide `python3-tk`).
-There are no additional pip dependencies for the interface.
+If PowerShell blocks activation, skip that step and replace `python` with
+`.\.venv\Scripts\python.exe` in the install, model-download, and run commands.
 
-The home menu shows **Posture Check**, **Start Camera**, **Choose Exercise**,
-**Settings**, and **Quit**. Choose squat, push-up, lunge or jumping jack before
-starting. Start Camera moves the menu to the left and opens the live view with
-pose lines, feedback, movement phase, estimated repetitions and live FPS.
-Settings offer camera indices 0–5, mirrored preview and skeleton visibility.
-Stop the camera before changing settings or exercise. Stop/Start begins a new
-session with zero counts; Escape stops the current session. Quit releases the
-camera and closes the app. Frames remain local and are not recorded.
-
-Use a side view for squat/push-up/lunge and a front view for jumping jacks, with
-your whole body visible. Mirroring affects only the preview. The live pipeline
-uses the existing main method with elapsed-time smoothing and dwell checks to
-handle variable camera cadence. A camera stall of at least 0.5 seconds discards
-partial repetitions. Counts estimate movement; a rule pass is not a verified
-correct-form label. Camera testing on the target laptop is still required.
-The historical Phase 3 frozen-code benchmark remains tied to its original commit;
-new source changes intentionally fail its checksum guard.
-
-## Pose coverage and movement-counting update
-
-The current main video/camera pipeline uses MediaPipe **VIDEO tracking** with
-media timestamps for files and elapsed timestamps for cameras. It removes only
-paired, nearly uniform black margins before pose inference, maps landmarks back
-to the original preview, and keeps the existing confidence/in-frame/size gates.
-Rejected poses now provide framing, visibility or lighting guidance.
-
-Movement counts use a separate endpoint state machine with dwell and hysteresis,
-so form-feedback smoothing does not erase short movement endpoints. Lunges latch
-the bending leg and wait for that leg to extend; the other knee can remain bent.
-Missing data, camera stalls and selected-side switches discard partial cycles.
-The pre-calibration main JSON version was `temporal-geometric-v2`; v3 retains separate `movement_phase`,
-`active_leg`, preprocessing/counting parameters and pose running mode. The
-baseline remains image-mode; still images also use image-mode inference.
-
-See [development review and measured limits](docs/development/POSE_COUNTING_REVIEW.md).
-The comparison script uses an explicitly selected **training-only** manifest:
-
-```bash
-python scripts/compare_development.py --media-root data/raw
-```
-
-Known Phase 3 clips may be checked separately as a **regression set**, not as new
-held-out accuracy evidence. This writes a separate file and never replaces the
-original report or frozen results:
-
-```bash
-python scripts/check_regression_clips.py
-```
-
-These changes do not retrain pose weights or establish general form accuracy.
-Fresh, independently counted development recordings and an untouched test set
-are needed for subsequent calibration and evaluation.
-
-## Historical checkpoint 4: pre-calibration application and test hand-in
-
-The editable report, held-out measurements, checkpoint comparison, UI evidence
-and 25 detailed test cases are indexed in [docs/milestone4/README.md](docs/milestone4/README.md).
-The report preserves failed classification cases and distinguishes current cloud
-measurements from the pending current-version demo-laptop speed measurement.
-
-The required evaluation entry point is `src/evaluate.py`. These historical commands refer to the archived v2 source; use the calibrated commands above for the current version. With the downloaded
-model and Mendeley media in their usual locations, reproduce the frozen supported
-held-out subset with:
-
-```bash
-python src/evaluate.py --data-root data/raw --output outputs/milestone4/heldout_repeat.json
-```
-
-When run with the archived v2 source, this uses `cp3-core` and the v2 method on the
-same 12 side-view test clips. It verifies input/model/source/split hashes and
-records accuracy, per-class precision/recall/F1, confusion matrices, abstentions,
-usable-frame coverage and CPU throughput. No held-out repetition accuracy is
-claimed without count references. Use a new output filename for each run.
-
-For a new version, create a new freeze filename with `--prepare --freeze ...`
-before evaluation; do not overwrite the historical freeze or tune on its test
-outputs. Run software checks with `PYTHONPATH=src python -m unittest discover -s tests -v`.
-
-The same four original checkpoint-3 clips can be used for a separate laptop speed
-check (not new held-out accuracy):
-
-```bash
-python src/evaluate.py --suite benchmark --runtime-label laptop --output docs/milestone4/laptop_benchmark.json
-```
-
-See [laptop instructions](docs/milestone4/LAPTOP_BENCHMARK.txt) and the small
-code-only benchmark package generated by `python scripts/milestone4/package_benchmark.py`.
-Rebuild the editable report with a Python environment containing python-docx:
-`python scripts/milestone4/build_report.py`.
-
-## Milestone 2: how to run
-
-The historical milestone 2 implementation supports **squats in side-view images or videos**.
-It uses the pretrained MediaPipe Tasks Pose Landmarker and provisional geometric
-rules; no custom model training is required. The current desktop interface above
-adds four selected exercise modes, temporal processing, counts and webcam input.
-
-Use **Python 3.12**, from the repository root. On Linux:
+**Linux / macOS**
 
 ```bash
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m pip check
-export PYTHONPATH="$PWD/src"
-export MPLCONFIGDIR="$PWD/.venv/matplotlib"
 python scripts/download_pose_model.py
-python run.py --input milestone1/posture_check/data/samples/squat_01.jpg --output outputs/squat_01.png
 ```
 
-On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`, then set
-`$env:PYTHONPATH = "$PWD\src"` and `$env:MPLCONFIGDIR = "$PWD\.venv\matplotlib"`
-instead of the two `export` commands. Use `py -3.12 -m venv .venv` to create the environment.
-Windows installation has not yet been tested.
+Linux may also need Tkinter and OpenCV system libraries, such as `python3-tk`,
+`libgl1`, and `libglib2.0-0` on Ubuntu. Keep the environment activated when using
+this project. Use the root `requirements.txt`; the milestone-one requirements
+belong to the older prototype.
 
-The model download requires HTTPS access to `storage.googleapis.com`. The script
-downloads Google's version-1 Lite Tasks bundle using TLS verification, checks
-the pinned SHA256 and validates the archive. Weights are kept out of Git.
-Dependencies are pinned, including transitive packages. Install only this root
-requirements file for milestone 2; do not combine it with milestone 1's headless
-OpenCV requirement, since the two OpenCV distributions share the `cv2` module.
-Linux needs the usual OpenCV shared libraries (including `libGL.so.1` and
-`libglib-2.0.so.0`); these are available in the current cloud environment.
-
-After setup, one command processes a video:
+## 2. Run the app: one command
 
 ```bash
-python run.py --input /path/to/squat.mp4 --output outputs/squat.mp4
+python app.py
 ```
 
-The program writes the annotated image/video and an adjacent `.json` report with
-per-frame features, phase, rule status, pose presence and processing time. Video
-JSON also contains one provisional whole-clip prediction, measurements and reasons.
-The root `run.py` entry point does not require setting `PYTHONPATH`; the export
-above is for development tests and the validation script. Video
-output has no audio. `rule_pass` means only that the provisional rule did not
-flag the frame; it does **not** mean the exercise form is correct. Hidden or
-out-of-frame joints and small pose detections return `unassessable`. A side view must be supplied by the
-operator; the current implementation does not automatically verify camera view.
+1. Choose an exercise.
+2. Set your target reps using the minus/plus buttons or type a number from 1 to 100.
+3. Press **Start Session** and get into position during the 3-second countdown.
+4. Complete your reps. Recording stops automatically when the target is counted.
+5. Read the **Good / Bad** form estimate and improvement tips.
 
-### Checks and validation
+Use a **side view** for squats, push-ups, and lunges, and a **front view** for
+jumping jacks. Keep your whole body visible. Use **End Session** or Escape to
+finish early. If tracking or movement is insufficient, the app asks you to retry.
+Sessions also end after 10 minutes.
+
+Each session saves `recording.mp4` and `summary.json` in its own folder under
+`outputs/sessions/`. Files stay on your device. Camera selection, mirroring, and
+skeleton display are available in **Settings**.
+
+[Full session guide and exercise criteria](docs/GUIDED_SESSION.md)
+
+## 3. Model weights
+
+The setup script downloads Google's pretrained **MediaPipe Pose Landmarker Lite**
+model to `models/pose_landmarker_lite.task` and verifies its checksum.
+
+[Official model download](https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_lite/float16/1/pose_landmarker_lite.task)
+
+If downloading manually, save the file at that same path. Model weights are
+excluded from Git, so a fresh clone needs this download.
+
+## 4. Sample inputs
+
+The repository includes 20 sample images in
+[`milestone1/posture_check/data/samples/`](milestone1/posture_check/data/samples/).
+Try one without using a webcam:
 
 ```bash
+python run.py --input milestone1/posture_check/data/samples/squat_01.jpg --output outputs/sample_squat.png --exercise squat
+```
+
+This creates `outputs/sample_squat.png` and `outputs/sample_squat.png.json`.
+Images demonstrate pose detection; repetition counting needs a video or webcam.
+The file-processing command uses the earlier CLI pipeline, while `app.py` uses
+the guided-session rules.
+
+For a video, use your own MP4 with the matching exercise selected:
+
+```bash
+python run.py --input my_squat.mp4 --output outputs/my_squat_checked.mp4 --exercise squat
+```
+
+Exercise names for the CLI are `squat`, `pushup`, `lunge`, and `jumping_jack`.
+
+For the labeled squat/push-up dataset, download **Dataset Subject-wise.zip** from
+[Mendeley Data, version 3](https://data.mendeley.com/datasets/kgbb3yn47p/3).
+Extract it so the folder is `data/raw/mendeley/Dataset Subject-wise/`.
+The prepared subset lists 294 videos in `data/prepared/mendeley/`.
+Large videos are excluded from Git. The dataset uses CC BY 4.0; keep its attribution.
+See [dataset sources and checksums](docs/DATA_ACQUISITION.md).
+
+## 5. Reproduce the checks and reported results
+
+### Current app checks
+
+From the project folder, run the automated tests:
+
+```powershell
+$env:PYTHONPATH = "src;tests"
 python -m unittest discover -s tests -v
-python scripts/evaluate_validation.py --media-root /path/to/extracted --output outputs/side_validation_metrics.json
 ```
 
-The media root must contain `Dataset Subject-wise/` matching the committed
-Mendeley inventory. The current validation runner uses **eight side-view squat
-validation videos**, requires every selected file, and reports clip-level
-classification metrics, abstentions, FPS and feature coverage. Clip predictions
-are compared to source clip labels; those labels are never copied onto frames.
-See the [fixed validation protocol](docs/VALIDATION_PROTOCOL.md) for thresholds
-and metric denominators. The runner never uses the test partition. Timing excludes
-rendering/encoding; a separate throughput figure includes decoding. Coverage is
-not landmark accuracy. Unverified milestone-one images are excluded from
-classification metrics.
+On Linux/macOS, use:
 
-Large raw media is excluded from Git. The prepared cloud instance now contains
-all 294 Mendeley clips referenced by the split manifests under `data/raw/mendeley`.
-REHAB24 videos, 2D joint files and segmentation metadata are also downloaded and
-extracted locally; see [acquisition paths and checksums](docs/DATA_ACQUISITION.md).
-Run validation there with `--media-root data/raw/mendeley`. A fresh clone still
-needs a separate media download.
-See [milestone status and limitations](docs/MILESTONE2_STATUS.md) and
-[dataset preparation](docs/DATASET_PREPARATION_M2.md). The real image and continuous
-video pipelines have run. The [earlier version-one benchmark](docs/results/mendeley_squat_validation.json)
-measured 31.88 processing FPS over 24 clips / 11,090 frames across all views.
-The current version-two side-view result is recorded separately in
-[results/mendeley_squat_side_validation.json](docs/results/mendeley_squat_side_validation.json).
-Visual review exposed a small false pose on gym equipment in an obscured training
-frame; the new body-size gate rejects that regression case. This does not establish
-that all accepted detections or posture predictions are correct.
+```bash
+PYTHONPATH=src:tests python -m unittest discover -s tests -v
+```
+
+The current suite has **74 tests** and should finish with `OK`. These check
+software behavior, including counting, form rules, automatic stopping, and
+recording cleanup; they do not establish form-classification accuracy.
+
+To check the desktop layout and save example UI screenshots without opening
+the camera:
+
+```bash
+python scripts/check_guided_session_ui.py
+```
+
+Screenshots and the check log are saved in `outputs/guided_session_smoke/`.
+For a webcam check, run `python app.py`, complete a short set, and verify the
+saved recording, target count, and summary.
+
+### Earlier reported accuracy and speed
+
+The earlier clip-level results are preserved in
+[docs/calibration/README.md](docs/calibration/README.md), with raw results in
+`docs/calibration/prospective_results.json` and `laptop_benchmark.json`.
+**Those figures describe the earlier calibrated pipeline, not the current guided app.**
+
+To rerun them, use a separate copy of the matching source revision. Use Linux or
+WSL for the frozen evaluator, which stores paths with `/` separators:
+
+```bash
+git -c core.autocrlf=false clone https://github.com/myrjybyn/CSST-106-CV-Final-Project.git ../posture-check-results
+cd ../posture-check-results
+git checkout c5196f6b2778c892d4d459090780f6d0bc6685fb
+```
+
+Set up a Python environment, download the model, and place the Mendeley dataset
+in that copy using the steps above. Then run:
+
+```bash
+python src/evaluate.py --suite prospective --output outputs/reproduced/prospective.json
+```
+
+For the earlier laptop benchmark, also provide the four original clips in
+`data/raw/phase3_user/`: `push_up.mp4`, `squat.mp4`, `lunge.mp4`, and
+`jumping_jacks.mp4`. These clips are local and must accompany the submission
+separately if that benchmark is reported. Their original download URLs were not
+recorded. Run from the matching source copy:
+
+```bash
+python src/evaluate.py --suite benchmark --runtime-label laptop --output outputs/reproduced/laptop_benchmark.json
+```
+
+Use a new output filename for each rerun. The evaluator checks code, model, and
+input hashes. Running it against the updated GUI source will fail its old checksum
+check. Speed varies with hardware and environment; see the recorded
+[laptop environment and procedure](docs/calibration/LAPTOP_BENCHMARK_STATUS.md).
+
+## 6. Project files and report material
+
+| Location | Contents |
+| --- | --- |
+| `app.py` | Desktop app entry point |
+| `src/posture_check/` | Pose detection, counting, form rules, recording, and interface |
+| `run.py` | Image/video processing entry point |
+| `tests/` | Automated software checks |
+| `scripts/` | Model download, dataset preparation, evaluation, and report tools |
+| `assets/` | Interface artwork |
+| `data/prepared/` | Dataset manifests and splits |
+| `docs/` | Proposal, methodology, experiments, results, references, and report drafts |
+| `outputs/` | Generated recordings, screenshots, and processing results; excluded from Git |
+
+[Documentation index](docs/README.md) links to the existing report material.
+[Task-designation records](docs/MILESTONE2_STATUS.md) provide a starting point
+for the contribution table; confirm the final contributions with the team.
+
+Form estimates use selected 2D movement criteria. Camera angle, lighting,
+occlusion, and missed counts can affect the result. No new accuracy percentage
+is claimed for the guided-session version.

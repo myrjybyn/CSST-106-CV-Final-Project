@@ -1,0 +1,104 @@
+FORM FEEDBACK LABEL REVIEW PACKET
+Prepared 2026-11-20
+
+WHAT IS ACTUALLY LABELED
+source_clips.csv inventories the project's published Mendeley good/bad labels.
+These apply to entire videos. They do not identify which rep or fault is wrong.
+The original manifests, split assignments, benchmark and deployed rules are preserved.
+inventory.json reports actual local media presence, separately from label availability.
+No new videos, expert judgments or validation results have been manufactured.
+inventory.json is the initial preparation snapshot. After acquisition, consult
+acquisition_2026-11-20.json and source_clips_available_2026-11-20.csv for verified
+availability. Numbered full videos, contact sheets and a blank reviewer worksheet
+are generated locally under outputs/form_label_review/. They are ignored by Git.
+
+GET THE EXISTING EXAMPLES
+Source: https://data.mendeley.com/datasets/kgbb3yn47p/3
+License: CC BY 4.0. Credit the dataset authors and DOI 10.17632/kgbb3yn47p.3.
+Download Dataset Subject-wise.zip from the publisher and extract its contents to
+data/raw/mendeley/. Match the video paths in source_clips.csv. The project records
+an archive size of 3,113,825,556 bytes and SHA256:
+6f6bfda33f094ba13e8509b1cd9a5c1e479062fd0e7749f6b6713db7d588ef84
+This size/checksum comes from the existing acquisition record, not a new download.
+The alternative folder organizations contain duplicate media; do not count them
+as independent examples.
+
+HUMAN REVIEW
+1. Give reviewers only outputs/form_label_review/ when available. It contains
+   shuffled numbered copies, reviewer_index.csv, and reviewer_rep_annotations.csv.
+   Keep data/raw/mendeley/review_id_mapping.csv separate until review is complete.
+   The original side_view_review_queue.csv is a locator for the dataset organizer;
+   its filenames expose source good/bad labels, so it is NOT a blind review list.
+   Hide app predictions too.
+2. A trainer or suitably qualified movement reviewer defines the exercise rubric
+   before reviewing. Record their qualification; ordinary volunteer labels must
+   not be described as expert ground truth.
+3. Add one row per complete rep to rep_annotations.csv. Use start_seconds and
+   end_seconds relative to the ORIGINAL video. Define a squat rep as standing,
+   descent, bottom, return to standing; a push-up as top, descent, bottom, return
+   to top. Exclude incomplete edge segments or describe them separately.
+4. assessable is yes/no. Missing joints, occlusion, unsuitable view, ambiguous
+   boundaries or insufficient visual evidence should receive no, with a reason.
+   Tracking failure is not evidence of incorrect form.
+5. overall_form is correct/incorrect/uncertain/unassessable under the written
+   reviewer rubric. Each fault is present/absent/uncertain/not_applicable.
+   Leave these fields BLANK until someone actually reviews the rep.
+6. Record visible evidence in evidence_notes. Do not use the app's angle
+   thresholds to manufacture reference labels. Whole-clip good/bad labels must
+   never be copied to every rep or converted into a specific fault label.
+7. Have a second reviewer independently annotate a subset (preferably all final
+   test reps). Preserve their separate original worksheet. Resolve disagreements
+   explicitly and record adjudication_status as agreed/resolved/unresolved.
+
+FAULT RUBRIC TO FINALIZE WITH THE REVIEWER
+limited_depth: observed movement does not reach the agreed exercise/participant
+target range. Document the target and exercise variant before assigning labels.
+incomplete_extension: the rep does not return to the agreed top position.
+trunk_alignment_issue: visible deviation from the agreed exercise-specific
+alignment. A side-view projected angle alone cannot establish spinal curvature,
+injury risk, or every alignment fault. Use uncertain when the view cannot tell.
+These are annotation categories, not medical thresholds or validated coaching.
+
+NEW LAPTOP RECORDINGS
+new_recording_plan.csv contains 48 EMPTY recording slots for 8 NEW participants,
+2 exercises and 3 takes per exercise, targeting 3 complete reps per take.
+This is a small pilot, not a statistically sufficient reliability claim.
+All takes and future views from a person must stay in that person's split:
+4 development participants, 2 validation participants, 2 final-test participants.
+Obtain consent and keep videos under ignored data/raw/, with anonymous IDs.
+Record naturally occurring variation in comfortable, unweighted movement; do not
+ask people to force dangerous technique merely to create an incorrect example.
+If both labels/fault outcomes are not represented, report the missing coverage
+and collect more independently reviewed recordings before claiming validation.
+No condition or filename preassigns the eventual form label.
+
+EVALUATION
+Existing Mendeley participants have prior development/test exposure. Use them
+for development and regression; do not describe them as a new untouched test.
+New boundaries/fault annotations on old participants do not erase that exposure.
+Freeze annotation rubric, split, code, pose weights and thresholds before final
+test inference. Keep final-test labels hidden during development. If tuning uses
+final-test results, reserve another independent test before the next claim.
+Evaluate one result per rep for each fault and overall form separately. Report
+participant/rep counts, class counts, confusion matrices, per-fault precision and
+recall, macro F1, abstentions and assessable coverage. Include unassessable cases;
+report accuracy over assessable cases and over all cases separately. Report rep
+boundary/count matching separately so missed or duplicated reps are not hidden.
+Whole-session validation does not establish per-rep or live feedback accuracy.
+
+OTHER VERIFIED SOURCES (CHECKED 2026-11-20)
+Fitness-AQA: https://github.com/ParitoshParmar/Fitness-AQA
+Author paper: https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/5907_ECCV_2022_paper.php
+Expert-annotated exercise errors, including barbell back squat. It is a different
+variant from this app's bodyweight squat. Dataset access requires the author's
+request form and non-commercial terms. No access request was submitted.
+
+EgoExo-Fitness: https://github.com/iSEE-Laboratory/EgoExo-Fitness
+Annotation details:
+https://github.com/iSEE-Laboratory/EgoExo-Fitness/blob/main/Raw_annotations/README.md
+Technical guideline verification, comments and quality scores are closer to
+specific feedback labels. Released annotations describe action intervals; do not
+assume per-rep labels without checking. Dataset access requires a signed license
+and author approval; the Hugging Face distribution is gated. The documentation
+says released visual data are 30-FPS frames, with raw video available by inquiry.
+No agreement was signed, contact details submitted or author contacted.

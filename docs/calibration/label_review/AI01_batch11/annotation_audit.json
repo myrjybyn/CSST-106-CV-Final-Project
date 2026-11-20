@@ -1,0 +1,54 @@
+{
+  "source_sha256": "8009a092e1177a8075afbadf7417fe501bb091deb6e7a04c3e5a952cfaa43e30",
+  "rows": 1192,
+  "videos": 97,
+  "missing_review_ids": [
+    "review_061"
+  ],
+  "missing_columns": [
+    "adjudication_status",
+    "reviewed_at",
+    "reviewer_id",
+    "reviewer_qualification",
+    "second_reviewer_id"
+  ],
+  "label_provenance": "Unverified supplied annotations; AI01 filename token is not verified reviewer identity.",
+  "preliminary_notes": 1032,
+  "structural_issue_count": 0,
+  "issue_counts": {
+    "missing_reviewer_provenance": 1192,
+    "correct_with_uncertain_fault": 74,
+    "missing_evidence_notes": 83,
+    "incorrect_without_named_fault": 15
+  },
+  "overall_labels": {
+    "incorrect": 605,
+    "correct": 98,
+    "uncertain": 488,
+    "unassessable": 1
+  },
+  "provisional_overall_scoring_rows": 614,
+  "fault_labels": {
+    "limited_depth": {
+      "uncertain": 370,
+      "absent": 671,
+      "present": 151
+    },
+    "incomplete_extension": {
+      "absent": 838,
+      "uncertain": 195,
+      "present": 159
+    },
+    "trunk_alignment_issue": {
+      "present": 319,
+      "uncertain": 833,
+      "absent": 40
+    }
+  },
+  "limitations": [
+    "No independently verified reviewer identity, qualification, review dates or adjudication.",
+    "Uncertain labels are not treated as absent faults.",
+    "Prior participant exposure prevents a fresh final-test claim.",
+    "No labels were used for training or threshold selection."
+  ]
+}
