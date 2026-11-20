@@ -76,6 +76,7 @@ Version verification matches the calibrated frozen artifacts to submission commi
 
 ## Current guided-rule comparison
 
+- [Dataset correction and cleaned comparison](guided_evaluation/cleaned_results.md) — conflicting exact-duplicate labels excluded in a separately disclosed post-hoc analysis; original results preserved.
 - [Protocol and reproduction](guided_evaluation/README.md)
 - [Frozen methods and 16-video selection](guided_evaluation/freeze.json)
 - [Results tables](guided_evaluation/results.md), [raw results](guided_evaluation/results.json), and [per-clip CSV](guided_evaluation/results.csv)

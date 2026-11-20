@@ -14,6 +14,19 @@ expert fault annotations. The preliminary AI01 repetition annotations are not us
 
 ## Measured outcome
 
+**Dataset correction:** the original input selection contains two exact-duplicate
+video pairs with opposite source labels. A later audit confirmed both conflicts
+in the original downloaded ZIP, not just the extracted files. The original scores
+below are preserved as the **unfiltered** comparison. Use the
+[separate cleaned analysis](cleaned_results.md) alongside them when reporting results.
+
+Removing both copies of each contradictory pair leaves 12 clips (six per exercise;
+three correct and three incorrect per exercise). Both methods score **41.67%
+accuracy, 0.431 macro-F1 and 91.67% coverage**. Squat accuracy remains 50% (3/6).
+This is a post-hoc data-quality sensitivity analysis on reused predictions, not a
+new independent test or an improved classifier. Remaining labels still need
+independent review; no missing fault descriptions or human labels were invented.
+
 The run completed on **21 November 2026, Philippine time**. Both methods produced
 the same prediction on all 16 clips:
 
@@ -104,6 +117,34 @@ evaluation requires a separately named freeze, its own protocol, and disclosure.
   labels or clinical correctness.
 - `outputs/guided_evaluation/results/`: compressed shared per-frame evidence;
   generated files are excluded from Git and can be recreated from the inputs.
+
+## Reproduce the dataset correction
+
+Keep the original downloaded `data/raw/mendeley/Dataset Subject-wise.zip` as well
+as the extracted videos. From the project root, run:
+
+```bash
+python scripts/audit_guided_labels.py --output outputs/guided_rerun/cleaned_rerun.json
+```
+
+The script verifies every selected input against the original freeze, identifies
+all SHA-256 groups with conflicting form labels, and verifies each conflicting
+member in the original ZIP. All copies in each conflicting group are excluded,
+regardless of their predictions. No original videos, labels, freeze or results
+are changed. It saves cleaned JSON/CSV/Markdown and a `_label_audit.json` file.
+Use new output paths for additional analyses.
+
+It defaults to the checked-in original results. To audit a fresh inference run,
+pass `--source outputs/guided_rerun/results_rerun.json` with the matching
+`--freeze` if needed. Archive and extracted-data locations can be changed using
+`--archive` and `--data-root`.
+
+The preserved correction is [cleaned_results.json](cleaned_results.json),
+[CSV](cleaned_results.csv), [report-ready tables and correction](cleaned_results.md),
+and [archive verification and exclusion audit](cleaned_results_label_audit.json).
+The earlier 160 checks verified artifacts/arithmetic, not label consistency.
+This new check finds exact-byte conflicts, not re-encoded duplicates or all other
+annotation errors. All source labels remain provisional whole-video references.
 
 Historical results under `docs/calibration/` are preserved unchanged. They use a
 different classifier and earlier runtime; they should not be combined with this

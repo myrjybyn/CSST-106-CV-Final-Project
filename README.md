@@ -118,7 +118,7 @@ On Linux/macOS, use:
 PYTHONPATH=src:tests python -m unittest discover -s tests -v
 ```
 
-The current suite has **77 tests** and should finish with `OK`. These check
+The current suite has **80 tests** and should finish with `OK`. These check
 software behavior, including counting, form rules, automatic stopping, and
 recording cleanup; they do not establish form-classification accuracy.
 
@@ -141,9 +141,12 @@ current guided rules. It uses 16 previously exposed, source-labeled Mendeley
 videos. This is a complete-video test, not a new independent test or a measurement
 of webcam operation and automatic stopping.
 
-[Recorded results](docs/guided_evaluation/results.md): both methods scored
-43.75% accuracy and 0.430 macro-F1, assessing 15 of 16 clips. No classification
-improvement was measured on this set.
+[Original, unfiltered results](docs/guided_evaluation/results.md): both methods
+scored 43.75% accuracy and 0.430 macro-F1, assessing 15 of 16 clips.
+A later audit found two identical-video pairs with contradictory labels in the
+downloaded dataset. [The separate cleaned analysis](docs/guided_evaluation/cleaned_results.md)
+excludes all four files: both methods score **41.67% accuracy and 0.431 macro-F1**,
+assessing 11 of 12 clips. Neither comparison shows a classification improvement.
 
 After downloading the model and dataset, reproduce it with:
 
@@ -153,6 +156,18 @@ python scripts/evaluate_guided_rules.py --output outputs/guided_rerun/results_re
 
 Use a new output filename and stem for each run. The script checks the frozen
 code, model, and video hashes, then saves JSON, CSV, and Markdown results.
+
+To reproduce the label audit and cleaned scores from the preserved original
+predictions, also keep the downloaded `Dataset Subject-wise.zip` archive and run:
+
+```bash
+python scripts/audit_guided_labels.py --output outputs/guided_rerun/cleaned_rerun.json
+```
+
+This verifies the source videos and conflicting archive entries, then recalculates
+metrics without changing rules or rerunning pose detection. It uses the checked-in
+original results by default; details and alternative input paths are in the
+[evaluation guide](docs/guided_evaluation/README.md).
 
 ### Earlier reported accuracy and speed
 

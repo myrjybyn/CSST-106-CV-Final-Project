@@ -4,6 +4,7 @@
 # Keep the guided evaluation's frozen source/evidence hashes portable on Windows.
 /src/posture_check/*.py text eol=lf
 /scripts/evaluate_guided_rules.py text eol=lf
+/scripts/audit_guided_labels.py text eol=lf
 /requirements.txt text eol=lf
 /docs/guided_evaluation/* text eol=lf
 # JSON evidence hashes refer to exact bytes, including recorded line endings.

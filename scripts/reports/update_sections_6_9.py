@@ -174,6 +174,32 @@ def update(source, destination):
     ]:
         insert_paragraph(before, text)
 
+    # Keep the original comparison, and disclose the later label-quality correction.
+    cleaned_path = results_path.with_name('cleaned_results.json')
+    cleaned = json.loads(cleaned_path.read_text(encoding='utf-8'))
+    if cleaned['source_results_sha256'] != hashlib.sha256(results_path.read_bytes()).hexdigest():
+        raise ValueError('Cleaned analysis does not belong to the original results')
+    metrics = cleaned['summary']['guided_session_rules']
+    corrected = (percent(metrics['accuracy_all']) + ' accuracy, ' + score(metrics['macro_f1']) +
+                 ' macro-F1 and ' + percent(metrics['classification_coverage']) + ' coverage')
+    insert_paragraph(paragraphs[25], '6.7 Post-hoc label-quality correction', 'Heading 2')
+    insert_paragraph(paragraphs[25], 'A later exact-byte audit found contradictory duplicate pairs: subject 019 push-up good/bad and subject 023 squat good/bad. Both copies of each pair were verified in the original downloaded ZIP. The original 160 artifact checks did not test label consistency. Both copies of every conflicting group were excluded without consulting predictions. This leaves 12 previously exposed clips, six per exercise and three per form class per exercise. Predictions are reused unchanged; no inference, tuning, training or relabeling occurs. This is a post-hoc sensitivity analysis, not a fresh independent test. Exact-byte duplicate removal does not verify remaining labels or detect every re-encoded duplicate.')
+    insert_paragraph(before, '7.8 Dataset correction: comparison after conflicting-pair exclusion', 'Heading 2')
+    insert_paragraph(before, 'The original E7 figures in Section 7.7 are the unfiltered 16-clip results. After excluding all four files in the two contradictory duplicate pairs, both methods score ' + corrected + ' on 12 clips. Both still agree on every retained clip. This corrects the evaluation inputs; it does not demonstrate an improved classifier. Report both the original comparison and this later correction.')
+    rows = [['Method / 12 retained clips', 'Accuracy', 'Macro-F1', 'Coverage']]
+    for method, label in [('fixed_clip_rules', 'Fixed clip baseline'), ('guided_session_rules', 'Guided final assessor')]:
+        value = cleaned['summary'][method]
+        rows.append([label, percent(value['accuracy_all']) + ' (5/12)', score(value['macro_f1']), percent(value['classification_coverage']) + ' (11/12)'])
+        new_row(tables[5], ['E7 cleaned post-hoc: ' + label, percent(value['accuracy_all']) + ' (5/12)', score(value['macro_f1']), percent(value['classification_coverage']) + ' (11/12)'])
+    insert_table(before, tables[5], rows)
+    insert_paragraph(before, 'Shared cleaned confusion matrix: source-correct clips yield three correct, two incorrect and one unable-to-assess prediction; source-incorrect clips yield four correct and two incorrect predictions. Incorrect-form recall is 33.33%. Assessed-only accuracy is 45.45% (5/11), conditional on 91.67% coverage. Squat accuracy remains 50% (3/6), with macro-F1 0.536; push-up accuracy is 33.33% (2/6), with macro-F1 0.333. The existing squat movement abstention remains in the denominator.')
+    insert_paragraph(before, 'Evidence: scripts/audit_guided_labels.py; docs/guided_evaluation/{cleaned_results.json,cleaned_results.csv,cleaned_results.md,cleaned_results_label_audit.json}. Remaining source labels are not expert-adjudicated fault references. Neither the original nor cleaned analysis validates lunge/jumping jacks, feedback tips, count accuracy, target stopping or live speed. All 80 software tests pass after adding three duplicate-exclusion regression tests.')
+    replace(paragraphs[3], paragraphs[3].text + ' A later disclosed data-quality correction excludes two contradictory duplicate pairs; original scores remain unfiltered historical evidence.')
+    replace(paragraphs[84], paragraphs[84].text + ' A later exact-byte source-label audit identified two contradictory pairs already present in the downloaded archive. Excluding all four files gives both methods ' + corrected + ' on 12 retained clips; neither comparison shows a classification gain.')
+    replace(paragraphs[89], paragraphs[89].text + ' The unfiltered selection includes two pairs of byte-identical videos carrying opposite labels. A separate post-hoc corrected analysis excludes both copies of each pair; remaining labels are still not independently adjudicated, and the cleaned subset is not a new independent test.')
+    replace(paragraphs[93], paragraphs[93].text + ' The later dataset correction gives both methods ' + corrected + ' on 12 clips after removing contradictory duplicate pairs. This is a data-quality correction, not evidence of a classification improvement; both results remain below the original target.')
+    cell_text(tables[16].rows[3].cells[1], 'Implemented fixed 2D checks with abstention. Original unfiltered E7: 43.75% accuracy / 0.430 macro-F1 on 16 clips. Separate post-hoc correction: ' + corrected + ' on 12 clips, identical to the matched baseline; incorrect recall 33.33%. Remaining labels need independent review. Historical calibrated 50.0% is separate.')
+    cell_text(tables[16].rows[6].cells[1], '80% accuracy was not demonstrated. Guided E7 is 43.75% on the unfiltered selection and 41.67% on the post-hoc cleaned subset. Neither is a new independent test. Historical offline 23.67 FPS does not verify controlled guided-webcam ≥10 FPS.')
     document.core_properties.title = 'Posture Check — Final Report Sections 6–9 (Updated)'
     document.core_properties.subject = 'Historical experiments and measured current guided-rule evaluation'
     document.core_properties.comments = 'Updated from the supplied report using the completed frozen E7 evaluation. Original document and historical figures preserved.'
@@ -185,6 +211,6 @@ def update(source, destination):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--input', type=Path, required=True)
-    parser.add_argument('--output', type=Path, default=ROOT / 'docs/reports/PostureCheck-FinalReport-Sections6-9-Updated.docx')
+    parser.add_argument('--output', type=Path, default=ROOT / 'outputs/report_updates/PostureCheck-FinalReport-Sections6-9-Updated.docx')
     args = parser.parse_args()
     update(args.input, args.output)

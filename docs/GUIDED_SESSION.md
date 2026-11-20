@@ -76,7 +76,9 @@ The guided GUI does not use `config/form_rules.json` for its final result.
 Historical calibration reports and the CLI evaluation remain separate evidence;
 their accuracy figures do not validate these new session rules. The separate
 guided evaluation compares fixed and guided rules on 16 previously exposed
-squat/push-up videos with source labels. It does not validate all four modes or
+squat/push-up videos with source labels. A [separate corrected analysis](guided_evaluation/cleaned_results.md)
+excludes four files in contradictory exact-duplicate pairs and reports scores on
+12 retained clips. Neither comparison shows a classification gain. It does not validate all four modes or
 feedback-tip correctness. For the school report, describe this as **pose
 estimation, repetition counting, and rule-based whole-session form estimation**,
 and keep each measurement tied to its tested version, inputs, and scope.
