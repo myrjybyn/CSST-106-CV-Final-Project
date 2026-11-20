@@ -73,3 +73,13 @@ the underlying report, scripts, metrics and evidence are versioned here.
 The application/testing report, calibration supplement and provisional combined report are archived under `history/`. Only the item-6 technical documentation draft above is current. It has introduction, data, method and experiments sections. The original 12-clip test (41.7% pre-calibration v2) and new 16-clip prospective test (43.8% uncalibrated versus 50.0% calibrated) remain distinct.
 
 Version verification matches the calibrated frozen artifacts to submission commit `c5196f6b2778c892d4d459090780f6d0bc6685fb`, whose message names `cp4-80`. The existing `cp4-80` tag was fetched from origin and verified at that commit; its target is unchanged. See the [validation audit](calibration/laptop_benchmark_validation.json).
+
+## Current guided-rule comparison
+
+- [Protocol and reproduction](guided_evaluation/README.md)
+- [Frozen methods and 16-video selection](guided_evaluation/freeze.json)
+- [Results tables](guided_evaluation/results.md), [raw results](guided_evaluation/results.json), and [per-clip CSV](guided_evaluation/results.csv)
+
+This compares existing fixed clip rules with current guided-session rules on the
+same previously exposed squat/push-up videos. It is separate from the historical
+calibrated classifier and does not measure automatic stopping or live webcam speed.

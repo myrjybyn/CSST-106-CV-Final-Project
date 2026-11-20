@@ -118,7 +118,7 @@ On Linux/macOS, use:
 PYTHONPATH=src:tests python -m unittest discover -s tests -v
 ```
 
-The current suite has **74 tests** and should finish with `OK`. These check
+The current suite has **77 tests** and should finish with `OK`. These check
 software behavior, including counting, form rules, automatic stopping, and
 recording cleanup; they do not establish form-classification accuracy.
 
@@ -132,6 +132,27 @@ python scripts/check_guided_session_ui.py
 Screenshots and the check log are saved in `outputs/guided_session_smoke/`.
 For a webcam check, run `python app.py`, complete a short set, and verify the
 saved recording, target count, and summary.
+
+### Current guided-rule comparison
+
+The [guided evaluation folder](docs/guided_evaluation/README.md) documents a
+matched squat/push-up comparison between the existing fixed clip rules and the
+current guided rules. It uses 16 previously exposed, source-labeled Mendeley
+videos. This is a complete-video test, not a new independent test or a measurement
+of webcam operation and automatic stopping.
+
+[Recorded results](docs/guided_evaluation/results.md): both methods scored
+43.75% accuracy and 0.430 macro-F1, assessing 15 of 16 clips. No classification
+improvement was measured on this set.
+
+After downloading the model and dataset, reproduce it with:
+
+```bash
+python scripts/evaluate_guided_rules.py --output outputs/guided_rerun/results_rerun.json
+```
+
+Use a new output filename and stem for each run. The script checks the frozen
+code, model, and video hashes, then saves JSON, CSV, and Markdown results.
 
 ### Earlier reported accuracy and speed
 
@@ -190,5 +211,5 @@ check. Speed varies with hardware and environment; see the recorded
 for the contribution table; confirm the final contributions with the team.
 
 Form estimates use selected 2D movement criteria. Camera angle, lighting,
-occlusion, and missed counts can affect the result. No new accuracy percentage
-is claimed for the guided-session version.
+occlusion, and missed counts can affect the result. Complete-clip evaluation does
+not establish reliable form assessment for every person, exercise, or camera setup.

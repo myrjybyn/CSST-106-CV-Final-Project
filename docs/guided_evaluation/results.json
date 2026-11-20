@@ -1,0 +1,1522 @@
+{
+  "started_at_utc": "2026-11-20T16:22:55.627104+00:00",
+  "status": "complete",
+  "freeze_sha256": "eb225546310c2dc062433e3604556e67c67afab836018acf90f306cb25c56950",
+  "freeze_file": "D:\\Users\\Acer\\Downloads\\CSST-106-CV-Final-Project\\docs\\guided_evaluation\\freeze.json",
+  "source_sha256": {
+    "src/posture_check/__init__.py": "b0b321613c14ed5dccb7a11b09244385a184192ed54b16f55cbb0b16e1b1ff4c",
+    "src/posture_check/__main__.py": "93c458715e6828f5f825c54250fe0f06f1714a6aca3dba7133ab0b9c93cf09c8",
+    "src/posture_check/baseline.py": "dc85f8ed5786199264535a8c701e6d5bde54e8ea0ea9cb2b99017eae7221f0ac",
+    "src/posture_check/calibrated.py": "539966767b4c239b724b64cb82d6d0f8adce67fad8aa8ffa712926677eb73557",
+    "src/posture_check/clip.py": "9f4eeab1048188686e03414480fa471ea260d18365baa75d2699b84674a39da8",
+    "src/posture_check/counting.py": "ab78fd0b10918fa25817c00f1eaceb3fa6aba8895a5c65592a09eec94c4b35c8",
+    "src/posture_check/evaluation.py": "1cab70b9de006fcae16d4b1f62cee60171c5c76a0f982e15561bd5d90ab70d3d",
+    "src/posture_check/exercises.py": "da4f6db33e46b240b5563a365b183444964ffdd93d751307d027d45b61a3f2cd",
+    "src/posture_check/features.py": "874c35447dacb84337270af5c86ea8296ee31bd78d4d33171d43e990e133b2f5",
+    "src/posture_check/form_features.py": "3eaf09473177b7355b1b87b423eebc72be0a49288b201ba88c5428d1dc1e7af1",
+    "src/posture_check/gui.py": "998103470bd3a35d7de44069153d318eaac21b2a999a472ca74861595cb1fbcc",
+    "src/posture_check/pose.py": "2b527e78dc265798eb7a919c68cd6f37f3fb291ef3c4b8dfb4561f8785fa3443",
+    "src/posture_check/preprocessing.py": "c9248fc7716259e0a2cd72ebb9df4ca45202487cd0d707aa9f892d8246af782b",
+    "src/posture_check/prospective_evaluation.py": "8a19c1df2e9ddcee66a91ba0faaa2cb9348a9bc8e9f0e64e63a714fc98a5bbec",
+    "src/posture_check/quality.py": "cba910cb6ddcac02b20ad3c9b5d60e9b4357172d81cd0027d16a6fc215c2d5cd",
+    "src/posture_check/session.py": "6a274924431adc346e844389aecdf446c38458d514ae84df4fbebdad9f2ca373",
+    "src/posture_check/temporal.py": "c9fcd3942c5f928112157ff088da5eaf07bd478d00156efaa4b192946090049f",
+    "scripts/evaluate_guided_rules.py": "e0b112bb50e693732593c2101c37faad67540c6950324bc704b5a964224e44f9",
+    "requirements.txt": "2cd47cb3dab50983e7a020dabe7eaf7b96048d4e666544eb4e334290b19fb8a4"
+  },
+  "model_sha256": "59929e1d1ee95287735ddd833b19cf4ac46d29bc7afddbbf6753c459690d574a",
+  "protocol": {
+    "scope": "Matched comparison on 16 previously exposed complete clips; not a fresh independent test.",
+    "labels": "Mendeley whole-clip source labels, not verified fault-level or expert labels. AI01 annotations are not used.",
+    "baseline": "Existing summarize_for_exercise(..., calibrated=False) on all shared temporal records.",
+    "final": "Unmodified ExerciseSession.add/assess; initial idle exclusion and quality gates retained.",
+    "shared_processing": "One tracked VIDEO pose pass per clip, enhanced=True, GUI temporal path with dt_seconds=1/media_fps and analyzer nominal FPS 30.",
+    "stopping": "Decode full clip; no target-based truncation, countdown, preview, or recording. Does not validate automatic stopping or webcam speed.",
+    "mapping": "Guided good -> correct; bad -> incorrect; unassessable retained.",
+    "metrics": "Accuracy on all clips; binary macro-F1 with abstentions as false negatives; coverage; assessed-only accuracy; per-class precision/recall/F1; confusion matrix.",
+    "counts": "Observed guided counts only. No manual rep references, so no count MAE or count-accuracy claim.",
+    "tuning": "No threshold fitting, calibration profile loading, or post-result selection. Preserve all outputs, including failures."
+  },
+  "runtime": {
+    "python": "3.13.0",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "dependencies": {
+      "mediapipe": "1.2.0",
+      "numpy": "2.2.3",
+      "opencv-contrib-python": "4.11.0.86",
+      "pillow": "11.1.0"
+    }
+  },
+  "runs": [
+    {
+      "id": "subject_017_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_017/push_up/bad/side/subject_017_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_17",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "819ec05528cbc871c229192dc1ccabba1101266f57fc56d816573ab8c7542d6b",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 227,
+      "fps": 15.0,
+      "frames": 227,
+      "media_fps": 15.0,
+      "guided_observed_reps": 10,
+      "shared_decode_and_processing_seconds": 7.530090899999777,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 223,
+        "valid_fraction": 0.9823788546255506,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 96.65415699654409,
+          "elbow_p90": 156.41644772303286,
+          "body_alignment_p10": 174.00069831860964
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_017_push_up_bad_side.json.gz",
+      "evidence_sha256": "1019d67e2d6df65dd2ac7d4fbefacff647374b981c60c130b7fcb04303c3bd4d"
+    },
+    {
+      "id": "subject_017_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_017/push_up/bad/side/subject_017_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_17",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "819ec05528cbc871c229192dc1ccabba1101266f57fc56d816573ab8c7542d6b",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 227,
+      "fps": 15.0,
+      "frames": 227,
+      "media_fps": 15.0,
+      "guided_observed_reps": 10,
+      "shared_decode_and_processing_seconds": 7.530090899999777,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 223,
+        "valid_fraction": 0.9823788546255506,
+        "measurements": {
+          "angle_p10": 96.65415699654409,
+          "angle_p90": 156.41644772303286,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 150,
+          "body_alignment_p10": 174.00069831860964
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_017_push_up_bad_side.json.gz",
+      "evidence_sha256": "1019d67e2d6df65dd2ac7d4fbefacff647374b981c60c130b7fcb04303c3bd4d"
+    },
+    {
+      "id": "subject_017_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_017/push_up/good/side/subject_017_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_17",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "1db600b6835742574b4ef6ceb07915bd6fac634b3ae9e2aac888e1e12883f661",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 158,
+      "fps": 15.0,
+      "frames": 158,
+      "media_fps": 15.0,
+      "guided_observed_reps": 7,
+      "shared_decode_and_processing_seconds": 6.166776199999731,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 155,
+        "valid_fraction": 0.9810126582278481,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 96.66125828522037,
+          "elbow_p90": 164.28227917303042,
+          "body_alignment_p10": 168.71158959592492
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_017_push_up_good_side.json.gz",
+      "evidence_sha256": "b648c8f748683a481aa08074d2be138ee6530a2e77ca38b206fda603b77a2686"
+    },
+    {
+      "id": "subject_017_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_017/push_up/good/side/subject_017_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_17",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "1db600b6835742574b4ef6ceb07915bd6fac634b3ae9e2aac888e1e12883f661",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 158,
+      "fps": 15.0,
+      "frames": 158,
+      "media_fps": 15.0,
+      "guided_observed_reps": 7,
+      "shared_decode_and_processing_seconds": 6.166776199999731,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 155,
+        "valid_fraction": 0.9872611464968153,
+        "measurements": {
+          "angle_p10": 96.66125828522037,
+          "angle_p90": 164.28227917303042,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 150,
+          "body_alignment_p10": 168.71158959592492
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_017_push_up_good_side.json.gz",
+      "evidence_sha256": "b648c8f748683a481aa08074d2be138ee6530a2e77ca38b206fda603b77a2686"
+    },
+    {
+      "id": "subject_017_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_017/squat/bad/side/subject_017_squat_bad_side.mp4",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "participant": "mendeley_17",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "c46db713b660e0e662ea2a5f88201115275df77116ac5af734cb8cd786adeb54",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 470,
+      "fps": 15.0,
+      "frames": 470,
+      "media_fps": 15.0,
+      "guided_observed_reps": 5,
+      "shared_decode_and_processing_seconds": 16.33204769999429,
+      "method": "fixed_clip_rules",
+      "prediction": "incorrect",
+      "assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 275,
+        "valid_fraction": 0.5851063829787234,
+        "reasons": [
+          "large_projected_trunk_lean"
+        ],
+        "measurements": {
+          "knee_p10": 81.86008429187609,
+          "knee_p90": 177.52593140858684,
+          "active_trunk_lean_p90": 158.64136912487066
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_017_squat_bad_side.json.gz",
+      "evidence_sha256": "5e4374d481a1f16ba17aedbd5a97ba95329d42f7db6d48c0d70b33d979eea7b0"
+    },
+    {
+      "id": "subject_017_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_017/squat/bad/side/subject_017_squat_bad_side.mp4",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "participant": "mendeley_17",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "c46db713b660e0e662ea2a5f88201115275df77116ac5af734cb8cd786adeb54",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 470,
+      "fps": 15.0,
+      "frames": 470,
+      "media_fps": 15.0,
+      "guided_observed_reps": 5,
+      "shared_decode_and_processing_seconds": 16.33204769999429,
+      "method": "guided_session_rules",
+      "prediction": "incorrect",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "bad",
+        "issues": [
+          "trunk_lean"
+        ],
+        "tips": [
+          "Keep your torso steadier and reduce excessive forward lean."
+        ],
+        "valid_frames": 267,
+        "valid_fraction": 0.5804347826086956,
+        "measurements": {
+          "angle_p10": 81.34237233610263,
+          "angle_p90": 177.5515906519789,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 145,
+          "active_trunk_lean_p90": 158.64136912487066
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_017_squat_bad_side.json.gz",
+      "evidence_sha256": "5e4374d481a1f16ba17aedbd5a97ba95329d42f7db6d48c0d70b33d979eea7b0"
+    },
+    {
+      "id": "subject_017_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_017/squat/good/side/subject_017_squat_good_side.mp4",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "participant": "mendeley_17",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "b08a1ca334de698ee763a8d2a04e95e20b5d0444e880a1125da7bcb342d89075",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 461,
+      "fps": 15.0,
+      "frames": 461,
+      "media_fps": 15.0,
+      "guided_observed_reps": 14,
+      "shared_decode_and_processing_seconds": 16.65016520000063,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 454,
+        "valid_fraction": 0.9848156182212582,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 92.13251048944025,
+          "knee_p90": 177.2260365150737,
+          "active_trunk_lean_p90": 11.718081001928649
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_017_squat_good_side.json.gz",
+      "evidence_sha256": "27261d237819d848e8887eb7a049163666260e135fb8b4aa67603e679a804f1e"
+    },
+    {
+      "id": "subject_017_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_017/squat/good/side/subject_017_squat_good_side.mp4",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "participant": "mendeley_17",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "b08a1ca334de698ee763a8d2a04e95e20b5d0444e880a1125da7bcb342d89075",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 461,
+      "fps": 15.0,
+      "frames": 461,
+      "media_fps": 15.0,
+      "guided_observed_reps": 14,
+      "shared_decode_and_processing_seconds": 16.65016520000063,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 454,
+        "valid_fraction": 0.9848156182212582,
+        "measurements": {
+          "angle_p10": 92.13251048944025,
+          "angle_p90": 177.2260365150737,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 145,
+          "active_trunk_lean_p90": 11.718081001928649
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_017_squat_good_side.json.gz",
+      "evidence_sha256": "27261d237819d848e8887eb7a049163666260e135fb8b4aa67603e679a804f1e"
+    },
+    {
+      "id": "subject_019_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_019/push_up/bad/side/subject_019_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_19",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "0f30c39ed0f08d03f9e54345bbffc398c8debd0b9f431c3dff9b3a388773ceba",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 96,
+      "fps": 15.0,
+      "frames": 96,
+      "media_fps": 15.0,
+      "guided_observed_reps": 2,
+      "shared_decode_and_processing_seconds": 6.022251300004427,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 96,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 98.42463566235203,
+          "elbow_p90": 162.3706031324232,
+          "body_alignment_p10": 165.74852933047958
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_019_push_up_bad_side.json.gz",
+      "evidence_sha256": "cd08cac502bb1256fd138f78df10897a53c16f17f6da5c078f166cc8a91c5042"
+    },
+    {
+      "id": "subject_019_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_019/push_up/bad/side/subject_019_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_19",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "0f30c39ed0f08d03f9e54345bbffc398c8debd0b9f431c3dff9b3a388773ceba",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 96,
+      "fps": 15.0,
+      "frames": 96,
+      "media_fps": 15.0,
+      "guided_observed_reps": 2,
+      "shared_decode_and_processing_seconds": 6.022251300004427,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 96,
+        "valid_fraction": 1.0,
+        "measurements": {
+          "angle_p10": 98.42463566235203,
+          "angle_p90": 162.3706031324232,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 150,
+          "body_alignment_p10": 165.74852933047958
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_019_push_up_bad_side.json.gz",
+      "evidence_sha256": "cd08cac502bb1256fd138f78df10897a53c16f17f6da5c078f166cc8a91c5042"
+    },
+    {
+      "id": "subject_019_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_019/push_up/good/side/subject_019_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_19",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "0f30c39ed0f08d03f9e54345bbffc398c8debd0b9f431c3dff9b3a388773ceba",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 96,
+      "fps": 15.0,
+      "frames": 96,
+      "media_fps": 15.0,
+      "guided_observed_reps": 2,
+      "shared_decode_and_processing_seconds": 5.443983600001957,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 96,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 98.42463566235203,
+          "elbow_p90": 162.3706031324232,
+          "body_alignment_p10": 165.74852933047958
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_019_push_up_good_side.json.gz",
+      "evidence_sha256": "4a4e2e45f195d611f65fcc0f20cdc595ff42776618baa1a155a62d2644a68bc9"
+    },
+    {
+      "id": "subject_019_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_019/push_up/good/side/subject_019_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_19",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "0f30c39ed0f08d03f9e54345bbffc398c8debd0b9f431c3dff9b3a388773ceba",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 96,
+      "fps": 15.0,
+      "frames": 96,
+      "media_fps": 15.0,
+      "guided_observed_reps": 2,
+      "shared_decode_and_processing_seconds": 5.443983600001957,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 96,
+        "valid_fraction": 1.0,
+        "measurements": {
+          "angle_p10": 98.42463566235203,
+          "angle_p90": 162.3706031324232,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 150,
+          "body_alignment_p10": 165.74852933047958
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_019_push_up_good_side.json.gz",
+      "evidence_sha256": "4a4e2e45f195d611f65fcc0f20cdc595ff42776618baa1a155a62d2644a68bc9"
+    },
+    {
+      "id": "subject_019_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_019/squat/bad/side/subject_019_squat_bad_side.mp4",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "participant": "mendeley_19",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "b896db8c20838b13d9e512809b067e889d38214780244699e6fa85de87b36fe4",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 250,
+      "fps": 15.0,
+      "frames": 250,
+      "media_fps": 15.0,
+      "guided_observed_reps": 7,
+      "shared_decode_and_processing_seconds": 13.085617199998524,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 250,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 81.32074685873538,
+          "knee_p90": 172.14508990426623,
+          "active_trunk_lean_p90": 55.02645143541495
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_019_squat_bad_side.json.gz",
+      "evidence_sha256": "55bffd6ae7b282b2a803f001b0e8fc58288f9f63fefcf160369907ec6dd8203e"
+    },
+    {
+      "id": "subject_019_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_019/squat/bad/side/subject_019_squat_bad_side.mp4",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "participant": "mendeley_19",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "b896db8c20838b13d9e512809b067e889d38214780244699e6fa85de87b36fe4",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 250,
+      "fps": 15.0,
+      "frames": 250,
+      "media_fps": 15.0,
+      "guided_observed_reps": 7,
+      "shared_decode_and_processing_seconds": 13.085617199998524,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 250,
+        "valid_fraction": 1.0,
+        "measurements": {
+          "angle_p10": 81.32074685873538,
+          "angle_p90": 172.14508990426623,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 145,
+          "active_trunk_lean_p90": 55.02645143541495
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_019_squat_bad_side.json.gz",
+      "evidence_sha256": "55bffd6ae7b282b2a803f001b0e8fc58288f9f63fefcf160369907ec6dd8203e"
+    },
+    {
+      "id": "subject_019_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_019/squat/good/side/subject_019_squat_good_side.mp4",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "participant": "mendeley_19",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "38b64a25abb08d1f230b34182e552cc5b1c122a2b6a5e399a1224d66de08ff4a",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 263,
+      "fps": 15.0,
+      "frames": 263,
+      "media_fps": 15.0,
+      "guided_observed_reps": 8,
+      "shared_decode_and_processing_seconds": 12.688637799998105,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 263,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 88.8371957313602,
+          "knee_p90": 160.13916824571476,
+          "active_trunk_lean_p90": 47.531192140829134
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_019_squat_good_side.json.gz",
+      "evidence_sha256": "ee6e955fbc49dcaf65417abf0b9baccc243320fb6e6fa47f91808d750012ffec"
+    },
+    {
+      "id": "subject_019_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_019/squat/good/side/subject_019_squat_good_side.mp4",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "participant": "mendeley_19",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "38b64a25abb08d1f230b34182e552cc5b1c122a2b6a5e399a1224d66de08ff4a",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 263,
+      "fps": 15.0,
+      "frames": 263,
+      "media_fps": 15.0,
+      "guided_observed_reps": 8,
+      "shared_decode_and_processing_seconds": 12.688637799998105,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 263,
+        "valid_fraction": 1.0,
+        "measurements": {
+          "angle_p10": 88.8371957313602,
+          "angle_p90": 160.13916824571476,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 145,
+          "active_trunk_lean_p90": 47.531192140829134
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_019_squat_good_side.json.gz",
+      "evidence_sha256": "ee6e955fbc49dcaf65417abf0b9baccc243320fb6e6fa47f91808d750012ffec"
+    },
+    {
+      "id": "subject_021_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_021/push_up/bad/side/subject_021_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_21",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "7965a2782d6e3ccce34ef42dafd03c0dbd56e6526cc7fc8773d629ceb0761a25",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 231,
+      "fps": 15.0,
+      "frames": 231,
+      "media_fps": 15.0,
+      "guided_observed_reps": 0,
+      "shared_decode_and_processing_seconds": 11.672084499994526,
+      "method": "fixed_clip_rules",
+      "prediction": "incorrect",
+      "assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 231,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "limited_projected_elbow_extension"
+        ],
+        "measurements": {
+          "elbow_p10": 91.83923287626762,
+          "elbow_p90": 124.83204484001345,
+          "body_alignment_p10": 170.4522037878011
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_021_push_up_bad_side.json.gz",
+      "evidence_sha256": "af6bb82cbea4099fce8896877cbf8e4660c44ec23186c7539ec16f043d4d5f88"
+    },
+    {
+      "id": "subject_021_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_021/push_up/bad/side/subject_021_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_21",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "7965a2782d6e3ccce34ef42dafd03c0dbd56e6526cc7fc8773d629ceb0761a25",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 231,
+      "fps": 15.0,
+      "frames": 231,
+      "media_fps": 15.0,
+      "guided_observed_reps": 0,
+      "shared_decode_and_processing_seconds": 11.672084499994526,
+      "method": "guided_session_rules",
+      "prediction": "incorrect",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "bad",
+        "issues": [
+          "incomplete_extension"
+        ],
+        "tips": [
+          "Return fully to the starting position between repetitions."
+        ],
+        "valid_frames": 231,
+        "valid_fraction": 1.0,
+        "measurements": {
+          "angle_p10": 91.83923287626762,
+          "angle_p90": 124.83204484001345,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 150,
+          "body_alignment_p10": 170.4522037878011
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_021_push_up_bad_side.json.gz",
+      "evidence_sha256": "af6bb82cbea4099fce8896877cbf8e4660c44ec23186c7539ec16f043d4d5f88"
+    },
+    {
+      "id": "subject_021_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_021/push_up/good/side/subject_021_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_21",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "26c6714c7bcabe63c3f98b35a5570e2d7c3ecf32a51ce979b113d9955928612f",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 231,
+      "fps": 15.0,
+      "frames": 231,
+      "media_fps": 15.0,
+      "guided_observed_reps": 5,
+      "shared_decode_and_processing_seconds": 11.58759049999935,
+      "method": "fixed_clip_rules",
+      "prediction": "incorrect",
+      "assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 231,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "limited_projected_elbow_extension"
+        ],
+        "measurements": {
+          "elbow_p10": 96.31802036771735,
+          "elbow_p90": 138.77046647831648,
+          "body_alignment_p10": 172.2550582890015
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_021_push_up_good_side.json.gz",
+      "evidence_sha256": "2b5df549e83acc5d1ef72dec62831847c926202733cbd52528cf058f874098fc"
+    },
+    {
+      "id": "subject_021_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_021/push_up/good/side/subject_021_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_21",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "26c6714c7bcabe63c3f98b35a5570e2d7c3ecf32a51ce979b113d9955928612f",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 231,
+      "fps": 15.0,
+      "frames": 231,
+      "media_fps": 15.0,
+      "guided_observed_reps": 5,
+      "shared_decode_and_processing_seconds": 11.58759049999935,
+      "method": "guided_session_rules",
+      "prediction": "incorrect",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "bad",
+        "issues": [
+          "incomplete_extension"
+        ],
+        "tips": [
+          "Return fully to the starting position between repetitions."
+        ],
+        "valid_frames": 231,
+        "valid_fraction": 1.0,
+        "measurements": {
+          "angle_p10": 96.31802036771735,
+          "angle_p90": 138.77046647831648,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 150,
+          "body_alignment_p10": 172.2550582890015
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_021_push_up_good_side.json.gz",
+      "evidence_sha256": "2b5df549e83acc5d1ef72dec62831847c926202733cbd52528cf058f874098fc"
+    },
+    {
+      "id": "subject_021_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_021/squat/bad/side/subject_021_squat_bad_side.mp4",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "participant": "mendeley_21",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "60e42bd59fa1afd7a40cdb6f9565ea0a7fb469f7a6dd69c0c4b4e0ae97737af9",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 454,
+      "fps": 15.0,
+      "frames": 454,
+      "media_fps": 15.0,
+      "guided_observed_reps": 15,
+      "shared_decode_and_processing_seconds": 23.979740399998263,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 454,
+        "valid_fraction": 1.0,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 85.9707616383709,
+          "knee_p90": 172.9290830497659,
+          "active_trunk_lean_p90": 12.348796437344287
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_021_squat_bad_side.json.gz",
+      "evidence_sha256": "5518db4db3f3dadde4a1fdb50b51fd7e053875e7982fa6e77ebefe51ed572fe8"
+    },
+    {
+      "id": "subject_021_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_021/squat/bad/side/subject_021_squat_bad_side.mp4",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "participant": "mendeley_21",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "60e42bd59fa1afd7a40cdb6f9565ea0a7fb469f7a6dd69c0c4b4e0ae97737af9",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 454,
+      "fps": 15.0,
+      "frames": 454,
+      "media_fps": 15.0,
+      "guided_observed_reps": 15,
+      "shared_decode_and_processing_seconds": 23.979740399998263,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 454,
+        "valid_fraction": 1.0,
+        "measurements": {
+          "angle_p10": 85.9707616383709,
+          "angle_p90": 172.9290830497659,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 145,
+          "active_trunk_lean_p90": 12.348796437344287
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_021_squat_bad_side.json.gz",
+      "evidence_sha256": "5518db4db3f3dadde4a1fdb50b51fd7e053875e7982fa6e77ebefe51ed572fe8"
+    },
+    {
+      "id": "subject_021_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_021/squat/good/side/subject_021_squat_good_side.mp4",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "participant": "mendeley_21",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "a5441cc93036766f6c8683328fdb130b42411522c2820876f749e6475f4b24b3",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 181,
+      "fps": 15.0,
+      "frames": 181,
+      "media_fps": 15.0,
+      "guided_observed_reps": 0,
+      "shared_decode_and_processing_seconds": 9.027259000002232,
+      "method": "fixed_clip_rules",
+      "prediction": "unassessable",
+      "assessment": {
+        "prediction": "unassessable",
+        "valid_frames": 181,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "insufficient_observed_movement"
+        ],
+        "measurements": {
+          "knee_p10": 172.6735803725173,
+          "knee_p90": 179.62173426296542,
+          "active_trunk_lean_p90": 16.115703619184924
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_021_squat_good_side.json.gz",
+      "evidence_sha256": "17150efd6bd79adc1223c74e3005ce5fca767ddd3015b046809f8922681abced"
+    },
+    {
+      "id": "subject_021_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_021/squat/good/side/subject_021_squat_good_side.mp4",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "participant": "mendeley_21",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "a5441cc93036766f6c8683328fdb130b42411522c2820876f749e6475f4b24b3",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 181,
+      "fps": 15.0,
+      "frames": 181,
+      "media_fps": 15.0,
+      "guided_observed_reps": 0,
+      "shared_decode_and_processing_seconds": 9.027259000002232,
+      "method": "guided_session_rules",
+      "prediction": "unassessable",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "unassessable",
+        "issues": [],
+        "tips": [
+          "Show a full lowering and return movement, then try again."
+        ],
+        "valid_frames": 181,
+        "valid_fraction": 1.0,
+        "measurements": {
+          "angle_p10": 172.6735803725173,
+          "angle_p90": 179.62173426296542,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 145,
+          "active_trunk_lean_p90": 16.115703619184924
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate.",
+        "reason": "insufficient_observed_movement"
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_021_squat_good_side.json.gz",
+      "evidence_sha256": "17150efd6bd79adc1223c74e3005ce5fca767ddd3015b046809f8922681abced"
+    },
+    {
+      "id": "subject_023_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_023/push_up/bad/side/subject_023_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_23",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "04c99ee458a26d17dc81f0565d76536968e909f7d4b3be2247dc3941b6edda11",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 207,
+      "fps": 15.0,
+      "frames": 207,
+      "media_fps": 15.0,
+      "guided_observed_reps": 8,
+      "shared_decode_and_processing_seconds": 8.408387099996617,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 206,
+        "valid_fraction": 0.9951690821256038,
+        "reasons": [],
+        "measurements": {
+          "elbow_p10": 95.63269522440586,
+          "elbow_p90": 165.39241779151376,
+          "body_alignment_p10": 161.01223558196205
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_023_push_up_bad_side.json.gz",
+      "evidence_sha256": "cea07a6efcd0f0fe1522751a33dd5ef1959aa9158a5a281e869a4520d096131c"
+    },
+    {
+      "id": "subject_023_push_up_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_023/push_up/bad/side/subject_023_push_up_bad_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "incorrect",
+      "participant": "mendeley_23",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "04c99ee458a26d17dc81f0565d76536968e909f7d4b3be2247dc3941b6edda11",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 207,
+      "fps": 15.0,
+      "frames": 207,
+      "media_fps": 15.0,
+      "guided_observed_reps": 8,
+      "shared_decode_and_processing_seconds": 8.408387099996617,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 206,
+        "valid_fraction": 0.9951690821256038,
+        "measurements": {
+          "angle_p10": 95.63269522440586,
+          "angle_p90": 165.39241779151376,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 150,
+          "body_alignment_p10": 161.01223558196205
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_023_push_up_bad_side.json.gz",
+      "evidence_sha256": "cea07a6efcd0f0fe1522751a33dd5ef1959aa9158a5a281e869a4520d096131c"
+    },
+    {
+      "id": "subject_023_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_023/push_up/good/side/subject_023_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_23",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "218b0c1569cd03e0b0c4dd581303ed7d3b35dc5a3c768b6cefef38dc5a07c8f4",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 290,
+      "fps": 15.0,
+      "frames": 290,
+      "media_fps": 15.0,
+      "guided_observed_reps": 6,
+      "shared_decode_and_processing_seconds": 11.235013899997284,
+      "method": "fixed_clip_rules",
+      "prediction": "incorrect",
+      "assessment": {
+        "prediction": "incorrect",
+        "valid_frames": 290,
+        "valid_fraction": 1.0,
+        "reasons": [
+          "limited_projected_elbow_flexion"
+        ],
+        "measurements": {
+          "elbow_p10": 130.94357157955545,
+          "elbow_p90": 171.8306311855411,
+          "body_alignment_p10": 168.06208522680657
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_023_push_up_good_side.json.gz",
+      "evidence_sha256": "4313dd690b6a511bd1d6c401997e1d26ad4cc6c70ec9eb93fd8828d5d54b1f9b"
+    },
+    {
+      "id": "subject_023_push_up_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_023/push_up/good/side/subject_023_push_up_good_side.mp4",
+      "exercise": "pushup",
+      "reference_form": "correct",
+      "participant": "mendeley_23",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "218b0c1569cd03e0b0c4dd581303ed7d3b35dc5a3c768b6cefef38dc5a07c8f4",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 290,
+      "fps": 15.0,
+      "frames": 290,
+      "media_fps": 15.0,
+      "guided_observed_reps": 6,
+      "shared_decode_and_processing_seconds": 11.235013899997284,
+      "method": "guided_session_rules",
+      "prediction": "incorrect",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "bad",
+        "issues": [
+          "limited_depth"
+        ],
+        "tips": [
+          "Use a fuller lowering movement to reach the exercise depth target."
+        ],
+        "valid_frames": 290,
+        "valid_fraction": 1.0,
+        "measurements": {
+          "angle_p10": 130.94357157955545,
+          "angle_p90": 171.8306311855411,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 150,
+          "body_alignment_p10": 168.06208522680657
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_023_push_up_good_side.json.gz",
+      "evidence_sha256": "4313dd690b6a511bd1d6c401997e1d26ad4cc6c70ec9eb93fd8828d5d54b1f9b"
+    },
+    {
+      "id": "subject_023_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_023/squat/bad/side/subject_023_squat_bad_side.mp4",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "participant": "mendeley_23",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "8d77c0590d9d2bb7ab81628460de1d1da410abc1b8168811181d8bcd61c4d65e",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 451,
+      "fps": 15.0,
+      "frames": 451,
+      "media_fps": 15.0,
+      "guided_observed_reps": 16,
+      "shared_decode_and_processing_seconds": 17.476509899999655,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 447,
+        "valid_fraction": 0.991130820399113,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 79.36637193244357,
+          "knee_p90": 166.93540837582356,
+          "active_trunk_lean_p90": 45.16754810332728
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_023_squat_bad_side.json.gz",
+      "evidence_sha256": "0e24ef84bf79bde5c1d42570226430281d7f6b924530747896d146eed01c2915"
+    },
+    {
+      "id": "subject_023_squat_bad_side",
+      "file": "mendeley/Dataset Subject-wise/subject_023/squat/bad/side/subject_023_squat_bad_side.mp4",
+      "exercise": "squat",
+      "reference_form": "incorrect",
+      "participant": "mendeley_23",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "8d77c0590d9d2bb7ab81628460de1d1da410abc1b8168811181d8bcd61c4d65e",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 451,
+      "fps": 15.0,
+      "frames": 451,
+      "media_fps": 15.0,
+      "guided_observed_reps": 16,
+      "shared_decode_and_processing_seconds": 17.476509899999655,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 447,
+        "valid_fraction": 0.991130820399113,
+        "measurements": {
+          "angle_p10": 79.36637193244357,
+          "angle_p90": 166.93540837582356,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 145,
+          "active_trunk_lean_p90": 45.16754810332728
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_023_squat_bad_side.json.gz",
+      "evidence_sha256": "0e24ef84bf79bde5c1d42570226430281d7f6b924530747896d146eed01c2915"
+    },
+    {
+      "id": "subject_023_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_023/squat/good/side/subject_023_squat_good_side.mp4",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "participant": "mendeley_23",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "8d77c0590d9d2bb7ab81628460de1d1da410abc1b8168811181d8bcd61c4d65e",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 451,
+      "fps": 15.0,
+      "frames": 451,
+      "media_fps": 15.0,
+      "guided_observed_reps": 16,
+      "shared_decode_and_processing_seconds": 18.62126680000074,
+      "method": "fixed_clip_rules",
+      "prediction": "correct",
+      "assessment": {
+        "prediction": "correct",
+        "valid_frames": 447,
+        "valid_fraction": 0.991130820399113,
+        "reasons": [],
+        "measurements": {
+          "knee_p10": 79.36637193244357,
+          "knee_p90": 166.93540837582356,
+          "active_trunk_lean_p90": 45.16754810332728
+        }
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_023_squat_good_side.json.gz",
+      "evidence_sha256": "d05f46b2fe5e951e8e37415f9d241eed51f7781373538347b0920f83d4e5db6c"
+    },
+    {
+      "id": "subject_023_squat_good_side",
+      "file": "mendeley/Dataset Subject-wise/subject_023/squat/good/side/subject_023_squat_good_side.mp4",
+      "exercise": "squat",
+      "reference_form": "correct",
+      "participant": "mendeley_23",
+      "original_split": "train",
+      "partition": "prospective",
+      "sha256": "8d77c0590d9d2bb7ab81628460de1d1da410abc1b8168811181d8bcd61c4d65e",
+      "split": "prospective_reserved",
+      "condition": "side view; prospective participant holdout",
+      "reference_reps": null,
+      "reference_source": "Mendeley source whole-clip label",
+      "metadata_frames": 451,
+      "fps": 15.0,
+      "frames": 451,
+      "media_fps": 15.0,
+      "guided_observed_reps": 16,
+      "shared_decode_and_processing_seconds": 18.62126680000074,
+      "method": "guided_session_rules",
+      "prediction": "correct",
+      "assessment": {
+        "method": "guided-session-rules-v1",
+        "prediction": "good",
+        "issues": [],
+        "tips": [
+          "Keep the same range of movement and steady control for your next set."
+        ],
+        "valid_frames": 447,
+        "valid_fraction": 0.991130820399113,
+        "measurements": {
+          "angle_p10": 79.36637193244357,
+          "angle_p90": 166.93540837582356,
+          "depth_target_degrees": 100,
+          "return_target_degrees": 145,
+          "active_trunk_lean_p90": 45.16754810332728
+        },
+        "scope": "Fixed 2D exercise checks; school-project form estimate."
+      },
+      "evidence_file": "outputs/guided_evaluation/results/subject_023_squat_good_side.json.gz",
+      "evidence_sha256": "d05f46b2fe5e951e8e37415f9d241eed51f7781373538347b0920f83d4e5db6c"
+    }
+  ],
+  "summary": {
+    "fixed_clip_rules": {
+      "labelled_clips": 16,
+      "assessed_clips": 15,
+      "abstentions": 1,
+      "accuracy_all": 0.4375,
+      "accuracy_assessed": 0.4666666666666667,
+      "classification_coverage": 0.9375,
+      "macro_f1": 0.4298245614035088,
+      "per_class": {
+        "correct": {
+          "support": 8,
+          "precision": 0.45454545454545453,
+          "recall": 0.625,
+          "f1": 0.5263157894736842
+        },
+        "incorrect": {
+          "support": 8,
+          "precision": 0.5,
+          "recall": 0.25,
+          "f1": 0.3333333333333333
+        }
+      },
+      "confusion_matrix": {
+        "correct": {
+          "correct": 5,
+          "incorrect": 2,
+          "unassessable": 1
+        },
+        "incorrect": {
+          "correct": 6,
+          "incorrect": 2,
+          "unassessable": 0
+        }
+      }
+    },
+    "guided_session_rules": {
+      "labelled_clips": 16,
+      "assessed_clips": 15,
+      "abstentions": 1,
+      "accuracy_all": 0.4375,
+      "accuracy_assessed": 0.4666666666666667,
+      "classification_coverage": 0.9375,
+      "macro_f1": 0.4298245614035088,
+      "per_class": {
+        "correct": {
+          "support": 8,
+          "precision": 0.45454545454545453,
+          "recall": 0.625,
+          "f1": 0.5263157894736842
+        },
+        "incorrect": {
+          "support": 8,
+          "precision": 0.5,
+          "recall": 0.25,
+          "f1": 0.3333333333333333
+        }
+      },
+      "confusion_matrix": {
+        "correct": {
+          "correct": 5,
+          "incorrect": 2,
+          "unassessable": 1
+        },
+        "incorrect": {
+          "correct": 6,
+          "incorrect": 2,
+          "unassessable": 0
+        }
+      }
+    }
+  },
+  "by_exercise": {
+    "squat": {
+      "fixed_clip_rules": {
+        "labelled_clips": 8,
+        "assessed_clips": 7,
+        "abstentions": 1,
+        "accuracy_all": 0.5,
+        "accuracy_assessed": 0.5714285714285714,
+        "classification_coverage": 0.875,
+        "macro_f1": 0.5,
+        "per_class": {
+          "correct": {
+            "support": 4,
+            "precision": 0.5,
+            "recall": 0.75,
+            "f1": 0.6
+          },
+          "incorrect": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 3,
+            "incorrect": 0,
+            "unassessable": 1
+          },
+          "incorrect": {
+            "correct": 3,
+            "incorrect": 1,
+            "unassessable": 0
+          }
+        }
+      },
+      "guided_session_rules": {
+        "labelled_clips": 8,
+        "assessed_clips": 7,
+        "abstentions": 1,
+        "accuracy_all": 0.5,
+        "accuracy_assessed": 0.5714285714285714,
+        "classification_coverage": 0.875,
+        "macro_f1": 0.5,
+        "per_class": {
+          "correct": {
+            "support": 4,
+            "precision": 0.5,
+            "recall": 0.75,
+            "f1": 0.6
+          },
+          "incorrect": {
+            "support": 4,
+            "precision": 1.0,
+            "recall": 0.25,
+            "f1": 0.4
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 3,
+            "incorrect": 0,
+            "unassessable": 1
+          },
+          "incorrect": {
+            "correct": 3,
+            "incorrect": 1,
+            "unassessable": 0
+          }
+        }
+      }
+    },
+    "pushup": {
+      "fixed_clip_rules": {
+        "labelled_clips": 8,
+        "assessed_clips": 8,
+        "abstentions": 0,
+        "accuracy_all": 0.375,
+        "accuracy_assessed": 0.375,
+        "classification_coverage": 1.0,
+        "macro_f1": 0.36507936507936506,
+        "per_class": {
+          "correct": {
+            "support": 4,
+            "precision": 0.4,
+            "recall": 0.5,
+            "f1": 0.4444444444444444
+          },
+          "incorrect": {
+            "support": 4,
+            "precision": 0.3333333333333333,
+            "recall": 0.25,
+            "f1": 0.2857142857142857
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 2,
+            "incorrect": 2,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 3,
+            "incorrect": 1,
+            "unassessable": 0
+          }
+        }
+      },
+      "guided_session_rules": {
+        "labelled_clips": 8,
+        "assessed_clips": 8,
+        "abstentions": 0,
+        "accuracy_all": 0.375,
+        "accuracy_assessed": 0.375,
+        "classification_coverage": 1.0,
+        "macro_f1": 0.36507936507936506,
+        "per_class": {
+          "correct": {
+            "support": 4,
+            "precision": 0.4,
+            "recall": 0.5,
+            "f1": 0.4444444444444444
+          },
+          "incorrect": {
+            "support": 4,
+            "precision": 0.3333333333333333,
+            "recall": 0.25,
+            "f1": 0.2857142857142857
+          }
+        },
+        "confusion_matrix": {
+          "correct": {
+            "correct": 2,
+            "incorrect": 2,
+            "unassessable": 0
+          },
+          "incorrect": {
+            "correct": 3,
+            "incorrect": 1,
+            "unassessable": 0
+          }
+        }
+      }
+    }
+  },
+  "completed_at_utc": "2026-11-20T16:26:19.612982+00:00"
+}

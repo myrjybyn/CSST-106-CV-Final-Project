@@ -1,2 +1,10 @@
 # Preserve the measured raw log bytes used by laptop_benchmark_validation.json.
 /docs/calibration/laptop_benchmark.json -text
+
+# Keep the guided evaluation's frozen source/evidence hashes portable on Windows.
+/src/posture_check/*.py text eol=lf
+/scripts/evaluate_guided_rules.py text eol=lf
+/requirements.txt text eol=lf
+/docs/guided_evaluation/* text eol=lf
+# JSON evidence hashes refer to exact bytes, including recorded line endings.
+/docs/guided_evaluation/*.json -text !eol whitespace=cr-at-eol
