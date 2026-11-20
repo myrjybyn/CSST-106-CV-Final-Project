@@ -1,0 +1,53 @@
+﻿filename,description,provenance
+01_home_menu.png,"Home menu, default rep goal and navigation",Actual app UI; no webcam opened
+02_choose_exercise.png,All four supported exercises and viewing guidance,Actual app dialog
+03_settings_camera_mirror_skeleton.png,"Camera index, mirror and skeleton settings; local-save information",Actual app dialog
+04_custom_rep_goal.png,Editable repetition goal and minus/plus controls,Actual app UI; no webcam opened
+05_session_workspace_ready.png,Session workspace before starting,Actual app UI; no webcam opened
+06_three_second_countdown_illustrative.png,"Squat preview; skeleton=True, mirror=True",Real squat sample-video inference replayed through app.poll; no live webcam; illustrative UI state override
+07_squat_tracking_sample_replay.png,"Squat preview; skeleton=True, mirror=True",Real squat sample-video inference replayed through app.poll; no live webcam
+08_pushup_tracking_sample_replay.png,"Push-up preview; skeleton=True, mirror=True",Real pushup sample-video inference replayed through app.poll; no live webcam
+09_lunge_tracking_sample_replay.png,"Lunge preview; skeleton=True, mirror=True",Real lunge sample-video inference replayed through app.poll; no live webcam
+10_jumping_jack_tracking_sample_replay.png,"Jumping jack preview; skeleton=True, mirror=True",Real jumping_jack sample-video inference replayed through app.poll; no live webcam
+11_skeleton_disabled_sample_replay.png,"Squat preview; skeleton=False, mirror=True",Real squat sample-video inference replayed through app.poll; no live webcam
+12_mirroring_disabled_sample_replay.png,"Squat preview; skeleton=True, mirror=False",Real squat sample-video inference replayed through app.poll; no live webcam
+13_rep_progress_illustrative.png,"Squat preview; skeleton=True, mirror=True",Real squat sample-video inference replayed through app.poll; no live webcam; illustrative UI state override
+14_missing_pose_feedback_illustrative.png,"Squat preview; skeleton=False, mirror=True",Real squat sample-video inference replayed through app.poll; no live webcam; illustrative UI state override
+15_squat_actual_sample_results.png,Actual complete-video assessment: good; ended early,"Actual guided analysis of local sample video; full file, no automatic target stop"
+16_pushup_actual_sample_results.png,Actual complete-video assessment: good; ended early,"Actual guided analysis of local sample video; full file, no automatic target stop"
+17_lunge_actual_sample_results.png,Actual complete-video assessment: good; ended early,"Actual guided analysis of local sample video; full file, no automatic target stop"
+18_jumping_jack_actual_sample_results.png,Actual complete-video assessment: good; ended early,"Actual guided analysis of local sample video; full file, no automatic target stop"
+19_good_result_illustrative.png,"Illustrative good result, tips and saved-file paths",Illustrative summary fixture passed to actual app.finish_session; example paths
+20_bad_result_illustrative.png,"Illustrative bad result, tips and saved-file paths",Illustrative summary fixture passed to actual app.finish_session; example paths
+21_unassessable_result_illustrative.png,"Illustrative unassessable result, tips and saved-file paths",Illustrative summary fixture passed to actual app.finish_session; example paths
+22_time_limit_result_illustrative.png,10-minute time-limit result branch,Illustrative end_reason fixture; actual app result dialog
+23_cancelled_before_recording_illustrative.png,Cancelled countdown with no recording,Illustrative cancellation summary passed to actual app.finish_session
+24_invalid_rep_goal_error.png,Actual validation for a goal outside 1-100,Actual app UI; no webcam opened
+25_camera_error_dialog.png,Camera failure message presentation; illustrative error event,Actual app UI; no webcam opened
+26_saved_session_actual_results.png,Existing recorded session and saved-file paths,outputs\sessions\session_20261120_133635UTC_491243\summary.json
+27_saved_recording_sample_frame.png,"Actual middle frame of a locally saved recording, without preview overlays",outputs\sessions\session_20261120_133635UTC_491243\recording.mp4
+28_saved_summary_json_output.png,Read-only file preview of actual saved summary.json,"outputs\sessions\session_20261120_133635UTC_491243\summary.json; separate file viewer, not an app feature"
+40_sample_output_jumping_jack_01.png,Actual annotated image output: jumping_jack; rule_pass,milestone1\posture_check\data\samples\jumping_jack_01.jpg
+40_sample_output_jumping_jack_02.png,Actual annotated image output: jumping_jack; rule_pass,milestone1\posture_check\data\samples\jumping_jack_02.jpg
+40_sample_output_jumping_jack_03.png,Actual annotated image output: jumping_jack; rule_pass,milestone1\posture_check\data\samples\jumping_jack_03.jpg
+40_sample_output_jumping_jack_04.png,Actual annotated image output: jumping_jack; rule_pass,milestone1\posture_check\data\samples\jumping_jack_04.jpg
+40_sample_output_jumping_jack_05.png,Actual annotated image output: jumping_jack; rule_pass,milestone1\posture_check\data\samples\jumping_jack_05.jpg
+40_sample_output_lunge_01.png,Actual annotated image output: lunge; rule_pass,milestone1\posture_check\data\samples\lunge_01.jpg
+40_sample_output_lunge_02.png,Actual annotated image output: lunge; rule_pass,milestone1\posture_check\data\samples\lunge_02.jpg
+40_sample_output_lunge_03.png,Actual annotated image output: lunge; rule_pass,milestone1\posture_check\data\samples\lunge_03.jpg
+40_sample_output_lunge_04.png,Actual annotated image output: lunge; rule_pass,milestone1\posture_check\data\samples\lunge_04.jpg
+40_sample_output_lunge_05.png,Actual annotated image output: lunge; rule_pass,milestone1\posture_check\data\samples\lunge_05.jpg
+40_sample_output_pushup_01.png,Actual annotated image output: pushup; unassessable,milestone1\posture_check\data\samples\pushup_01.jpg
+40_sample_output_pushup_02.png,Actual annotated image output: pushup; unassessable,milestone1\posture_check\data\samples\pushup_02.jpg
+40_sample_output_pushup_03.png,Actual annotated image output: pushup; unassessable,milestone1\posture_check\data\samples\pushup_03.jpg
+40_sample_output_pushup_04.png,Actual annotated image output: pushup; unassessable,milestone1\posture_check\data\samples\pushup_04.jpg
+40_sample_output_pushup_05.png,Actual annotated image output: pushup; rule_pass,milestone1\posture_check\data\samples\pushup_05.jpg
+40_sample_output_squat_01.png,Actual annotated image output: squat; rule_pass,milestone1\posture_check\data\samples\squat_01.jpg
+40_sample_output_squat_02.png,Actual annotated image output: squat; rule_pass,milestone1\posture_check\data\samples\squat_02.jpg
+40_sample_output_squat_03.png,Actual annotated image output: squat; rule_pass,milestone1\posture_check\data\samples\squat_03.jpg
+40_sample_output_squat_04.png,Actual annotated image output: squat; rule_pass,milestone1\posture_check\data\samples\squat_04.jpg
+40_sample_output_squat_05.png,Actual annotated image output: squat; rule_pass,milestone1\posture_check\data\samples\squat_05.jpg
+41_sample_video_output_jumping_jack.png,"Actual video inference, frame 558; guided rep counter; full clip: 8 reps, good",data\raw\phase3_user\jumping_jacks.mp4
+41_sample_video_output_lunge.png,"Actual video inference, frame 171; guided rep counter; full clip: 3 reps, good",data\raw\phase3_user\lunge.mp4
+41_sample_video_output_pushup.png,"Actual video inference, frame 276; guided rep counter; full clip: 2 reps, good",data\raw\phase3_user\push_up.mp4
+41_sample_video_output_squat.png,"Actual video inference, frame 461; guided rep counter; full clip: 4 reps, good",data\raw\phase3_user\squat.mp4
